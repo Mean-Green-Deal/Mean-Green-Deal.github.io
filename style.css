@@ -8,6 +8,8 @@ html{
   body{
     margin: 0;
     padding: 0;
+    background-color: #000000;
+    color: #ffffff;
   }
   h1 {
     font-family: 'Roboto Slab', serif;
