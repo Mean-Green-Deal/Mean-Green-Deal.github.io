@@ -13,6 +13,9 @@ html{
     font-family: 'Roboto Slab', serif;
     text-align: center;
   }
+  h2 {
+    text-align: center;
+  }
   #map {
     height: 60vh;
   }
