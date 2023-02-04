@@ -13,10 +13,10 @@ html{
   }
   h1 {
     font-family: 'Adobe Jenson', serif;
-    text-align: center;
+    text-align: left;
   }
   h2 {
-    text-align: center;
+    text-align: left;
   }
   #map {
     height: 90vh;
