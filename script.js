@@ -2,7 +2,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
       zoom: 14.7,
-      mapid: 'ee7fc4c532e1a001',
+      mapid: '576037077fe48406',
       mapTypeControl: false,
       fullscreenControl: false,
       streetViewControl: false
