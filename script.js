@@ -8,12 +8,12 @@ function initMap() {
       streetViewControl: false
     });
     new google.maps.Marker({
-        position: { lat: 33.20750461273979, lng: -97.15295817275108 },
+        position: { lat: 33.2555149, lng: -97.1529043 },
         map,
         title: "Recycling Bin 1",
         icon: {
             url: "bin.svg",
-            scaledSize: new google.maps.Size(38, 31)
+            scaledSize: new google.maps.Size(19, 15.5)
             
         }
     });
