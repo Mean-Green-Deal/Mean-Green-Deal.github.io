@@ -13,7 +13,7 @@ function initMap() {
         title: "Recycling Bin 1",
         icon: {
             url: "bin.svg",
-            scaledSize: new google.maps.Size(19, 15.5)
+            scaledSize: new google.maps.Size(28.5, 23.25)
             
         }
     });
