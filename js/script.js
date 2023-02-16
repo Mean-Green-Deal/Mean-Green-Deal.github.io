@@ -10,13 +10,23 @@ function initMap() {
     new google.maps.Marker({
         position: { lat: 33.2555149, lng: -97.1529043 },
         map,
-        title: "Recycling Bin 1",
+        title: "Recycling Bin DP Out 1",
         icon: {
             url: "bin.svg",
             scaledSize: new google.maps.Size(28.5, 23.25)
             
         }
     });
+    new google.maps.Marker({
+      position: { lat: 33.2548833, lng: -97.1533700 },
+      map,
+      title: "Recycling Bin DP OUT 2",
+      icon: {
+          url: "bin.svg",
+          scaledSize: new google.maps.Size(28.5, 23.25)
+          
+      }
+  });
   }
 const domContainer = document.querySelector('#like_button_container');
 const root = ReactDOM.createRoot(domContainer);
