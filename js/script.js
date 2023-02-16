@@ -27,7 +27,37 @@ function initMap() {
           
       }
   });
+  new google.maps.Marker({
+    position: { lat: 33.2543800, lng: -97.1536788 },
+    map,
+    title: "Recycling Bin DP IN 3",
+    icon: {
+        url: "bin.svg",
+        scaledSize: new google.maps.Size(28.5, 23.25)
+        
+    }
+});
+new google.maps.Marker({
+  position: { lat: 33.2546405, lng: -97.1535286 },
+  map,
+  title: "Recycling Bin DP IN 4",
+  icon: {
+      url: "bin.svg",
+      scaledSize: new google.maps.Size(28.5, 23.25)
+      
   }
+});
+new google.maps.Marker({
+  position: { lat: 33.2541964, lng: -97.1537884 },
+  map,
+  title: "Recycling Bin DP IN 5",
+  icon: {
+      url: "bin.svg",
+      scaledSize: new google.maps.Size(28.5, 23.25)
+      
+  }
+});
+}
 const domContainer = document.querySelector('#like_button_container');
 const root = ReactDOM.createRoot(domContainer);
 root.render(e(LikeButton));
