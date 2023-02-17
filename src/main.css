@@ -11,7 +11,7 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     font-size: 18px;
     background: url(./8q9lvH-420156787.png);
     background-size: cover;
@@ -26,6 +26,10 @@ body {
     border-radius: var(--border-radius);
     background: #ffffff;
 
+}
+
+.form--hidden {
+    display: none;
 }
 
 .container,
@@ -101,4 +105,23 @@ body {
 
   .form__button:hover {
     background: var(--color-primary-dark);
+  }
+
+  .form__button:active {
+    transform: scale(.98);
+  }
+
+  .form__text {
+    text-align: center;
+
+  }
+
+  .form__link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .form__link:hover {
+    text-decoration: underline;
   }
