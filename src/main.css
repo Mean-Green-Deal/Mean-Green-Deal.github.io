@@ -53,9 +53,45 @@ body {
 }
 
 .form__message--success {
-    color: var(--color-suicess);
+    color: var(--color-success);
 }
 
 .form__message--error {
-    color: var(--color-suicess);
+    color: var(--color-error);
+}
+
+.form__input-group{
+    margin-bottom: 1rem;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #dddddd;
+    outline: none;
+    background: #eeeeee;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.form__input:focus {
+    border-color: var(--color-primary);
+    background: #ffffff;
+}
+
+.form__input--erro {
+    color: var(--color-error);
+}
+
+.form__input--error {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.form__input-error-message {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-error)
 }
