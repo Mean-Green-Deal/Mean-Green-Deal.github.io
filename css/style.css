@@ -14,9 +14,11 @@ html{
   h1 {
     font-family: 'Adobe Jenson', serif;
     text-align: center;
+    position: relative;
   }
   h2 {
     text-align: center;
+    position: relative;
   }
   #map {
       width: 1500px;
