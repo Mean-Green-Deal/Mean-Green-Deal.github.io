@@ -38,5 +38,8 @@ function OffCanvasHeader() {
     </>
   );
 }
+const rootNode = document.getElementById('navbar-root');
+const root = ReactDOM.createRoot(rootNode);
+root.render(React.createElement(Navbar));
 
 export default OffCanvasHeader;
