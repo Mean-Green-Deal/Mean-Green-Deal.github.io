@@ -1,4 +1,3 @@
-
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
@@ -6,7 +5,14 @@ function initMap() {
       mapid: '576037077fe48406',
       mapTypeControl: false,
       fullscreenControl: false,
-      streetViewControl: false
+      streetViewControl: false,
+      styles:
+        { 
+          "featureType": "poi", 
+          "stylers": [ 
+            { "visibility": "off" } 
+          ] 
+        }
     });
     new google.maps.Marker({
         position: { lat: 33.2555149, lng: -97.1529043 },
