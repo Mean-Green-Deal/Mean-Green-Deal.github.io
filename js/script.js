@@ -6,13 +6,14 @@ function initMap() {
       mapTypeControl: false,
       fullscreenControl: false,
       streetViewControl: false,
-      styles:
+      styles: [
         { 
           "featureType": "poi", 
           "stylers": [ 
             { "visibility": "off" } 
           ] 
         }
+      ]
     });
     new google.maps.Marker({
         position: { lat: 33.2555149, lng: -97.1529043 },
