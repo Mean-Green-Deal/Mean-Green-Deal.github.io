@@ -20,7 +20,7 @@ function initMap() {
         map,
         title: "Recycling Bin DP Out 1",
         icon: {
-            url: "bin.svg",
+            url: "pictures/bin.svg",
             scaledSize: new google.maps.Size(28.5, 23.25)
             
         }
@@ -30,7 +30,7 @@ function initMap() {
       map,
       title: "Recycling Bin DP OUT 2",
       icon: {
-          url: "bin.svg",
+          url: "pictures/bin.svg",
           scaledSize: new google.maps.Size(28.5, 23.25)
           
       }
@@ -40,7 +40,7 @@ function initMap() {
     map,
     title: "Recycling Bin DP IN 3",
     icon: {
-        url: "bin.svg",
+        url: "pictures/bin.svg",
         scaledSize: new google.maps.Size(28.5, 23.25)
         
     }
@@ -50,7 +50,7 @@ new google.maps.Marker({
   map,
   title: "Recycling Bin DP IN 4",
   icon: {
-      url: "bin.svg",
+      url: "pictures/bin.svg",
       scaledSize: new google.maps.Size(28.5, 23.25)
       
   }
@@ -60,7 +60,7 @@ new google.maps.Marker({
   map,
   title: "Recycling Bin DP IN 5",
   icon: {
-      url: "bin.svg",
+      url: "pictures/bin.svg",
       scaledSize: new google.maps.Size(28.5, 23.25)
       
   }
