@@ -15,6 +15,47 @@ function initMap() {
         }
       ]
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     const bins = [
       ["Recycling Bin DP Out 1", 33.2555149, -97.1529043],
       ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700],
