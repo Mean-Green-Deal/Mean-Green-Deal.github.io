@@ -65,7 +65,33 @@ new google.maps.Marker({
       
   }
 });
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            };
+        },
+        () => {
+            handleLocationError(true, infoWindow, map.getCenter());
+        }
+    );
+} else {
+    handleLocationError(false, infoWindow, map.getCenter());
+}  
 }
+
+function handleLocationError(browserhasGeolocation, infowWindow, pos) {
+    infowWindow.setPosition(pos);
+    infowWindow.setContent(
+        browserhasGeolocation
+        ? "Error: The Geolocation service failed."
+        : "Error: Your browser doesn't support geolocation."
+    );
+    infowWindow.open(map);
+}
+
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
 
