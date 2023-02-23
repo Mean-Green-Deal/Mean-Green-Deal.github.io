@@ -51,7 +51,7 @@ function initMap() {
   });
 
     
-    const bins = [
+   const bins = [
       ["Recycling Bin DP Out 1", 33.2555149, -97.1529043],
       ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700],
       ["Recycling Bin DP IN 3", 33.2543800, -97.1536788],
@@ -59,9 +59,15 @@ function initMap() {
       ["Recycling Bin DP IN 5", 33.2541964, -97.1537884],
       ["Recycling Bin DP OUT 6", 33.2540419, -97.1528614],
       ["Recycling Bin DP IN 7", 33.2530084, -97.1520399],
+      ["Recycling Bin DP IN 8", 33.2532607, -97.1524144],
+      ["Recycling Bin DP IN 9", 33.2531654, -97.1528657],
+      ["Recycling Bin DP IN 10", 33.2532955, -97.1527598],
+      ["Recycling Bin DP IN 11", 33.2543783, -97.1526464],
+      ["Recycling Bin DP IN 12", 33.2540410, -97.1524346],
+      ["Recycling Bin DP OUT 13", 33.2533861, -97.1506733],
     ];
     for (let i = 0; i < bins.length; i++) {
-      const bins = bins[i];
+      const bin = bins[i];
   
       new google.maps.Marker({
         position: { lat: bins[1], lng: beach[2] },
