@@ -76,8 +76,7 @@ function initMap() {
           url: "pictures/bin.svg",
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
-        shape: shape,
-        title: bins[0],
+        title: bin[0],
       });
     }
   }
