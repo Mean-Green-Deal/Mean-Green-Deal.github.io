@@ -25,7 +25,7 @@ function initMap() {
       ["Recycling Bin DP IN 7", 33.2530084, -97.1520399],
     ];
     for (let i = 0; i < bins.length; i++) {
-      const bins = bins[i];
+      const bin = bins[i];
   
       new google.maps.Marker({
         position: { lat: bins[1], lng: beach[2] },
