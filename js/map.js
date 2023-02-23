@@ -82,6 +82,7 @@ function getLocation() {
   infoWindow.open(map);
 }
 
+window.onload = getLocation;
 window.initMap = initMap;
 
 
