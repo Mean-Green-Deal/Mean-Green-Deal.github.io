@@ -15,47 +15,6 @@ function initMap() {
         }
       ]
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     const bins = [
       ["Recycling Bin DP Out 1", 33.2555149, -97.1529043],
       ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700],
@@ -133,7 +92,35 @@ new google.maps.Marker({
       
   }
 });
-}
+new google.maps.Marker({
+  position: { lat: 33.2540419, lng: -97.1528614 },
+  map,
+  title: "Recycling Bin DP OUT 6",
+  icon: {
+      url: "pictures/bin.svg",
+      scaledSize: new google.maps.Size(28.5, 23.25)
+  }
+});
+new google.maps.Marker({
+  position: { lat: 33.2530084, lng: -97.1520399 },
+  map,
+  title: "Recycling Bin DP IN 7",
+  icon: {
+      url: "pictures/bin.svg",
+      scaledSize: new google.maps.Size(28.5, 23.25)
+  }
+});
+new google.maps.Marker({
+  position: { lat: 33.2530084, lng: -97.1520399 },
+  map,
+  title: "Recycling Bin DP IN 7",
+  icon: {
+      url: "pictures/bin.svg",
+      scaledSize: new google.maps.Size(28.5, 23.25)
+  }
+});
+*/
+
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
 
