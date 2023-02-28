@@ -40,7 +40,7 @@ function initMap() {
         position: { lat: bin[1], lng: bin[2] },
         map,
         icon: {
-          url: "pictures/bin.svg",
+          url: "pictures/recycling bin.png",
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
