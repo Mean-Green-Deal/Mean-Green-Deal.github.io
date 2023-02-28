@@ -21,8 +21,12 @@ html{
   }
 
   #map {
-      width: 1500px;
+      /*width: 1500px;
       height: 750px;
+      */
+      width: 75%;
+      height: auto;
+      margin: auto;
     }
 
     header{
