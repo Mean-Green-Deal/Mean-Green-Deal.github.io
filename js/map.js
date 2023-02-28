@@ -53,7 +53,7 @@ function initMap() {
 
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
   }
 
 function getLocation() {
@@ -104,7 +104,7 @@ function createCenterControl(map) {
   controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
   controlButton.style.fontSize = "16px";
   controlButton.style.lineHeight = "38px";
-  controlButton.style.margin = "8px 0 0px"; //changed here 22 to 0
+  controlButton.style.margin = "8px 0 22px";
   controlButton.style.padding = "0 5px";
   controlButton.style.textAlign = "center";
   controlButton.textContent = "Request Bin Location";
