@@ -46,6 +46,14 @@ function initMap() {
         title: bin[0],
       });
     }
+    // Create the DIV to hold the control.
+    const centerControlDiv = document.createElement("div");
+    // Create the control.
+    const centerControl = createCenterControl(map);
+
+    // Append the control to the DIV.
+    centerControlDiv.appendChild(centerControl);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
   }
 
 function getLocation() {
@@ -83,90 +91,34 @@ function getLocation() {
   infoWindow.open(map);
 }
 
+function createCenterControl(map) {
+  const controlButton = document.createElement("button");
+
+  // Set CSS for the control.
+  controlButton.style.backgroundColor = "#fff";
+  controlButton.style.border = "2px solid #fff";
+  controlButton.style.borderRadius = "3px";
+  controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+  controlButton.style.color = "rgb(25,25,25)";
+  controlButton.style.cursor = "pointer";
+  controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
+  controlButton.style.fontSize = "16px";
+  controlButton.style.lineHeight = "38px";
+  controlButton.style.margin = "8px 0 22px";
+  controlButton.style.padding = "0 5px";
+  controlButton.style.textAlign = "center";
+  controlButton.textContent = "Center Map";
+  controlButton.title = "Click to recenter the map";
+  controlButton.type = "button";
+  // Setup the click event listeners: simply set the map to Chicago.
+  controlButton.addEventListener("click", () => {
+    map.setCenter(chicago);
+  });
+  return controlButton;
+}
+
 window.onload = getLocation;
 window.initMap = initMap;
-
-
-    /*
-    new google.maps.Marker({
-        position: { lat: 33.2555149, lng: -97.1529043 },
-        map,
-        title: "Recycling Bin DP Out 1",
-        icon: {
-            url: "pictures/bin.svg",
-            scaledSize: new google.maps.Size(28.5, 23.25)
-            
-        }
-    });
-    new google.maps.Marker({
-      position: { lat: 33.2548833, lng: -97.1533700 },
-      map,
-      title: "Recycling Bin DP OUT 2",
-      icon: {
-          url: "pictures/bin.svg",
-          scaledSize: new google.maps.Size(28.5, 23.25)
-          
-      }
-  });
-  new google.maps.Marker({
-    position: { lat: 33.2543800, lng: -97.1536788 },
-    map,
-    title: "Recycling Bin DP IN 3",
-    icon: {
-        url: "pictures/bin.svg",
-        scaledSize: new google.maps.Size(28.5, 23.25)
-        
-    }
-});
-new google.maps.Marker({
-  position: { lat: 33.2546405, lng: -97.1535286 },
-  map,
-  title: "Recycling Bin DP IN 4",
-  icon: {
-      url: "pictures/bin.svg",
-      scaledSize: new google.maps.Size(28.5, 23.25)
-      
-  }
-});
-new google.maps.Marker({
-  position: { lat: 33.2541964, lng: -97.1537884 },
-  map,
-  title: "Recycling Bin DP IN 5",
-  icon: {
-      url: "pictures/bin.svg",
-      scaledSize: new google.maps.Size(28.5, 23.25)
-      
-  }
-});
-new google.maps.Marker({
-  position: { lat: 33.2540419, lng: -97.1528614 },
-  map,
-  title: "Recycling Bin DP OUT 6",
-  icon: {
-      url: "pictures/bin.svg",
-      scaledSize: new google.maps.Size(28.5, 23.25)
-  }
-});
-new google.maps.Marker({
-  position: { lat: 33.2530084, lng: -97.1520399 },
-  map,
-  title: "Recycling Bin DP IN 7",
-  icon: {
-      url: "pictures/bin.svg",
-      scaledSize: new google.maps.Size(28.5, 23.25)
-  }
-});
-new google.maps.Marker({
-  position: { lat: 33.2530084, lng: -97.1520399 },
-  map,
-  title: "Recycling Bin DP IN 7",
-  icon: {
-      url: "pictures/bin.svg",
-      scaledSize: new google.maps.Size(28.5, 23.25)
-  }
-});
-*/
-
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
 
