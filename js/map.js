@@ -44,14 +44,6 @@ function initMap() {
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
-          
-        marker.addListener("click", ({ domEvent, latLng }) => {
-          const { target } = domEvent;
-          
-          infoWindow.close();
-          infoWindow.setContent(marker.title);
-          infoWindow.open(marker.map, marker);
-      });
       });
     }
     // Create the DIV to hold the control.
