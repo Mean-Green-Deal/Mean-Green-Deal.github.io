@@ -104,11 +104,11 @@ function createCenterControl(map) {
   controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
   controlButton.style.fontSize = "16px";
   controlButton.style.lineHeight = "38px";
-  controlButton.style.margin = "8px 0 22px";
+  controlButton.style.margin = "8px 0 0px"; //changed here 22 to 0
   controlButton.style.padding = "0 5px";
   controlButton.style.textAlign = "center";
-  controlButton.textContent = "Center Map";
-  controlButton.title = "Click to recenter the map";
+  controlButton.textContent = "Request Bin Location";
+  controlButton.title = "Request Bin Location";
   controlButton.type = "button";
   // Setup the click event listeners: simply set the map to Chicago.
   controlButton.addEventListener("click", () => {
