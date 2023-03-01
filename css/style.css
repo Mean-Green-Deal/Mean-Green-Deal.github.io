@@ -61,8 +61,8 @@ html{
         visibility: visible;
     }
     #map {
-      height: 20vh;
-      width: 20vh;
+      height: 40vh;
+      width: 40vh;
       }
 }
 
