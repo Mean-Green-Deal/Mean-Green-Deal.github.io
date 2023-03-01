@@ -37,23 +37,17 @@ h1{
     left: 1.4em;
     /*font-size: 60px*/
 }
-  .map {
+  #map {
       /*width: 1500px;
-      height: 750px;
-    /*  
+      height: 750px;*/
+      /*
     height: 100vh;
     width: 100vh;
     */
-    padding-bottom: 50%;
-    position: relative;
-    }
-  .map iframe{
     height: 100%;
     width: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-  }
+
+    }
 
     header{
         border-bottom: 1px solid #E2E8F0;
