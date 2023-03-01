@@ -11,6 +11,7 @@ html{
     background-color: #1b6e3b;
     color: #ffffff;
   }
+  /*
   .text {
     font-family: 'Adobe Jenson', serif;
     text-align: center;
@@ -27,6 +28,7 @@ html{
     left: 1.4em;
     font-size: 60px
 }
+*/
 h1{
     font-family: 'Adobe Jenson', serif;
     text-align: center;
@@ -61,6 +63,7 @@ h1{
 .custom-map-control-button:hover {
   background: rgb(235, 235, 235);
 }
+/*
 @media only screen and (max-width: 414px){
     .text{
         visibility: collapse;
@@ -73,4 +76,4 @@ h1{
       width: 40vh;
       }
 }
-
+*/
