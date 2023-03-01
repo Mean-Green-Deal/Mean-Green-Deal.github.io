@@ -24,8 +24,8 @@ html{
       /*width: 1500px;
       height: 750px;
       */
-    height: 60vh;
-    width: 60vh;
+    height: 100vh;
+    width: 100vh;
     }
 
     header{
@@ -46,6 +46,8 @@ html{
 .custom-map-control-button:hover {
   background: rgb(235, 235, 235);
 }
+
+
 .text {
     margin-left: auto;
     margin-right: auto;
@@ -66,5 +68,12 @@ html{
     .phonetext{
         visibility: visible;
     }
+    #map {
+        /*width: 1500px;
+        height: 750px;
+        */
+      height: 300vh;
+      width: 300vh;
+      }
 }
 
