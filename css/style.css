@@ -46,4 +46,25 @@ html{
 .custom-map-control-button:hover {
   background: rgb(235, 235, 235);
 }
+.text {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 50px;
+}
+.phonetext {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 50px;
+    visibility: collapse;  
+}
+@media only screen and (max-width: 414pc){
+    .text{
+        visibility: collapse;
+    }
+    .phonetext{
+        visibility: visible;
+    }
+}
 
