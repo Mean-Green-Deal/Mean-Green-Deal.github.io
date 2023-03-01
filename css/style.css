@@ -27,6 +27,14 @@ html{
     left: 1.4em;
     font-size: 60px
 }
+h1{
+    font-family: 'Adobe Jenson', serif;
+    text-align: center;
+    position: absolute;
+    top: -0.4em;
+    left: 1.4em;
+    font-size: 60px
+}
   #map {
       /*width: 1500px;
       height: 750px;
