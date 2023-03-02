@@ -94,3 +94,41 @@ body {
         display: flex;
     }
 }
+
+.main-title {
+    text-align: center;
+}
+
+/* Content within the columns */
+
+.column {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+/* -------------------------- */
+
+/* clear floats after the columns*/
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.bio {
+    padding: 1rem;
+}
+
+/* Profile picture details */
+.profile-pics {
+    max-width: 50%;
+    height: auto;
+    border-radius: 50%;
+}
