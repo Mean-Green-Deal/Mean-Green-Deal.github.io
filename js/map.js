@@ -49,7 +49,8 @@ function initMap() {
         },
         title: bin[0],
       });
-        
+      
+      /*  
       const infoWindow = new.google.maps.InfoWindow({
           arialLabel: bin[0],
       });    
@@ -60,6 +61,7 @@ function initMap() {
             anchor: marker,
             map,
         });
+       */ 
     });    
     
     
