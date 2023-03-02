@@ -17,7 +17,11 @@ function initMap() {
         }
       ]
     });
-    
+    google.maps.event.addDomListener(window, "resize", function() {
+      var center = map.getCenter();
+      google.maps.event.trigger(map, "resize");
+      map.setCenter(center); 
+    });
    const bins = [
       ["Recycling Bin DP Out 1", 33.2555149, -97.1529043],
       ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700],
@@ -36,7 +40,7 @@ function initMap() {
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
   
-      new google.maps.Marker({
+      const marker = new google.maps.Marker({
         position: { lat: bin[1], lng: bin[2] },
         map,
         icon: {
