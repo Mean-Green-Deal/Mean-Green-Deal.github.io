@@ -95,8 +95,31 @@ body {
     }
 }
 
+.title-container {
+    display: grid;
+    place-items: center;
+}
+
 .main-title {
-    text-align: center;
+    width: 12ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
 
 /* Content within the columns */
@@ -124,6 +147,8 @@ body {
 
 .bio {
     padding: 1rem;
+    text-align: center;
+    text-decoration: none;
 }
 
 /* Profile picture details */
