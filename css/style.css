@@ -11,24 +11,6 @@ html{
     background-color: #1b6e3b;
     color: #ffffff;
   }
-  /*
-  .text {
-    font-family: 'Adobe Jenson', serif;
-    text-align: center;
-    position: absolute;
-    top: -0.4em;
-    left: 1.4em;
-    font-size: 60px
-  }
-  .phonetext {
-    font-family: 'Adobe Jenson', serif;
-    text-align: center;
-    position: absolute;
-    top: -0.4em;
-    left: 1.4em;
-    font-size: 60px
-}
-*/
 h1{
     font-family: 'Adobe Jenson', serif;
     text-align: center;
@@ -38,14 +20,7 @@ h1{
     /*font-size: 60px*/
 }
   #map {
-      /*width: 1500px;
-      height: 750px;*/
-      /*
-    height: 100%;
-    width: 100%;
-    */
-    
-    height: 400px;
+    height: 600px;
     width: 70%;
     }
 
@@ -67,17 +42,3 @@ h1{
 .custom-map-control-button:hover {
   background: rgb(235, 235, 235);
 }
-/*
-@media only screen and (max-width: 414px){
-    .text{
-        visibility: collapse;
-    }
-    .phonetext{
-        visibility: visible;
-    }
-    #map {
-      height: 40vh;
-      width: 40vh;
-      }
-}
-*/
