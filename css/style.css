@@ -95,3 +95,26 @@ h1{
   font-size: 1.5rem;
   margin: .5rem;
 }
+.navbar-links li:hover   {
+  background-color: #555;
+}
+.toggle-button {
+  position: absolute; /* This makes it so that position doesn't change no matter what */
+  top: .75rem; /* gives space from the top */
+  right: 1rem; /* gives space from the right */
+  display: none; /* if we want to only show it while it while minimized, set this as none */
+  flex-direction: column; /* Shows spans vertically */
+  justify-content: space-between; /* leaves enough space between spans */
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+
