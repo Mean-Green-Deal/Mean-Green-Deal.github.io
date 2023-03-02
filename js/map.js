@@ -40,7 +40,7 @@ function initMap() {
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
   
-      new google.maps.Marker({
+      const marker = new google.maps.Marker({
         position: { lat: bin[1], lng: bin[2] },
         map,
         icon: {
