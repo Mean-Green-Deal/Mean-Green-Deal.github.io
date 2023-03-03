@@ -20,7 +20,7 @@ h1{
     /*font-size: 60px*/
 }
 #map {
-    height: 100vh;
+    height: 80vh;
     width: 70%;
     }
 
@@ -52,7 +52,7 @@ h1{
 }
 
 .brand-title {
-  font-size: 3em;
+  font-size: 4em;
   margin: 0.5vw;
 }
 
