@@ -62,7 +62,7 @@ function initMap() {
             map,
         });
        */    
-    
+      }
     
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
