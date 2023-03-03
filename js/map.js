@@ -61,8 +61,7 @@ function initMap() {
             anchor: marker,
             map,
         });
-       */ 
-    });    
+       */    
     
     
     // Create the DIV to hold the control.
