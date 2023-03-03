@@ -52,9 +52,7 @@ h1{
 }
 
 .brand-title {
-  /*font-size: 50%;*/
-  width: 10vw;
-  height: 5vh;
+  font-size: 50%;
   margin: 0.5vw;
 }
 
