@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     */
    
 });
-
+/*
 //FIREBASE DATABASE AUTHENTICATION
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
@@ -183,3 +183,4 @@ onAuthStateChanged(auth, user => {
         console.log('No user');
     }
 });
+*/
