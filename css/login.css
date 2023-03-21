@@ -13,7 +13,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    background: url(./pictures/8q9lvH-420156787.png);
+    background: url(/pictures/8q9lvH-420156787.png);
     background-size: cover;
 }
 
@@ -127,9 +127,12 @@ body {
   }
   /*copying sams header*/
 .navbar {
+  position:absolute;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   background-color: #1b6e3b; 
   color: white;
 }
