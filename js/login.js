@@ -42,6 +42,9 @@ function login() {
     for (i = 0; i <LoginInfo.length; i++) {
         if (username == LoginInfo[i].username && password == LoginInfo[i].password) {
             alert(username + " is logged in")
+            //FB
+            signInWithEmailAndPassword(registerPassword, registerEmail)
+            //FB
             return
         }
     }
@@ -94,7 +97,7 @@ for (i = 0; i <LoginInfo.length; i++){
 if (registerPassword == registerConfirmPassword)
 {
     //FB
-    createUserWithEmailAndPassword(registerUser, registerPassword, registerEmail)
+    createUserWithEmailAndPassword(registerPassword, registerEmail)
     //FB
     var newUser = {
         username: registerUser,
@@ -190,6 +193,7 @@ onAuthStateChanged(auth, user => {
 */
 //FB
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
@@ -200,6 +204,17 @@ createUserWithEmailAndPassword(auth, email, password)
     const errorCode = error.code;
     const errorMessage = error.message;
     // ..
+  });
+  
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
   });
 
 // Import the functions you need from the SDKs you need
