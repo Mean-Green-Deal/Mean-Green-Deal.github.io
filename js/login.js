@@ -1,8 +1,9 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { initializeApp } from 'firebase/app';
+const  { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
+const  { getAuth, signInWithEmailAndPassword } = require("firebase/auth");
+const  { initializeApp } = require("firebase/app");
+const  { getAnalytics } = require("firebase/analytics");
+const  { initializeApp } = require('firebase/app');
+
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
 
