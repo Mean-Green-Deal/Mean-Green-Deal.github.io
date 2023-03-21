@@ -48,66 +48,78 @@ function login() {
     console.log("incorrect username or password")
 }
 
+function validateUsername(username) {
+    if (username.length < 3) {
+        alert("That username is too short.");
+        return false;
+    }
+    return true;
+}
+
+function validateEmail(email) {
+    if (email.length < 3) {
+        alert("That email is too short.");
+        return false;
+    } else if (emailRegex(email) == false) {
+        alert("Invalid email.");
+        return false;
+    }
+    return true;
+}
+
+function validatePassword(password) {
+    if (password.length < 3) {
+        alert("That password is too short.");
+        return false;
+    }
+    return true;
+}
+
 function registerUser() {
     var registerUser = document.getElementById("newUser").value
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
-
-///////////////////////////////Valid Credentials ///////////////////////////////////////////
-
-if (registerUser.length < 3) {
-    alert("That username is too short.")
-    return
-}
-
-else if (registerEmail.length < 3) {
-    alert("That email is too short.")
-    return
-}
-
-else if(emailRegex(registerEmail) == false) {
-    alert("Invalid email.")
-    return
-}
-
-else if (registerPassword.length < 3) {
-    alert("That password is too short.")
-    return
-}
-
-for (i = 0; i <LoginInfo.length; i++){
-    if(registerUser==LoginInfo[i].username){
-        alert("That username is already in use, choose another")
-        return
+    if (!validateUsername(registerUser)) {
+        return;
     }
-}
 
-for (i = 0; i <LoginInfo.length; i++){
-    if(registerEmail==LoginInfo[i].email){
-        alert("That email is already in use, choose another")
-        return
+    if (!validateEmail(registerEmail)) {
+        return;
     }
-}
 
-if (registerPassword == registerConfirmPassword)
-{
-    var newUser = {
-        username: registerUser,
-        password: registerPassword,
-        email: registerEmail
-    
+    if (!validatePassword(registerPassword)) {
+        return;
     }
-    LoginInfo.push(newUser)
-    alert("Your Account has been created!")
-    return
-}
-else{
-    alert("Passwords do not match. Try again")
-    return
-}
 
+    for (i = 0; i < LoginInfo.length; i++) {
+        if (registerUser == LoginInfo[i].username) {
+            alert("That username is already in use, choose another")
+            return;
+        }
+    }
+
+    for (i = 0; i < LoginInfo.length; i++) {
+        if (registerEmail == LoginInfo[i].email) {
+            alert("That email is already in use, choose another")
+            return;
+        }
+    }
+
+    if (registerPassword == registerConfirmPassword) {
+        var newUser = {
+            username: registerUser,
+            password: registerPassword,
+            email: registerEmail
+        }
+        LoginInfo.push(newUser)
+        alert("Your Account has been created!")
+        return;
+    } else {
+        alert("Passwords do not match. Try again")
+        return;
+    }
 }
 ///////////////////////////////Valid Credentials///////////////////////////////////////////
 
