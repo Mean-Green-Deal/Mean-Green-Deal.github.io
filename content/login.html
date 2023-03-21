@@ -1,40 +1,33 @@
-<!--Login Stuff-->>
 <!DOCTYPE html>
 <head>
-    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Login / Sign Up Form</title>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/css/login.css">
-  </head>
+</head>
 
-  <!--Login Form-->
-  <body>
+<body>
     <nav class="navbar">
         <div class="brand-title">
-          <img src="/pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%" />
-          UNT Recycling</div>
-
-        <!--Creating the hamburger button-->
+            <img src="/pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%">
+            UNT Recycling
+        </div>
         <a href="#" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </a>
-        <!--Hamburger button above ^^^^^^^^^^^^^^^-->
         <div class="navbar-links">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/about.html">About Us</a></li>
-                
+                <li><a href="https://mean-green-deal.github.io/content/about.html">About Us</a></li>
                 <li><a href="#">Contact US</a></li>
             </ul>
         </div>
-
     </nav>
-    </body>
-    <body>
+
     <div class="container">
         <form class="form" id="login">
             <h1 class="form__title">Login</h1>
@@ -58,7 +51,6 @@
             </p>
         </form>
 
-          <!--Create Account Form-->
         <form class="form form--hidden" id="createAccount">
             <h1 class="form__title">Create Account</h1>
             <div class="form__message form__message--error"></div>
@@ -71,18 +63,10 @@
                 <div class="form__input-error-message"></div>
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input" id = "newPassword" autofocus placeholder="Password">
+                <input type="password" class="form__input" id="newPassword" autofocus placeholder="Password">
                 <div class="form__input-error-message"></div>
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input" id = "confirmPassword" autofocus placeholder="Confirm password">
+                <input type="password" class="form__input" id="confirmPassword" autofocus placeholder="Confirm password">
                 <div class="form__input-error-message"></div>
             </div>
-            <button class="form__button" type="button" onclick="registerUser()">Continue</button>
-            <p class="form__text">
-                <a class="form__link" href="./" id="linkLogin" c>Already have an account? Sign in</a>
-            </p>
-        </form>
-    </div>
-    <script src="/js/login.js"></script>
-  </body>
