@@ -93,6 +93,9 @@ for (i = 0; i <LoginInfo.length; i++){
 
 if (registerPassword == registerConfirmPassword)
 {
+    //FB
+    createUserWithEmailAndPassword(registerUser, registerPassword, registerEmail)
+    //FB
     var newUser = {
         username: registerUser,
         password: registerPassword,
@@ -107,6 +110,7 @@ else{
     alert("Passwords do not match. Try again")
     return
 }
+
 
 }
 ///////////////////////////////Valid Credentials///////////////////////////////////////////
@@ -184,9 +188,24 @@ onAuthStateChanged(auth, user => {
     }
 });
 */
+//FB
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
 // Import the functions you need from the SDKs you need
-const { initializeApp } = require("firebase/app");
-const { getAnalytics } = require("firebase/analytics");
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from 'firebase/app';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -205,3 +224,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const auth = getAuth(app);
