@@ -185,8 +185,8 @@ onAuthStateChanged(auth, user => {
 });
 */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+const { initializeApp } = require('https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js');
+const { getAuth } = require('https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js');
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
