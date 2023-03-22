@@ -1,9 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
     authDomain: "mean-green-deal-726f9.firebaseapp.com",
@@ -13,33 +7,11 @@ const firebaseConfig = {
     appId: "1:747867835951:web:084db4a1feb703eafe00da",
     measurementId: "G-2QKNB5QXF4"
     };
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, username, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-
-  signInWithEmailAndPassword(auth, username, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Initialize variables
+    const auth = firebase.auth()
+    const database = firebase.database()
 
 
 
@@ -87,7 +59,32 @@ function login() {
     for (i = 0; i <LoginInfo.length; i++) {
         if (username == LoginInfo[i].username && password == LoginInfo[i].password) {
             alert(username + " is logged in")
-            signInWithEmailAndPassword(auth, LoginInfo[i].username, LoginInfo[i].password)
+          //FB
+          auth.signInWithEmailAndPassword(email, password)
+          .then(function() {
+            // Declare user variable
+            var user = auth.currentUser
+
+            // Add this user to Firebase Database
+            var database_ref = database.ref()
+
+            // Create User data
+            var user_data = {
+              last_login : Date.now()
+            }
+
+            // Push to Firebase Database
+            database_ref.child('users/' + user.uid).update(user_data)
+
+          })
+          .catch(function(error) {
+            // Firebase will use this to alert of its errors
+            var error_code = error.code
+            var error_message = error.message
+
+            alert(error_message)
+          })
+                    
             return
         }
     }
@@ -99,10 +96,31 @@ function registerUser() {
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
-     //FB
-     createUserWithEmailAndPassword(auth, registerUser, registerPassword)
-     //FB
-
+    //FB
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(function() {
+      // Declare user variable
+      var user = auth.currentUser
+  
+      // Add this user to Firebase Database
+      var database_ref = database.ref()
+  
+      // Create User data
+      var user_data = {
+        registerEmail : registerEmail,
+        registerUser : registerUser,
+        last_login : Date.now()
+      }
+      // Push to Firebase Database
+      database_ref.child('users/' + user.uid).set(user_data)
+    })
+    .catch(function(error) {
+      // Firebase will use this to alert of its errors
+      var error_code = error.code
+      var error_message = error.message
+      alert(error_message)
+    })
+    //FB
 
 ///////////////////////////////Valid Credentials ///////////////////////////////////////////
 
