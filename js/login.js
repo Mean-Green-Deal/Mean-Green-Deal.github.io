@@ -84,7 +84,7 @@ function login() {
 
             alert(error_message)
           })
-                    
+           window.location.href = "https://mean-green-deal.github.io/";
             return
         }
     }
@@ -168,7 +168,7 @@ if (registerPassword == registerConfirmPassword)
     }
     LoginInfo.push(newUser)
     alert("Your Account has been created!")
-    window.location.href = "https://mean-green-deal.github.io/";
+    //window.location.href = "https://mean-green-deal.github.io/";
     return
 }
 else{
