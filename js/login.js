@@ -60,7 +60,7 @@ function login() {
         if (username == LoginInfo[i].username && password == LoginInfo[i].password) {
             alert(username + " is logged in")
           //FB
-          auth.signInWithEmailAndPassword(email, password)
+          auth.signInWithEmailAndPassword(username, password)
           .then(function() {
             // Declare user variable
             var user = auth.currentUser
@@ -97,7 +97,7 @@ function registerUser() {
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
     //FB
-    auth.createUserWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(registerUser, registerPassword)
     .then(function() {
       // Declare user variable
       var user = auth.currentUser
