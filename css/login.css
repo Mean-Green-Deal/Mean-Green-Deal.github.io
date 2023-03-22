@@ -1,219 +1,136 @@
-body {
-    --color-primary: #009507;
-    --color-primary-dark: #007f67;
-    --color-secondary: #252c6a;
-    --color-error: #cc3333;
-    --color-success: #4bb544;
-    --border-radius: 4px;
-
-
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    background: url(/pictures/8q9lvH-420156787.png);
-    background-size: cover;
-}
-
-.container {
-    width: 400px;
-    max-width: 400px;
-    margin: 1rem;
-    padding: 2rem;
-    box-shadow: 0 0 40px rgba(0,0,0,0.2);
-    border-radius: var(--border-radius);
-    background: #ffffff;
-
-}
-
-.form--hidden {
-    display: none;
-}
-
-.container,
-.form__input,
-.form__button {
-    font: 500 1rem 'Quicksand', sans-serif;
-}
-
-.form > *:first-child{
-    margin-top: 0;
-}
-
-.form > *:last-child{
-    margin-bottom: 0;
-}
-
-.form__title {
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.form__message {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.form__message--success {
-    color: var(--color-success);
-}
-
-.form__message--error {
-    color: var(--color-error);
-}
-
-.form__input-group{
-    margin-bottom: 1rem;
-}
-
-.form__input {
-    display: block;
-    width: 100%;
-    padding: 0.75rem;
-    box-sizing: border-box;
-    border-radius: var(--border-radius);
-    border: 1px solid #dddddd;
-    outline: none;
-    background: #eeeeee;
-    transition: background 0.2s, border-color 0.2s;
-}
-
-  .form__input:focus {
-    border-color: var(--color-primary);
-    background: #ffffff;
-  }
-
-  .form__input--error {
-    color:var(--color-error);
-    border-color: var(--color-error);
-  }
-
-  .form__button {
-    width: 100%;
-    padding: 1rem 2rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #ffffff;
-    border: none;
-    border-radius: var(--border-radius);
-    outline: none;
-    cursor: pointer;
-    background: var(--color-primary);
-  }
-
-  .form__button:hover {
-    background: var(--color-primary-dark);
-  }
-
-  .form__button:active {
-    transform: scale(.98);
-  }
-
-  .form__text {
-    text-align: center;
-
-  }
-
-  .form__link {
-    color: var(--color-secondary);
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .form__link:hover {
-    text-decoration: underline;
-  }
-  /*copying sams header*/
-.navbar {
-  position:absolute;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+html, body {
   width: 100%;
-  background-color: #1b6e3b; 
-  color: white;
+  height: 100%;
+  background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.brand-title {
-  font-size: 4vw;
-  margin: 0.5vw;
-}
-
-.navbar-links ul {
+* {
   margin: 0;
   padding: 0;
-  display: flex;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+#content_container {
+  width: 30%;
+  height: 70%;
 }
 
-.navbar-links li    {
-  list-style: none;
-}
-
-.navbar-links li a  {
-  text-decoration: none;
-  color: white;
-  padding: 1rem;
-  display: block;
-}
-
-.navbar-links li:hover   {
-  background-color: #555;
-}
-
-.toggle-button {
-  position: absolute; /* This makes it so that position doesn't change no matter what */
-  top: .75rem; /* gives space from the top */
-  right: 1rem; /* gives space from the right */
-  display: none; /* if we want to only show it while it while minimized, set this as none */
-  flex-direction: column; /* Shows spans vertically */
-  justify-content: space-between; /* leaves enough space between spans */
-  width: 30px;
-  height: 21px;
-}
-
-.toggle-button .bar {
-  height: 3px;
+#form_container {
   width: 100%;
-  background-color: white;
-  border-radius: 10px;
+  height: 100%;
+
+  background-color: #370617;
+  box-shadow: 0 0 50px -20px #000;
+  border-radius: 2%;
+
+  overflow: hidden;
 }
 
-/* we will use a Media Query. This makes it so that when a condition is met, then something will execute.
-*/
+#form_header_container {
+  width: 100%;
+  height: 5%;
 
-@media (max-width: 600px)   {
-  .toggle-button {
-      display: flex;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
 
-  .navbar-links {
-      display: none;
-      width: 100%;
-  }
+  padding: 20px;
+  padding-bottom: 30px;
+  padding-top: 30px;
 
-  .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-
-  .navbar-links ul {
-      width: 100px;
-      flex-direction: column;
-  }
-
-  .navbar-links li {
-      text-align: center;
-  }
-
-  .navbar-links li a {
-      padding: .5rem 1rem;
-  }
-
-  .navbar-links.active {
-      display: flex;
-  }
+  border-bottom: 1px solid transparent;
+  border-image: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF) 20;
+  background: #000;
 }
 
+#form_header {
+  display: inline-block;
+  font-size: 15px;
+  font-family: Bowlby One SC;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+
+  background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#form_content_container {
+  width: 100%;
+  height: 90%;
+
+  float: left;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 30px;
+}
+
+#form_content_inner_container {
+  width: 75%;
+  height: 100%;
+
+  float: left;
+
+}
+
+input {
+  width: 100%;
+  height: 40px;
+
+  padding-left: 10px;
+  margin-bottom: 20px;
+
+  background: #000;
+  font-family: Montserrat;
+  font-weight: 500;
+  color: #fff;
+  font-size: 12px;
+
+  border-bottom: 2px solid transparent;
+  border-top-left-radius: 2%;
+  border-top-right-radius: 2%;
+  border-image: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF) 1;
+}
+
+#button_container {
+  width: 100%;
+  height: 10%;
+
+  background-image: linear-gradient(80deg, #FFBE0B, #FB5607 50%, #FF006E 50%, #8338EC);
+  color: #fff;
+
+  float: left;
+
+  margin-top: 5px;
+}
+
+#button_container button {
+  width: 50%;
+  height: 100%;
+  float: left;
+
+  background: transparent;
+  color: inherit;
+
+  font-family: Montserrat;
+  letter-spacing: 1px;
+  font-weight: 900;
+  font-size: 12px;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
