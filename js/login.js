@@ -168,7 +168,8 @@ if (registerPassword == registerConfirmPassword)
     }
     LoginInfo.push(newUser)
     alert("Your Account has been created!")
-    window.location.href = "https://mean-green-deal.github.io/";
+    
+    window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
     return
 }
 else{
@@ -220,35 +221,3 @@ document.addEventListener("DOMContentLoaded", () => {
     */
    
 });
-/*
-//FIREBASE DATABASE AUTHENTICATION
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
-  authDomain: "mean-green-deal-726f9.firebaseapp.com",
-  projectId: "mean-green-deal-726f9",
-  storageBucket: "mean-green-deal-726f9.appspot.com",
-  messagingSenderId: "747867835951",
-  appId: "1:747867835951:web:084db4a1feb703eafe00da",
-  measurementId: "G-2QKNB5QXF4"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-
-onAuthStateChanged(auth, user => {
-    if(user != null){
-        console.log('logged in!');
-    }else{
-        console.log('No user');
-    }
-});
-*/
