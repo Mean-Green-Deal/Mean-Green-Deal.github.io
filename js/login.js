@@ -97,7 +97,7 @@ function registerUser() {
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
     //FB
-    auth.createUserWithEmailAndPassword(registerUser, registerPassword)
+    auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
     .then(function() {
       // Declare user variable
       var user = auth.currentUser
