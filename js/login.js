@@ -1,3 +1,8 @@
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
@@ -8,6 +13,35 @@ const firebaseConfig = {
     appId: "1:747867835951:web:084db4a1feb703eafe00da",
     measurementId: "G-2QKNB5QXF4"
     };
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = getAuth();
+createUserWithEmailAndPassword(auth, username, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
+  signInWithEmailAndPassword(auth, username, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
+
+
 
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
@@ -53,6 +87,7 @@ function login() {
     for (i = 0; i <LoginInfo.length; i++) {
         if (username == LoginInfo[i].username && password == LoginInfo[i].password) {
             alert(username + " is logged in")
+            signInWithEmailAndPassword(auth, LoginInfo[i].username, LoginInfo[i].password)
             return
         }
     }
@@ -64,6 +99,9 @@ function registerUser() {
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
+     //FB
+     createUserWithEmailAndPassword(auth, registerUser, registerPassword)
+     //FB
 
 
 ///////////////////////////////Valid Credentials ///////////////////////////////////////////
