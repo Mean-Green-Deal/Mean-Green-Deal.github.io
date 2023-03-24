@@ -179,11 +179,9 @@ window.initMap = initMap;
     document.getElementById("email").innerText = data.email;
   });
   function signOut() {
-
-    const auth = getAuth();
-    signOut(auth).then(() => {
-    window.location.href = "https://mean-green-deal.github.io/";
-    }).catch((error) => {
-      alert("error")
-    });
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+      }).catch((error) => {
+        console.log(error);
+      });
 }
