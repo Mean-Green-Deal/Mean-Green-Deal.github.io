@@ -150,6 +150,7 @@ function registerUser() {
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
+      alert("error with fb database")
       var error_code = error.code
       var error_message = error.message
       alert(error_message)
