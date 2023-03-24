@@ -178,3 +178,12 @@ window.initMap = initMap;
     // Update the HTML elements with the retrieved data
     document.getElementById("email").innerText = data.email;
   });
+  function signOut() {
+
+    const auth = getAuth();
+    signOut(auth).then(() => {
+    window.location.href = "https://mean-green-deal.github.io/";
+    }).catch((error) => {
+      alert("error")
+    });
+}
