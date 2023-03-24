@@ -1,3 +1,18 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
+  authDomain: "mean-green-deal-726f9.firebaseapp.com",
+  projectId: "mean-green-deal-726f9",
+  storageBucket: "mean-green-deal-726f9.appspot.com",
+  messagingSenderId: "747867835951",
+  appId: "1:747867835951:web:084db4a1feb703eafe00da",
+  measurementId: "G-2QKNB5QXF4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // Initialize variables
+  const auth = firebase.auth()
+  const database = firebase.database()
+
 let map, infoWinow;
 
 function initMap() {
