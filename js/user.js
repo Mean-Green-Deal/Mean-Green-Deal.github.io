@@ -168,13 +168,21 @@ window.initMap = initMap;
 //root.render(e(LikeButton));
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
-
-
+  /*
   const userRef = db.ref("users/SKVIABQEoEansFPxcTeyR1LRjR13");
 
   userRef.on("registerEmail", (snapshot) => {
-    const data = snapshot.val(); // Get the data as an object
-  
+@ -178,10 +178,13 @@ window.initMap = initMap;
     // Update the HTML elements with the retrieved data
     document.getElementById("email").innerText = data.email;
   });
+  */
+  function signOut() {
+    /*
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+      }).catch((error) => {
+        console.log(error);
+      });
+         */
+}

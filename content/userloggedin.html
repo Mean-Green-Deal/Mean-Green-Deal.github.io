@@ -13,8 +13,9 @@
      <!--<h1 style="font-size:4vw">UNT Recycling</h1> -->
     <!--<h1>UNT Recycling</h1>-->
   <!--</div>-->
+  
  <script>
-  const firebaseConfig = {
+  /*const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
     authDomain: "mean-green-deal-726f9.firebaseapp.com",
     projectId: "mean-green-deal-726f9",
@@ -25,41 +26,62 @@
     };
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database()
+    */
  </script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-<!--copying sams header-->
-<!--User form for people who are logged in-->
-<form id="User">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="brand-title">
-          <img src="pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%" />
-          UNT Recycling</div>
-
-        <!--Creating the hamburger button-->
-        <a href="#" class="toggle-button">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </a>
-        <!--Hamburger button above ^^^^^^^^^^^^^^^-->
-        <div class="navbar-links">
-            <ul>
-                <li><a href="content/login.html">      
-
-                  <label for="email">Email:</label>
-                  <span id="email"></span></a></li>
-                  
-                <li><a href="content/about.html">Contact Us</a></li>
-                <li><a href="#">Log Out</a></li>
-
-              </ul>
-            </div>
-        </nav>
-      </body>
-      </html>
-      </form>
+ 
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+ 
+ <!--copying sams header-->
+ <!--User form for people who are logged in-->
+ <form id="User">
+ </head>
+ <body>
+     <nav class="navbar">
+         <div class="brand-title">
+           <img src="/pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%" />
+           UNT Recycling</div>
+ 
+         <!--Creating the hamburger button-->
+         <a href="#" class="toggle-button">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+         </a>
+         <!--Hamburger button above ^^^^^^^^^^^^^^^-->
+         <div class="navbar-links">
+             <ul>
+                 <li><a href="content/login.html">      
+ 
+                   <label for="email">Email:</label>
+                   <span id="email"></span></a></li>
+                   
+                 <li><a href="content/about.html">Contact Us</a></li>
+                 <li><a onclick="signOut()">Sign Out</a></li>
+             </ul>
+         </div>
+     </nav>
+  <!--end of copying sams header-->
+ 
+     <!--Reagan's Wacky Login Page Venture-->
+   <!--<div class="login">-->
+   <!--  <ul>-->
+   <!--    <li><a href="login.html">Login</a></li>-->
+   <!--</div>-->
+   <!--End of Reagan's Wacky Login Page Venture-->
+ </head>
+ <style>
+ button1 {background-color: #1b6e3b;}	
+ </style>
+ <body>
+   <div id="map"></div>
+   <script src="/js/user.js"></script>
+   <script
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap">
+ </script>
+ </div>
+ </body>
+ </html>
+ </form>
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
