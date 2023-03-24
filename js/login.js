@@ -53,10 +53,10 @@ function emailRegex(input) {
 
 //retrieves user info for login
 function login() {
-    var username = document.getElementById("username").value
+    var email = document.getElementById("email").value
     var password = document.getElementById("password").value
 
-    if (validate_email(email) == false || validate_password(password) == false) {
+    if (validate_email(username) == false || validate_password(password) == false) {
         alert('Email or Password is Outta Line!!')
         return
         // Don't continue running the code
@@ -254,3 +254,22 @@ document.addEventListener("DOMContentLoaded", () => {
     */
    
 });
+function validate_email(email) {
+    expression = /^[^@]+@\w+(\.\w+)+\w$/
+    if (expression.test(email) == true) {
+      // Email is good
+      return true
+    } else {
+      // Email is not good
+      return false
+    }
+  }
+  
+  function validate_password(password) {
+    // Firebase only accepts lengths greater than 6
+    if (password < 6) {
+      return false
+    } else {
+      return true
+    }
+  }
