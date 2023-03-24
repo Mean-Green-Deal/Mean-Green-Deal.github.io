@@ -146,7 +146,7 @@ function registerUser() {
         last_login : Date.now()
       }
       // Push to Firebase Database
-      database_ref.child('users/' + user.uid).set(user_data)
+      database_ref.child('/users/' + user.uid).set(user_data)
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
