@@ -10,8 +10,9 @@ const firebaseConfig = {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     // Initialize variables
-    const auth = firebase.auth();
-    const database = firebase.database();
+    const auth = firebase.auth()
+    const database = firebase.database()
+    const db = firebase.firestore()
 
 
 function setFormMessage(formElement, type, message) {
@@ -131,13 +132,17 @@ function registerUser() {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
     //FB
     auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
-    .then(function() {
-        const newUserId = userCredential.user.uid;
-        databsae.ref(`https://mean-green-deal-726f9-default-rtdb.firebaseio.com/users/${newUserId}`).set({
-            email: registerEmail,
-            username: registerUser,
+    .then(function(userCredential) {
+        const user = userCredential.user;
+        var user_data = {
+            registerEmail : registerEmail,
+            registerUser : registerUser,
             last_login : Date.now()
-        })
+          };
+          db.collection("users").doc(user.uid).set(newUser)
+      .then(() => {
+        console.log("Document written successfully");
+      })
         /*
       // Declare user variable
       
