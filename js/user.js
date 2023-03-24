@@ -1,19 +1,3 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
-    authDomain: "mean-green-deal-726f9.firebaseapp.com",
-    projectId: "mean-green-deal-726f9",
-    storageBucket: "mean-green-deal-726f9.appspot.com",
-    messagingSenderId: "747867835951",
-    appId: "1:747867835951:web:084db4a1feb703eafe00da",
-    measurementId: "G-2QKNB5QXF4"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    // Initialize variables
-    const auth = firebase.auth()
-    const database = firebase.database()
-
-
 let map, infoWinow;
 
 function initMap() {
@@ -60,7 +44,7 @@ function initMap() {
         position: { lat: bin[1], lng: bin[2] },
         map,
         icon: {
-          url: "/pictures/recycling bin.png",
+          url: "pictures/recycling bin.png",
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
@@ -168,21 +152,4 @@ window.initMap = initMap;
 //root.render(e(LikeButton));
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
-  /*
-  const userRef = db.ref("users/SKVIABQEoEansFPxcTeyR1LRjR13");
-
-  userRef.on("registerEmail", (snapshot) => {
-@ -178,10 +178,13 @@ window.initMap = initMap;
-    // Update the HTML elements with the retrieved data
-    document.getElementById("email").innerText = data.email;
-  });
-  */
-  function signOut() {
-    /*
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-      }).catch((error) => {
-        console.log(error);
-      });
-         */
-}
+  
