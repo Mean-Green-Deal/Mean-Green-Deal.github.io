@@ -134,7 +134,7 @@ function registerUser() {
     auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
     .then(function() {
         const newUserId = userCredential.user.uid;
-        databsae.ref(`users/${newUserId}`).set({
+        databsae.ref(`https://mean-green-deal-726f9-default-rtdb.firebaseio.com/users/${newUserId}`).set({
             email: registerEmail,
             username: registerUser,
             last_login : Date.now()
