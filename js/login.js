@@ -56,7 +56,7 @@ function login() {
     var email = document.getElementById("email").value
     var password = document.getElementById("password").value
 
-    if (validate_email(username) == false || validate_password(password) == false) {
+    if (validate_email(email) == false || validate_password(password) == false) {
         alert('Email or Password is Outta Line!!')
         return
         // Don't continue running the code
