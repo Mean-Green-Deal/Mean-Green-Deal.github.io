@@ -170,6 +170,7 @@ window.initMap = initMap;
   function signOut(){
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
+      alert("signed out")
     }).catch((error) => {
       // An error happened.
     });
