@@ -133,7 +133,15 @@ function registerUser() {
     //FB
     auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
     .then(function() {
+        const newUserId = userCredential.user.uid;
+        databsae.ref(`users/${newUserId}`).set({
+            email: registerEmail,
+            username: registerUser,
+            last_login : Date.now()
+        })
+        /*
       // Declare user variable
+      
       var user = auth.currentUser
   
       // Add this user to Firebase Database
@@ -146,8 +154,10 @@ function registerUser() {
         last_login : Date.now()
       }
       // Push to Firebase Database
-      database_ref.child('/users/' + user.uid).set(user_data)
+      database_ref.child('users/' + user.uid).set(user_data)
+      */
     })
+    
     .catch(function(error) {
       // Firebase will use this to alert of its errors
       alert("error with fb database")
