@@ -170,6 +170,7 @@ window.initMap = initMap;
   function signOut(){
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
+      window.location.href = "https://mean-green-deal.github.io";
     }).catch((error) => {
       // An error happened.
     });
