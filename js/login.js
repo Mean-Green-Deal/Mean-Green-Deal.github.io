@@ -80,6 +80,7 @@ function login() {
     
         // DOne
         alert('User Logged In!!')
+        window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
     })
         .catch(function(error) {
             // Firebase will use this to alert of its errors
@@ -87,8 +88,8 @@ function login() {
             var error_message = error.message
         
             alert(error_message)
+            window.location.href = "https://mean-green-deal.github.io";
           })
-          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
     /*
     for (i = 0; i <LoginInfo.length; i++) {
         if (username == LoginInfo[i].username && password == LoginInfo[i].password) {
