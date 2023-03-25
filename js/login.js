@@ -11,16 +11,11 @@ const firebaseConfig = {
     appId: "1:747867835951:web:084db4a1feb703eafe00da",
     measurementId: "G-2QKNB5QXF4"
     };
-    // Initialize Firebase
-    //firebase.initializeApp(firebaseConfig);
-    // Initialize variables
-    const app = initializeApp(firebaseConfig);
-    const auth = firebase.auth(app)
-    //const database = firebase.database()
-
-    
-    const db = getFirestore(app);
-
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+     // Initialize variables
+     const auth = firebase.auth()
+     const database = firebase.database()
 
 
 function setFormMessage(formElement, type, message) {
@@ -134,20 +129,29 @@ function login() {
 }
 
 function registerUser() {
-    var registerUser = document.getElementById("newUser").value
-    var registerEmail = document.getElementById("newEmail").value
-    var registerPassword = document.getElementById("newPassword").value
-    var registerConfirmPassword = document.getElementById("confirmPassword").value
-    const auth = getAuth();
-    auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
-    
-    const usersRef = db.collection('users');
-    const user = firebase.auth().currentUser;
-    await setDoc(doc(db, "users", user.uid)),{
-      username: registerUser,
-      email: registerEmail,
+  auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
+  .then(function() {
+    // Declare user variable
+    var user = auth.currentUser
+
+    // Add this user to Firebase Database
+    var database_ref = database.ref()
+
+    // Create User data
+    var user_data = {
+      registerEmail : registerEmail,
+      registerUser : registerUser,
       last_login : Date.now()
-  }
+    }
+    // Push to Firebase Database
+    database_ref.child('users/' + user.uid).set(user_data)
+  })
+  .catch(function(error) {
+    // Firebase will use this to alert of its errors
+    var error_code = error.code
+    var error_message = error.message
+    alert(error_message)
+  })
 }
 
 
