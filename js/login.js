@@ -12,7 +12,6 @@ const firebaseConfig = {
     // Initialize variables
     const auth = firebase.auth()
     const database = firebase.database()
-    const db = firebase.firestore()
 
 
 function setFormMessage(formElement, type, message) {
@@ -130,6 +129,8 @@ function registerUser() {
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
+
+    const db = firebase.firestore();
 
     const usersRef = db.collection('users');
     const user = firebase.auth().currentUser;
