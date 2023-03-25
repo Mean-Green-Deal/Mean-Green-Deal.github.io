@@ -130,18 +130,41 @@ function registerUser() {
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
+
+    const usersRef = db.collection('users');
+    const user = firebase.auth().currentUser;
+    if (user) {
+        const userId = user.uid;
+        const userEmail = user.email;
+        
+        usersRef.doc(userId).set({
+          username: registerUser,
+          email: registerEmail,
+          last_login : Date.now(),
+        })
+        .then(() => {
+          console.log('Document written with ID:', userId);
+        })
+        .catch((error) => {
+          console.error('Error adding document:', error);
+        });
+      }
+
+
+
     //FB
+    /*
     auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
     .then(function(userCredential) {
         const user = userCredential.user;
+        const usersRef = db.collection('users');
         var user_data = {
             registerEmail : registerEmail,
             registerUser : registerUser,
             last_login : Date.now()
           };
-          db.collection("users").doc(user.uid).set(newUser)
-      .then(() => {
-        console.log("Document written successfully");
+          usersRef.add(user_data)
+        
       })
         /*
       // Declare user variable
@@ -159,7 +182,7 @@ function registerUser() {
       }
       // Push to Firebase Database
       database_ref.child('users/' + user.uid).set(user_data)
-      */
+      
     })
     
     .catch(function(error) {
@@ -169,6 +192,7 @@ function registerUser() {
       var error_message = error.message
       alert(error_message)
     })
+    */
     //FB
 
 ///////////////////////////////Valid Credentials ///////////////////////////////////////////
