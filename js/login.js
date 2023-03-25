@@ -13,6 +13,10 @@ const firebaseConfig = {
     const auth = firebase.auth()
     const database = firebase.database()
 
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+
 
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
@@ -131,25 +135,16 @@ function registerUser() {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
     const db = firebase.firestore();
-
+    auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
+    
     const usersRef = db.collection('users');
     const user = firebase.auth().currentUser;
-    if (user) {
-        const userId = user.uid;
-        const userEmail = user.email;
-        
-        usersRef.doc(userId).set({
-          username: registerUser,
-          email: registerEmail,
-          last_login : Date.now(),
-        })
-        .then(() => {
-          console.log('Document written with ID:', userId);
-        })
-        .catch((error) => {
-          console.error('Error adding document:', error);
-        });
-      }
+    await setDoc(doc(db, "users", user.uid)),{
+      username: registerUser,
+      email: registerEmail,
+      last_login : Date.now()
+  }
+}
 
 
 
