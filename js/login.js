@@ -8,12 +8,13 @@ const firebaseConfig = {
     measurementId: "G-2QKNB5QXF4"
     };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    //firebase.initializeApp(firebaseConfig);
     // Initialize variables
-    const auth = firebase.auth()
-    const database = firebase.database()
-
     const app = initializeApp(firebaseConfig);
+    const auth = firebase.auth()
+    //const database = firebase.database()
+
+    
     const db = getFirestore(app);
 
 
@@ -134,7 +135,6 @@ function registerUser() {
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
-    const db = firebase.firestore();
     auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
     
     const usersRef = db.collection('users');
