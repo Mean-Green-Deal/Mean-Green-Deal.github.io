@@ -59,7 +59,7 @@ function initMap() {
         position: { lat: bin[1], lng: bin[2] },
         map,
         icon: {
-          url: "https://mean-green-deal.github.io/pictures/recycling bin.png",
+          url: "userpic/recycling bin.png",
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
