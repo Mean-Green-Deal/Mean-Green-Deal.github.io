@@ -1,3 +1,7 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
     authDomain: "mean-green-deal-726f9.firebaseapp.com",
@@ -8,10 +12,10 @@ const firebaseConfig = {
     measurementId: "G-2QKNB5QXF4"
     };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    //firebase.initializeApp(firebaseConfig);
     // Initialize variables
     const app = initializeApp(firebaseConfig);
-    const auth = firebase.auth()
+    const auth = firebase.auth(app)
     //const database = firebase.database()
 
     
@@ -134,7 +138,7 @@ function registerUser() {
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
-
+    const auth = getAuth();
     auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
     
     const usersRef = db.collection('users');
