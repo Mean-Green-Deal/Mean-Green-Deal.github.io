@@ -148,7 +148,7 @@ function registerUser() {
     var error_message = error.message
     alert(error_message)
   })
-}
+
 
 
 
