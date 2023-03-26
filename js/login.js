@@ -112,10 +112,12 @@ const firebaseConfig = {
       window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
       return
   }
+  /*
   else{
       alert("Passwords do not match. Try again")
       return
   }
+  */
   
   //}
 
