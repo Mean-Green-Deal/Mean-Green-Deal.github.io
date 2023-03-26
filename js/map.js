@@ -79,14 +79,14 @@ function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const pos = {
+          const  location = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-          infoWindow.setPosition(pos);
+          infoWindow.setPosition(location);
           infoWindow.setContent("Location found.");
           infoWindow.open(map);
-          map.setCenter(pos);
+          map.setCenter(location);
         },
         () => {
           handleLocationError(true, infoWindow, map.getCenter());
@@ -98,8 +98,8 @@ function getLocation() {
     }
 }
 
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
+  function handleLocationError(browserHasGeolocation, infoWindow, location) {
+  infoWindow.setPosition(location);
   infoWindow.setContent(
     browserHasGeolocation
       ? "Error: The Geolocation service failed."
