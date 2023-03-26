@@ -95,14 +95,17 @@ body {
     }
 }
 
+.container {
+    text-align: center;
+}
+
 .title-container {
-    display: grid;
-    place-items: center;
+    display: inline-block;
 }
 
 .main-title {
-    width: 12ch;
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    width: 100%;
+    animation: typing 2s steps(12), blink 2s linear infinite alternate;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid;
