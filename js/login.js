@@ -1,9 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
     authDomain: "mean-green-deal-726f9.firebaseapp.com",
@@ -13,35 +7,113 @@ const firebaseConfig = {
     appId: "1:747867835951:web:084db4a1feb703eafe00da",
     measurementId: "G-2QKNB5QXF4"
     };
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+     // Initialize variables
+     const auth = firebase.auth()
+     const database = firebase.database()
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, username, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+     function login() {
+      var email = document.getElementById("email").value
+      var password = document.getElementById("password").value
+        expression = /^[^@]+@\w+(\.\w+)+\w$/
+        if (expression.test(email) == false || password < 6) {
+          alert('Email or Password is Outta Line!!')
+          return
+        }
+        auth.signInWithEmailAndPassword(email, password).then(function() {
+          // Declare user variable
+          var user = auth.currentUser
+          // Add this user to Firebase Database
+          var database_ref = database.ref()
+          // Create User data
+          var user_data = {
+            last_login : Date.now()
+          }
+          // Push to Firebase Database
+          database_ref.child('users/' + user.uid).update(user_data)
+          // DOne
+          alert('User Logged In!!')
+          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
+      })
+          .catch(function(error) {
+              // Firebase will use this to alert of its errors
+              alert(error.message)
+              window.location.href = "https://mean-green-deal.github.io";
+            })
 
-  signInWithEmailAndPassword(auth, username, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+  }
+  function registerUser() {
+    var registerUser = document.getElementById("newUser").value
+    var registerEmail = document.getElementById("newEmail").value
+    var registerPassword = document.getElementById("newPassword").value
+    var registerConfirmPassword = document.getElementById("confirmPassword").value
+    auth.createUserWithEmailAndPassword(registerEmail, registerPassword).then(function() {
+      // Declare user variable
+      var user = auth.currentUser
+      // Add this user to Firebase Database
+      var database_ref = database.ref()
+      // Create User data
+      var user_data = {
+        registerEmail : registerEmail,
+        registerUser : registerUser,
+        last_login : Date.now()
+      }
+      // Push to Firebase Database
+      database_ref.child('users/' + user.uid).set(user_data)
+    })
+    .catch(function(error) {
+      // Firebase will use this to alert of its errors
+      var error_code = error.code
+      var error_message = error.message
+      alert(error_message)
+    })
+    expression = /^[^@]+@\w+(\.\w+)+\w$/
 
+    if (expression.test(registerEmail) == false || registerPassword < 6) {
+      alert('Email or Password is Outta Line!!')
+      return
+      // Don't continue running the code
+    }
+  ///////////////////////////////Valid Credentials ///////////////////////////////////////////
+  
+  if (registerUser.length < 3) return alert("That username is too short.");
+  
+  else if (registerEmail.length < 3) return alert("That email is too short.");
+  
+  else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
+  
+  else if (registerPassword.length < 3) return alert("That password is too short.");
 
+  for (i = 0; i <LoginInfo.length; i++){
+      if(registerUser==LoginInfo[i].username){
+          alert("That username is already in use, choose another")
+          return
+      }
+  }
+  for (i = 0; i <LoginInfo.length; i++){
+      if(registerEmail==LoginInfo[i].email){
+          alert("That email is already in use, choose another")
+          return
+      }
+  }
+  if (registerPassword == registerConfirmPassword)
+  {
+      var newUser = {
+          username: registerUser,
+          email: registerEmail
+      }
+      LoginInfo.push(newUser)
+      alert("Your Account has been created!")
 
+      location.href = 'https://mean-green-deal.github.io/';
+      return
+  }
+  else{
+      alert("Passwords do not match. Try again")
+      return
+  }
+  }
 
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
@@ -63,101 +135,6 @@ function clearInputError(inputElement) {
     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 
 }
-
-var LoginInfo = [
-    {
-        email: "robertrstephens7@gmail.com",
-        username: "reagan",
-        password: "test"
-    }
-]
-
-//regex to check if email contains @
-function emailRegex(input) {
-    let regex = /@/i;
-    return regex.test(input);
-}
-
-
-//retrieves user info for login
-function login() {
-    var username = document.getElementById("username").value
-    var password = document.getElementById("password").value
-    
-    for (i = 0; i <LoginInfo.length; i++) {
-        if (username == LoginInfo[i].username && password == LoginInfo[i].password) {
-            alert(username + " is logged in")
-            signInWithEmailAndPassword(auth, LoginInfo[i].username, LoginInfo[i].password)
-            return
-        }
-    }
-    console.log("incorrect username or password")
-}
-
-function registerUser() {
-    var registerUser = document.getElementById("newUser").value
-    var registerEmail = document.getElementById("newEmail").value
-    var registerPassword = document.getElementById("newPassword").value
-    var registerConfirmPassword = document.getElementById("confirmPassword").value
-     //FB
-     createUserWithEmailAndPassword(auth, registerUser, registerPassword)
-     //FB
-
-
-///////////////////////////////Valid Credentials ///////////////////////////////////////////
-
-if (registerUser.length < 3) {
-    alert("That username is too short.")
-    return
-}
-
-else if (registerEmail.length < 3) {
-    alert("That email is too short.")
-    return
-}
-
-else if(emailRegex(registerEmail) == false) {
-    alert("Invalid email.")
-    return
-}
-
-else if (registerPassword.length < 3) {
-    alert("That password is too short.")
-    return
-}
-
-for (i = 0; i <LoginInfo.length; i++){
-    if(registerUser==LoginInfo[i].username){
-        alert("That username is already in use, choose another")
-        return
-    }
-}
-
-for (i = 0; i <LoginInfo.length; i++){
-    if(registerEmail==LoginInfo[i].email){
-        alert("That email is already in use, choose another")
-        return
-    }
-}
-
-if (registerPassword == registerConfirmPassword)
-{
-    var newUser = {
-        username: registerUser,
-        password: registerPassword,
-        email: registerEmail
-    
-    }
-    LoginInfo.push(newUser)
-    alert("Your Account has been created!")
-    return
-}
-else{
-    alert("Passwords do not match. Try again")
-    return
-}
-
-}
 ///////////////////////////////Valid Credentials///////////////////////////////////////////
 
 
@@ -176,60 +153,4 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.classList.remove("form--hidden");
         createAccountForm.classList.add("form--hidden");
     });
-
-    //Tutorial's login method.
-/*
-    loginForm.addEventListener("submit", e=> {
-        e.preventDefault();
-
-        // Perform your AJAX/Fetch login
-
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
-    });
-
-    document.querySelectorAll(".form__input").forEach(inputElement => {
-        inputElement.addEventListener("blur", e => {
-            if (e.target.id == "newUser" && e.target.value.length > 0 && e.target.value.length < 4) {
-                setInputError(inputElement, "Username must be at least 4 characters in length");
-            }
-        });
-
-        inputElement.addEventListener("input", e => {
-            clearInputError(inputElement);
-        })
-    });
-    */
-   
 });
-/*
-//FIREBASE DATABASE AUTHENTICATION
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
-  authDomain: "mean-green-deal-726f9.firebaseapp.com",
-  projectId: "mean-green-deal-726f9",
-  storageBucket: "mean-green-deal-726f9.appspot.com",
-  messagingSenderId: "747867835951",
-  appId: "1:747867835951:web:084db4a1feb703eafe00da",
-  measurementId: "G-2QKNB5QXF4"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-
-onAuthStateChanged(auth, user => {
-    if(user != null){
-        console.log('logged in!');
-    }else{
-        console.log('No user');
-    }
-});
-*/
