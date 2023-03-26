@@ -109,7 +109,6 @@ const firebaseConfig = {
       //window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
       return
   }
-  
   else{
       alert("Passwords do not match. Try again")
       return
@@ -155,28 +154,4 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.classList.remove("form--hidden");
         createAccountForm.classList.add("form--hidden");
     });
-
-    //Tutorial's login method.
-/*
-    loginForm.addEventListener("submit", e=> {
-        e.preventDefault();
-
-        // Perform your AJAX/Fetch login
-
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
-    });
-
-    document.querySelectorAll(".form__input").forEach(inputElement => {
-        inputElement.addEventListener("blur", e => {
-            if (e.target.id == "newUser" && e.target.value.length > 0 && e.target.value.length < 4) {
-                setInputError(inputElement, "Username must be at least 4 characters in length");
-            }
-        });
-
-        inputElement.addEventListener("input", e => {
-            clearInputError(inputElement);
-        })
-    });
-    */
-   
 });
