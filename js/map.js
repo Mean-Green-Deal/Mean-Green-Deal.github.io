@@ -36,6 +36,15 @@ function initMap() {
       ["Recycling Bin DP IN 11", 33.2543783, -97.1526464],
       ["Recycling Bin DP IN 12", 33.2540410, -97.1524346],
       ["Recycling Bin DP OUT 13", 33.2533861, -97.1506733],
+      ["Recycling Bin BB-1 IN 1", 33.2090314, -97.1477843],
+      ["Recycling Bin BB-1 IN 2", 33.2089731, -97.1480699],
+      ["Recycling Bin BB1 IN 3", 33.2088620, -97.1480615],
+      ["Recycling Bin BB Out 4", 33.2085500, -97.1476441],
+      ["Recycling Bin BB Out 5", 33.2082095, -97.1482242],
+      ["Recycling Bin BB Out 6", 33.2088137, -97.1483073],
+      ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
+      ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
+      ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
     ];
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
