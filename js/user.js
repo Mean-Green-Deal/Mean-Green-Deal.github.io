@@ -7,11 +7,6 @@ const firebaseConfig = {
   appId: "1:747867835951:web:084db4a1feb703eafe00da",
   measurementId: "G-2QKNB5QXF4"
   };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // Initialize variables
-  const auth = firebase.auth()
-  const database = firebase.database()
 
 let map, infoWinow;
 
@@ -168,6 +163,11 @@ window.initMap = initMap;
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
   function signOut(){
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Initialize variables
+    const auth = firebase.auth()
+    const database = firebase.database()
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
       alert("signed out")

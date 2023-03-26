@@ -112,9 +112,13 @@ const firebaseConfig = {
       var error_message = error.message
       alert(error_message)
     })
-  
-  
-  
+    expression = /^[^@]+@\w+(\.\w+)+\w$/
+
+    if (expression.test(email) == false || password < 6) {
+      alert('Email or Password is Outta Line!!')
+      return
+      // Don't continue running the code
+    }
   
       //FB
       /*
@@ -215,6 +219,7 @@ const firebaseConfig = {
   }
   
   }
+
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
 
@@ -293,22 +298,3 @@ document.addEventListener("DOMContentLoaded", () => {
     */
    
 });
-function validate_email(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/
-    if (expression.test(email) == true) {
-      // Email is good
-      return true
-    } else {
-      // Email is not good
-      return false
-    }
-  }
-  
-  function validate_password(password) {
-    // Firebase only accepts lengths greater than 6
-    if (password < 6) {
-      return false
-    } else {
-      return true
-    }
-  }
