@@ -45,10 +45,8 @@ const firebaseConfig = {
       })
           .catch(function(error) {
               // Firebase will use this to alert of its errors
-              var error_code = error.code
-              var error_message = error.message
           
-              alert(error_message)
+              alert(error.message)
               window.location.href = "https://mean-green-deal.github.io";
             })
       /*
