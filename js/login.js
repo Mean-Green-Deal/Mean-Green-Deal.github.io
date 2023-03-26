@@ -106,14 +106,13 @@ const firebaseConfig = {
       LoginInfo.push(newUser)
       alert("Your Account has been created!")
 
-      //window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
+      location.href = 'https://mean-green-deal.github.io/';
       return
   }
   else{
       alert("Passwords do not match. Try again")
       return
   }
-  
   }
 
 function setFormMessage(formElement, type, message) {
