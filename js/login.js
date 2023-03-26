@@ -84,14 +84,13 @@ const firebaseConfig = {
   else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
   
   else if (registerPassword.length < 3) return alert("That password is too short.");
-/*
+
   for (i = 0; i <LoginInfo.length; i++){
       if(registerUser==LoginInfo[i].username){
           alert("That username is already in use, choose another")
           return
       }
   }
-  
   for (i = 0; i <LoginInfo.length; i++){
       if(registerEmail==LoginInfo[i].email){
           alert("That email is already in use, choose another")
@@ -102,24 +101,21 @@ const firebaseConfig = {
   {
       var newUser = {
           username: registerUser,
-          password: registerPassword,
           email: registerEmail
       }
       LoginInfo.push(newUser)
       alert("Your Account has been created!")
-      */
 
       //window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
       return
   }
-  /*
+  
   else{
       alert("Passwords do not match. Try again")
       return
   }
-  */
   
-  //}
+  }
 
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
@@ -141,21 +137,6 @@ function clearInputError(inputElement) {
     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 
 }
-
-var LoginInfo = [
-    {
-        email: "robertrstephens7@gmail.com",
-        username: "reagan",
-        password: "test"
-    }
-]
-
-//regex to check if email contains @
-function emailRegex(input) {
-    let regex = /@/i;
-    return regex.test(input);
-}
-
 ///////////////////////////////Valid Credentials///////////////////////////////////////////
 
 
