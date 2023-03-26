@@ -114,7 +114,7 @@ const firebaseConfig = {
     })
     expression = /^[^@]+@\w+(\.\w+)+\w$/
 
-    if (expression.test(email) == false || password < 6) {
+    if (expression.test(registerEmail) == false || registerPassword < 6) {
       alert('Email or Password is Outta Line!!')
       return
       // Don't continue running the code
