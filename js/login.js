@@ -104,12 +104,12 @@ const firebaseConfig = {
           username: registerUser,
           password: registerPassword,
           email: registerEmail
-      
       }
       LoginInfo.push(newUser)
       alert("Your Account has been created!")
       */
-      window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
+
+      //window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
       return
   }
   /*
