@@ -125,6 +125,10 @@ function login() {
 }
 
 function registerUser() {
+  var registerUser = document.getElementById("newUser").value
+  var registerEmail = document.getElementById("newEmail").value
+  var registerPassword = document.getElementById("newPassword").value
+  var registerConfirmPassword = document.getElementById("confirmPassword").value
   auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
   .then(function() {
     // Declare user variable
