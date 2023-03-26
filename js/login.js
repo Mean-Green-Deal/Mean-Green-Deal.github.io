@@ -41,7 +41,7 @@ const firebaseConfig = {
       
           // DOne
           alert('User Logged In!!')
-          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
+          //window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
       })
           .catch(function(error) {
               // Firebase will use this to alert of its errors
