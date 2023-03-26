@@ -1,3 +1,13 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
+  authDomain: "mean-green-deal-726f9.firebaseapp.com",
+  projectId: "mean-green-deal-726f9",
+  storageBucket: "mean-green-deal-726f9.appspot.com",
+  messagingSenderId: "747867835951",
+  appId: "1:747867835951:web:084db4a1feb703eafe00da",
+  measurementId: "G-2QKNB5QXF4"
+  };
+
 let map, infoWinow;
 
 function initMap() {
@@ -44,7 +54,7 @@ function initMap() {
         position: { lat: bin[1], lng: bin[2] },
         map,
         icon: {
-          url: "pictures/recycling bin.png",
+          url: "https://mean-green-deal.github.io/pictures/recycling bin.png",
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
@@ -79,14 +89,14 @@ function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const  location = {
+          const pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-          infoWindow.setPosition(location);
+          infoWindow.setPosition(pos);
           infoWindow.setContent("Location found.");
           infoWindow.open(map);
-          map.setCenter(location);
+          map.setCenter(pos);
         },
         () => {
           handleLocationError(true, infoWindow, map.getCenter());
@@ -98,8 +108,8 @@ function getLocation() {
     }
 }
 
-  function handleLocationError(browserHasGeolocation, infoWindow, location) {
-  infoWindow.setPosition(location);
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
   infoWindow.setContent(
     browserHasGeolocation
       ? "Error: The Geolocation service failed."
@@ -129,7 +139,7 @@ function createCenterControl(map) {
   controlButton.type = "button";
   // Setup the click event listeners: simply set the map to Chicago.
   controlButton.addEventListener("click", () => {
-    map.setCenter(chicago);
+    map.setCenter();
   });
   return controlButton;
 }
@@ -152,4 +162,16 @@ window.initMap = initMap;
 //root.render(e(LikeButton));
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
-  
+  function signOut(){
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Initialize variables
+    const auth = firebase.auth()
+    const database = firebase.database()
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      alert("signed out")
+    }).catch((error) => {
+      // An error happened.
+    });
+}

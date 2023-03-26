@@ -22,11 +22,11 @@ h1{
 #map {
     height: 90vh;
     width: 70%;
-}
+    }
 
-header{
-     border-bottom: 1px solid #E2E8F0;
-}
+    header{
+        border-bottom: 1px solid #E2E8F0;
+    }
 .custom-map-control-button {
   background-color: #fff;
   border: 0;
@@ -43,36 +43,17 @@ header{
   background: rgb(235, 235, 235);
 }
 /*copying sams header*/
-.brand-title {
-  font-size: 3.5vw;
-  margin: 0.5vw;
-}
-
-.toggle-button {
-  position: absolute; /* This makes it so that position doesn't change no matter what */
-  top: .75rem; /* gives space from the top */
-  right: 1rem; /* gives space from the right */
-  display: none; /* if we want to only show it while it while minimized, set this as none */
-  flex-direction: column; /* Shows spans vertically */
-  justify-content: space-between; /* leaves enough space between spans */
-  width: 30px;
-  height: 21px;
-}
-
-.toggle-button .bar {
-  height: 3px;
-  width: 100%;
-  background-color: white;
-  border-radius: 10px;
-}
-
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #1b6e3b; 
   color: white;
+}
+
+.brand-title {
+  font-size: 4vw;
+  margin: 0.5vw;
 }
 
 .navbar-links ul {
@@ -94,6 +75,24 @@ header{
 
 .navbar-links li:hover   {
   background-color: #555;
+}
+
+.toggle-button {
+  position: absolute; /* This makes it so that position doesn't change no matter what */
+  top: .75rem; /* gives space from the top */
+  right: 1rem; /* gives space from the right */
+  display: none; /* if we want to only show it while it while minimized, set this as none */
+  flex-direction: column; /* Shows spans vertically */
+  justify-content: space-between; /* leaves enough space between spans */
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
 }
 
 /* we will use a Media Query. This makes it so that when a condition is met, then something will execute.
@@ -131,4 +130,3 @@ header{
       display: flex;
   }
 }
-
