@@ -165,25 +165,13 @@ const firebaseConfig = {
   
   ///////////////////////////////Valid Credentials ///////////////////////////////////////////
   
-  if (registerUser.length < 3) {
-      alert("That username is too short.")
-      return
-  }
+  if (registerUser.length < 3) return alert("That username is too short.";
   
-  else if (registerEmail.length < 3) {
-      alert("That email is too short.")
-      return
-  }
+  else if (registerEmail.length < 3) return alert("That email is too short.");
   
-  else if(emailRegex(registerEmail) == false) {
-      alert("Invalid email.")
-      return
-  }
+  else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
   
-  else if (registerPassword.length < 3) {
-      alert("That password is too short.")
-      return
-  }
+  else if (registerPassword.length < 3) return alert("That password is too short.");
   
   for (i = 0; i <LoginInfo.length; i++){
       if(registerUser==LoginInfo[i].username){
