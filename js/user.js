@@ -153,6 +153,7 @@ function createCenterControl(map) {
     );
     var database_ref = database.ref()
     database_ref.child('RequestedBin/').set(pos)
+    alert("Bin request has been sent.")
   });
   return controlButton;
 }
