@@ -264,10 +264,11 @@ function Recycle(map) {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        var user_data = {
-          Points : Points+1
-        }
-        database_ref.child('users/' + user.uid).update(user_data)
+        //var user_data = {
+        //  Points : Points+1
+        //}
+        //database_ref.child('users/' + user.uid).update(user_data)
+        firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
         alert("Congrats you are awarded 1 point.")
         // ...
       } else {
