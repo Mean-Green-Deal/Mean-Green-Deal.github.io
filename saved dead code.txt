@@ -1,0 +1,129 @@
+  /* IN LOGIN FUNCTION
+      if (validate_email(email) == false || validate_password(password) == false) {
+          alert('Email or Password is Outta Line!!')
+          return
+          // Don't continue running the code
+        }
+      */
+      /*
+      for (i = 0; i <LoginInfo.length; i++) {
+          if (username == LoginInfo[i].username && password == LoginInfo[i].password) {
+              alert(username + " is logged in")
+            //FB
+            auth.signInWithEmailAndPassword(username, password)
+            .then(function() {
+              // Declare user variable
+              var user = auth.currentUser
+  
+              // Add this user to Firebase Database
+              var database_ref = database.ref()
+  
+              // Create User data
+              var user_data = {
+                last_login : Date.now()
+              }
+              // Push to Firebase Database
+              database_ref.child('users/' + user.uid).update(user_data)
+            })
+            .catch(function(error) {
+              // Firebase will use this to alert of its errors
+              var error_code = error.code
+              var error_message = error.message
+  
+              alert(error_message)
+            })
+             window.location.href = "https://mean-green-deal.github.io/";
+              return
+          }
+      }
+      */
+      //console.log("incorrect username or password")
+UNDER REGISTER USER
+
+      //FB
+      /*
+      auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
+      .then(function(userCredential) {
+          const user = userCredential.user;
+          const usersRef = db.collection('users');
+          var user_data = {
+              registerEmail : registerEmail,
+              registerUser : registerUser,
+              last_login : Date.now()
+            };
+            usersRef.add(user_data)
+          
+        })
+          /*
+        // Declare user variable
+        
+        var user = auth.currentUser
+    
+        // Add this user to Firebase Database
+        var database_ref = database.ref()
+    
+        // Create User data
+        var user_data = {
+          registerEmail : registerEmail,
+          registerUser : registerUser,
+          last_login : Date.now()
+        }
+        // Push to Firebase Database
+        database_ref.child('users/' + user.uid).set(user_data)
+        
+      })
+      
+      .catch(function(error) {
+        // Firebase will use this to alert of its errors
+        alert("error with fb database")
+        var error_code = error.code
+        var error_message = error.message
+        alert(error_message)
+      })
+      */
+      //FB
+  OWN FUNCTION IN LOGIN.JS
+  var LoginInfo = [
+    {
+        email: "robertrstephens7@gmail.com",
+        username: "reagan",
+        password: "test"
+    }
+]
+
+//regex to check if email contains @
+function emailRegex(input) {
+    let regex = /@/i;
+    return regex.test(input);
+}
+    //Tutorial's login method.
+/*
+    loginForm.addEventListener("submit", e=> {
+        e.preventDefault();
+
+        // Perform your AJAX/Fetch login
+
+        setFormMessage(loginForm, "error", "Invalid username/password combination");
+    });
+
+    document.querySelectorAll(".form__input").forEach(inputElement => {
+        inputElement.addEventListener("blur", e => {
+            if (e.target.id == "newUser" && e.target.value.length > 0 && e.target.value.length < 4) {
+                setInputError(inputElement, "Username must be at least 4 characters in length");
+            }
+        });
+
+        inputElement.addEventListener("input", e => {
+            clearInputError(inputElement);
+        })
+    });
+    */
+    //GENERAL INFO THAT WE MAY NEED//
+      //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
+  //33.20750461273979, -97.15295817275108
+
+  //const domContainer = document.querySelector('#like_button_container');
+//const root = ReactDOM.createRoot(domContainer);
+//root.render(e(LikeButton));
+  //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
+  //33.20750461273979, -97.15295817275108
