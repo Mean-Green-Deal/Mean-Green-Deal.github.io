@@ -89,6 +89,7 @@ function initMap() {
     
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
+    const RecycleDiv = document.createElement("div");
 
     // Create the control.
     const centerControl = RequestBin(map);
@@ -96,8 +97,9 @@ function initMap() {
 
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
-    centerControlDiv.appendChild(Recycle);
+    RecycleDiv.appendChild(Recycle);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(RecycleDiv);
   }
 
 function getLocation() {
@@ -249,7 +251,6 @@ function Recycle(map) {
   controlButton.addEventListener("click", () => {
     map.setCenter();
     navigator.geolocation.getCurrentPosition((position) => {
-
     const pos = {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
