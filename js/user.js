@@ -93,10 +93,11 @@ function initMap() {
     centerControlDiv.index = 1;
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
 
-    const RecycleDiv = document.createElement("div");
-    const Recycle = Recycle(map);
-    RecycleDiv.index = 2;
-    map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(RecycleDiv);
+    const customControlDiv1 = document.createElement("div");
+    //const customControl1  = Recycle(map);
+    var customControl1 = new Recycle(map);
+    customControl1.index = 2;
+    map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(customControlDiv1);
     // Create the control.
     
     
