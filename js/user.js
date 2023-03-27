@@ -270,7 +270,7 @@ function Recycle(map) {
           Points : Points+1
         }
         var database_ref = database.ref()
-        database_ref.child('users/' + user.uid).update(user_data)
+        //database_ref.child('users/' + user.uid).update(user_data)
       }
     }
     },
