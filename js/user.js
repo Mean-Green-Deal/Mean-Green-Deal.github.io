@@ -37,19 +37,28 @@ function initMap() {
       map.setCenter(center); 
     });
    const bins = [
-      ["Recycling Bin DP Out 1", 33.2555149, -97.1529043],
-      ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700],
-      ["Recycling Bin DP IN 3", 33.2543800, -97.1536788],
-      ["Recycling Bin DP IN 4", 33.2546405, -97.1535286],
-      ["Recycling Bin DP IN 5", 33.2541964, -97.1537884],
-      ["Recycling Bin DP OUT 6", 33.2540419, -97.1528614],
-      ["Recycling Bin DP IN 7", 33.2530084, -97.1520399],
-      ["Recycling Bin DP IN 8", 33.2532607, -97.1524144],
-      ["Recycling Bin DP IN 9", 33.2531654, -97.1528657],
-      ["Recycling Bin DP IN 10", 33.2532955, -97.1527598],
-      ["Recycling Bin DP IN 11", 33.2543783, -97.1526464],
-      ["Recycling Bin DP IN 12", 33.2540410, -97.1524346],
-      ["Recycling Bin DP OUT 13", 33.2533861, -97.1506733],
+    ["Recycling Bin DP Out 1", 33.2555149, -97.1529043],
+    ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700],
+    ["Recycling Bin DP IN 3", 33.2543800, -97.1536788],
+    ["Recycling Bin DP IN 4", 33.2546405, -97.1535286],
+    ["Recycling Bin DP IN 5", 33.2541964, -97.1537884],
+    ["Recycling Bin DP OUT 6", 33.2540419, -97.1528614],
+    ["Recycling Bin DP IN 7", 33.2530084, -97.1520399],
+    ["Recycling Bin DP IN 8", 33.2532607, -97.1524144],
+    ["Recycling Bin DP IN 9", 33.2531654, -97.1528657],
+    ["Recycling Bin DP IN 10", 33.2532955, -97.1527598],
+    ["Recycling Bin DP IN 11", 33.2543783, -97.1526464],
+    ["Recycling Bin DP IN 12", 33.2540410, -97.1524346],
+    ["Recycling Bin DP OUT 13", 33.2533861, -97.1506733],
+    ["Recycling Bin BB-1 IN 1", 33.2090314, -97.1477843],
+    ["Recycling Bin BB-1 IN 2", 33.2089731, -97.1480699],
+    ["Recycling Bin BB1 IN 3", 33.2088620, -97.1480615],
+    ["Recycling Bin BB Out 4", 33.2085500, -97.1476441],
+    ["Recycling Bin BB Out 5", 33.2082095, -97.1482242],
+    ["Recycling Bin BB Out 6", 33.2088137, -97.1483073],
+    ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
+    ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
+    ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
     ];
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
@@ -80,11 +89,14 @@ function initMap() {
     
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
+
     // Create the control.
-    const centerControl = createCenterControl(map);
+    const centerControl = RequestBin(map);
+    const Recycle = Recycle(map);
 
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
+    centerControlDiv.appendChild(Recycle);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
   }
 
@@ -124,7 +136,7 @@ function getLocation() {
 }
 
 //Request bin button
-function createCenterControl(map) {
+function RequestBin(map) {
   const controlButton = document.createElement("button");
 
   // Set CSS for the control.
@@ -190,4 +202,71 @@ window.initMap = initMap;
     }).catch((error) => {
       // An error happened.
     });
+}
+function Recycle(map) {
+  const controlButton = document.createElement("button");
+  const bins = [
+    ["Recycling Bin DP Out 1", 33.2555149, -97.1529043],
+    ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700],
+    ["Recycling Bin DP IN 3", 33.2543800, -97.1536788],
+    ["Recycling Bin DP IN 4", 33.2546405, -97.1535286],
+    ["Recycling Bin DP IN 5", 33.2541964, -97.1537884],
+    ["Recycling Bin DP OUT 6", 33.2540419, -97.1528614],
+    ["Recycling Bin DP IN 7", 33.2530084, -97.1520399],
+    ["Recycling Bin DP IN 8", 33.2532607, -97.1524144],
+    ["Recycling Bin DP IN 9", 33.2531654, -97.1528657],
+    ["Recycling Bin DP IN 10", 33.2532955, -97.1527598],
+    ["Recycling Bin DP IN 11", 33.2543783, -97.1526464],
+    ["Recycling Bin DP IN 12", 33.2540410, -97.1524346],
+    ["Recycling Bin DP OUT 13", 33.2533861, -97.1506733],
+    ["Recycling Bin BB-1 IN 1", 33.2090314, -97.1477843],
+    ["Recycling Bin BB-1 IN 2", 33.2089731, -97.1480699],
+    ["Recycling Bin BB1 IN 3", 33.2088620, -97.1480615],
+    ["Recycling Bin BB Out 4", 33.2085500, -97.1476441],
+    ["Recycling Bin BB Out 5", 33.2082095, -97.1482242],
+    ["Recycling Bin BB Out 6", 33.2088137, -97.1483073],
+    ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
+    ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
+    ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
+  ];
+  // Set CSS for the control.
+  controlButton.style.backgroundColor = "#fff";
+  controlButton.style.border = "2px solid #fff";
+  controlButton.style.borderRadius = "3px";
+  controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+  controlButton.style.color = "rgb(25,25,25)";
+  controlButton.style.cursor = "pointer";
+  controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
+  controlButton.style.fontSize = "16px";
+  controlButton.style.lineHeight = "38px";
+  controlButton.style.margin = "8px 0 22px";
+  controlButton.style.padding = "0 5px";
+  controlButton.style.textAlign = "center";
+  controlButton.textContent = "I Recycled";
+  controlButton.title = "I Recycled";
+  controlButton.type = "button";
+
+  controlButton.addEventListener("click", () => {
+    map.setCenter();
+    navigator.geolocation.getCurrentPosition((position) => {
+
+    const pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    for (let i = 0; i < bins.length; i++){
+      const bin = bins[i];
+      if(lat == bins[1] && lng == bins[2]){
+        var user_data = {
+          Points : Points+1
+        }
+        var database_ref = database.ref()
+        database_ref.child('users/' + user.uid).update(user_data)
+      }
+    }
+    },
+    );
+    alert("Bin request has been sent.")
+  });
+  return controlButton;
 }
