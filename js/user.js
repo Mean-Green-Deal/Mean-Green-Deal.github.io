@@ -144,10 +144,13 @@ function createCenterControl(map) {
   // Setup the click event listeners: simply set the map to Chicago.
   controlButton.addEventListener("click", () => {
     map.setCenter();
+    navigator.geolocation.getCurrentPosition((position) => {
     const pos = {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
+    },
+    );
     var database_ref = database.ref()
     database_ref.child('RequestedBin/').set(pos)
   });
