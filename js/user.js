@@ -105,7 +105,7 @@ function initMap() {
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
     
-    RecycleDiv.appendChild(Recycle);
+    customControlDiv1.appendChild(customControl1);
     
 
     
