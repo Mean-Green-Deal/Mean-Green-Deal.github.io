@@ -116,32 +116,6 @@ function getLocation() {
   );
   infoWindow.open(map);
 }
-
-function createCenterControl(map) {
-  const controlButton = document.createElement("button");
-
-  // Set CSS for the control.
-  controlButton.style.backgroundColor = "#fff";
-  controlButton.style.border = "2px solid #fff";
-  controlButton.style.borderRadius = "3px";
-  controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
-  controlButton.style.color = "rgb(25,25,25)";
-  controlButton.style.cursor = "pointer";
-  controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
-  controlButton.style.fontSize = "16px";
-  controlButton.style.lineHeight = "38px";
-  controlButton.style.margin = "8px 0 22px";
-  controlButton.style.padding = "0 5px";
-  controlButton.style.textAlign = "center";
-  controlButton.textContent = "Request Bin Location";
-  controlButton.title = "Request Bin Location";
-  controlButton.type = "button";
-  // Setup the click event listeners: simply set the map to Chicago.
-  controlButton.addEventListener("click", () => {
-    map.setCenter(chicago);
-  });
-  return controlButton;
-}
 //copying sams header
 const toggleButton = document.getElementsByClassName('toggle-button')[0]
 const navbarLinks = document.getElementsByClassName('navbar-links')[0]
