@@ -169,10 +169,19 @@ function RequestBin(map) {
   controlButton.addEventListener("click", () => {
     map.setCenter();
     navigator.geolocation.getCurrentPosition((position) => {
-    const pos = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    };
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            id: user.uid
+         };
+        }
+        else{
+          alert("User not logged in.")
+          window.location.href = "https://mean-green-deal.github.io/content/login.html";
+        }
+      });
     var database_ref = database.ref()
     database_ref.child('RequestedBin/').set(pos)
     },
