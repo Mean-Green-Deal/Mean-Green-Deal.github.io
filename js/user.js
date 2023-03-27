@@ -10,6 +10,10 @@ const firebaseConfig = {
 
 let map, infoWinow;
 
+//FB Initializer
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database()
+
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
@@ -140,6 +144,12 @@ function createCenterControl(map) {
   // Setup the click event listeners: simply set the map to Chicago.
   controlButton.addEventListener("click", () => {
     map.setCenter();
+    const pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    var database_ref = database.ref()
+    database_ref.child('RequestedBin/').set(pos)
   });
   return controlButton;
 }
