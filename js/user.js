@@ -176,14 +176,14 @@ function RequestBin(map) {
             lng: position.coords.longitude,
             id: user.uid
          };
+         var database_ref = database.ref()
+         database_ref.child('RequestedBin/').set(pos)
         }
         else{
           alert("User not logged in.")
           window.location.href = "https://mean-green-deal.github.io/content/login.html";
         }
       });
-    var database_ref = database.ref()
-    database_ref.child('RequestedBin/').set(pos)
     },
     );
     alert("Bin request has been sent.")
@@ -201,14 +201,6 @@ toggleButton.addEventListener('click', () => {
 
 window.onload = getLocation;
 window.initMap = initMap;
-  //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
-  //33.20750461273979, -97.15295817275108
-
-  //const domContainer = document.querySelector('#like_button_container');
-//const root = ReactDOM.createRoot(domContainer);
-//root.render(e(LikeButton));
-  //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
-  //33.20750461273979, -97.15295817275108
   function signOut(){
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
