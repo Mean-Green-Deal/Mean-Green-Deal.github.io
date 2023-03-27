@@ -149,10 +149,12 @@ function createCenterControl(map) {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
-    },
-    );
     var database_ref = database.ref()
     database_ref.child('RequestedBin/').set(pos)
+    },
+    );
+    
+    
     alert("Bin request has been sent.")
   });
   return controlButton;
