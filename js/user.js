@@ -119,7 +119,6 @@ function getLocation() {
           const pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
-            user: user.uid
           };
           infoWindow.setPosition(pos);
           infoWindow.setContent("Location found.");
@@ -290,7 +289,7 @@ function Recycle(map) {
     },
     );
     */
-    alert(uid)
+    alert(user.uid)
   });
   return controlButton;
 }
