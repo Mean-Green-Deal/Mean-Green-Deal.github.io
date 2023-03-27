@@ -259,23 +259,40 @@ function Recycle(map) {
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
+    navigator.geolocation.getCurrentPosition((position) => {
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
     firebase.auth().onAuthStateChanged((user) => {
       var database_ref = database.ref()
       if (user) {
+        for (let i = 0; i < bins.length; i++){
+          const bin = bins[i];
+          if(lat == bin[1] && lng == bin[2]) {
+            firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
+            alert("Congrats you are awarded 1 point.")
+            break
+          }
+          else{
+            alert("You are not near a bin")
+            break
+          }
+        }
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         //var user_data = {
         //  Points : Points+1
         //}
         //database_ref.child('users/' + user.uid).update(user_data)
-        firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
-        alert("Congrats you are awarded 1 point.")
+        
         // ...
       } else {
         // User is signed out
         // ...
       }
     });
+  });
     /*
     navigator.geolocation.getCurrentPosition((position) => {
     const pos = {
