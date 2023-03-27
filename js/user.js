@@ -259,6 +259,19 @@ function Recycle(map) {
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+    /*
     navigator.geolocation.getCurrentPosition((position) => {
     const pos = {
       lat: position.coords.latitude,
@@ -276,7 +289,8 @@ function Recycle(map) {
     }
     },
     );
-    alert("Bin request has been sent.")
+    */
+    alert(uid)
   });
   return controlButton;
 }
