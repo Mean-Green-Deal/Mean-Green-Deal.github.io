@@ -39,7 +39,7 @@ const firebaseConfig = {
           .catch(function(error) {
               // Firebase will use this to alert of its errors
               alert(error.message)
-              window.location.href = "https://mean-green-deal.github.io";
+              location.href = "https://mean-green-deal.github.io";
             })
 
   }
