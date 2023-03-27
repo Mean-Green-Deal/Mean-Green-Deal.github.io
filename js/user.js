@@ -122,6 +122,7 @@ function getLocation() {
   infoWindow.open(map);
 }
 
+//Request bin button
 function createCenterControl(map) {
   const controlButton = document.createElement("button");
 
@@ -141,7 +142,7 @@ function createCenterControl(map) {
   controlButton.textContent = "Request Bin Location";
   controlButton.title = "Request Bin Location";
   controlButton.type = "button";
-  // Setup the click event listeners: simply set the map to Chicago.
+
   controlButton.addEventListener("click", () => {
     map.setCenter();
     navigator.geolocation.getCurrentPosition((position) => {
@@ -153,8 +154,6 @@ function createCenterControl(map) {
     database_ref.child('RequestedBin/').set(pos)
     },
     );
-    
-    
     alert("Bin request has been sent.")
   });
   return controlButton;
