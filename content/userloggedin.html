@@ -36,9 +36,14 @@
          <div class="navbar-links">
              <ul>
                  <li><a href="content/login.html">      
- 
-                   <label for="email">Email:</label>
+                  <script>
+                    firebase.auth().onAuthStateChanged((user) => {
+                      user = user.uid
+                    });
+                   </script>
+                   <label for="email">email</label>
                    <span id="email"></span></a></li>
+                   
                    
                  <li><a href="content/about.html">Contact Us</a></li>
                  <li><a href="https://mean-green-deal.github.io/" onclick="signOut()">Sign Out</a></li>
