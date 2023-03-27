@@ -260,12 +260,12 @@ function Recycle(map) {
   controlButton.addEventListener("click", () => {
     map.setCenter();
     navigator.geolocation.getCurrentPosition((position) => {
-      const pos = {
+    firebase.auth().onAuthStateChanged((user) => {
+      var database_ref = database.ref()
+        const pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
-    firebase.auth().onAuthStateChanged((user) => {
-      var database_ref = database.ref()
       if (user) {
         for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
