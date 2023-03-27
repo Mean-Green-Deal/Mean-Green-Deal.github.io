@@ -89,17 +89,25 @@ function initMap() {
     
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
-    const RecycleDiv = document.createElement("div");
-
-    // Create the control.
     const centerControl = RequestBin(map);
+    centerControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+
+    const RecycleDiv = document.createElement("div");
     const Recycle = Recycle(map);
+    RecycleDiv.index = 2;
+    map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(RecycleDiv);
+    // Create the control.
+    
+    
 
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
+    
     RecycleDiv.appendChild(Recycle);
-    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
-    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(RecycleDiv);
+    
+
+    
   }
 
 function getLocation() {
