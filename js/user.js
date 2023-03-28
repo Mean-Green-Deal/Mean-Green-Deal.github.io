@@ -150,7 +150,7 @@ function RequestBin(map) {
   const controlButton = document.createElement("button");
 
   // Set CSS for the control.
-  controlButton.style.backgroundColor = "#fff";
+  controlButton.style.backgroundColor = "#00853E";
   controlButton.style.border = "2px solid #fff";
   controlButton.style.borderRadius = "3px";
   controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
@@ -241,11 +241,11 @@ function Recycle(map) {
     ["Recycling Bin BB Out 9", 33.2089456, -97.1470882],
   ];
   // Set CSS for the control.
-  controlButton.style.backgroundColor = "#fff";
+  controlButton.style.backgroundColor = "#00853E";
   controlButton.style.border = "2px solid #fff";
   controlButton.style.borderRadius = "3px";
   controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
-  controlButton.style.color = "rgb(25,25,25)";
+  controlButton.style.color = "rgb(255,255,255)";
   controlButton.style.cursor = "pointer";
   controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
   controlButton.style.fontSize = "16px";
