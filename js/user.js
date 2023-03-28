@@ -238,7 +238,7 @@ function Recycle(map) {
     ["Recycling Bin BB Out 6", 33.2088137, -97.1483073],
     ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
     ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
-    ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
+    ["Recycling Bin BB Out 9", 33.2089456, -97.1470882],
   ];
   // Set CSS for the control.
   controlButton.style.backgroundColor = "#fff";
@@ -267,7 +267,7 @@ function Recycle(map) {
         const lng = position.coords.longitude
       for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
-          if(lat == bin[1] && lng == bin[2]) {
+          if((bin[1]-0.0001 < lat < bin[1]+0.0001) && (bin[2]-0.0001 < lng < bin[2]+0.0001)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
             firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
             alert("Congrats you are awarded 1 point.")
             break
