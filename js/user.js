@@ -91,13 +91,13 @@ function initMap() {
     const centerControlDiv = document.createElement("div");
     const centerControl = RequestBin(map);
     centerControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 
     const customControlDiv1 = document.createElement("div");
     //const customControl1  = Recycle(map);
     var customControl1 = new Recycle(map);
     customControl1.index = 2;
-    map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(customControlDiv1);
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(customControlDiv1);
     // Create the control.
     
     
