@@ -277,10 +277,12 @@ function Recycle(map) {
           else{
             nb = nb+1
           }
-        }
-        if (nb == 22){
+          if (nb == 22){
           alert("You are not near a bin")
+          break
         }
+        }
+        
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         //var user_data = {
