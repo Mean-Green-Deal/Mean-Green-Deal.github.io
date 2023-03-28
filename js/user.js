@@ -239,6 +239,7 @@ function Recycle(map) {
     ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
     ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
     ["Recycling Bin BB Out 9", 33.2089456, -97.1470882],
+    ["test bin", 33.2143333, -97.1656707],
   ];
   // Set CSS for the control.
   controlButton.style.backgroundColor = "#00853E";
