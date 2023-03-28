@@ -265,7 +265,7 @@ function Recycle(map) {
       if (user) {
         const lat = position.coords.latitude
         const lng = position.coords.longitude
-        const nb = 0
+        var nb = 0
       for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
           if((bin[1]-0.1 < lat < bin[1]+0.1) && (bin[2]-0.1 < lng < bin[2]+0.1)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
