@@ -262,12 +262,10 @@ function Recycle(map) {
     navigator.geolocation.getCurrentPosition((position) => {
     firebase.auth().onAuthStateChanged((user) => {
       var database_ref = database.ref()
-        const pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
       if (user) {
-        for (let i = 0; i < bins.length; i++){
+        const lat = position.coords.latitude
+        const lng = position.coords.longitude
+      for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
           if(lat == bin[1] && lng == bin[2]) {
             firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
