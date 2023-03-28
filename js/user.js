@@ -310,7 +310,6 @@ function Recycle(map) {
     },
     );
     */
-    alert(user.uid)
   });
   return controlButton;
 }
