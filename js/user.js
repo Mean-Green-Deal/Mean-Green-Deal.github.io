@@ -242,7 +242,7 @@ function Recycle(map) {
   ];
   // Set CSS for the control.
   controlButton.style.backgroundColor = "#00853E";
-  controlButton.style.border = "2px solid #00853E"";
+  controlButton.style.border = "2px solid #00853E";
   controlButton.style.borderRadius = "3px";
   controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
   controlButton.style.color = "rgb(255,255,255)";
