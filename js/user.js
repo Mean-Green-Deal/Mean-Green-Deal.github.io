@@ -239,7 +239,6 @@ function Recycle(map) {
     ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
     ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
     ["Recycling Bin BB Out 9", 33.2089456, -97.1470882],
-    ["test bin", 33.2143333, -97.1656707]
   ];
   // Set CSS for the control.
   controlButton.style.backgroundColor = "#00853E";
@@ -266,6 +265,7 @@ function Recycle(map) {
       if (user) {
         const lat = position.coords.latitude
         const lng = position.coords.longitude
+        const nb = 0
       for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
           if((bin[1]-0.1 < lat < bin[1]+0.1) && (bin[2]-0.1 < lng < bin[2]+0.1)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
@@ -274,9 +274,11 @@ function Recycle(map) {
             break
           }
           else{
-            alert("You are not near a bin")
-            break
+            var nb = nb+1
           }
+        }
+        if (nb == 22){
+          alert("You are not near a bin")
         }
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
