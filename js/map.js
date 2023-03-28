@@ -94,7 +94,7 @@ function getLocation() {
           };
           infoWindow.setPosition(location);
           infoWindow.setContent("Location found.");
-          infoWindow.open(map);
+          //infoWindow.open(map);
           map.setCenter(location);
         },
         () => {
