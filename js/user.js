@@ -274,7 +274,7 @@ function Recycle(map) {
             break
           }
           else{
-            var nb = nb+1
+            nb = nb+1
           }
         }
         if (nb == 22){
