@@ -70,7 +70,7 @@
    <div id="map"></div>
 
    <!--Start of the leaderboard-->
-   <div>
+   <div style="text-align: right;">
 <table>
 <thead>
   <th>User</th>
@@ -100,6 +100,15 @@
     users.forEach(element => {
       AddItemToTable(element.registerUser, element.Points)
     });
+  }
+  function GetAllDataOnce(){
+    const dbRef = ref(db);
+    get(child(dbRef, 'users/registerUser'))
+    .then((snapshot)=>{
+      var users = [];
+      array.forEach(childSnapshot => )
+    })
+
   }
 </script>
 <!--End of leaderboard-->
