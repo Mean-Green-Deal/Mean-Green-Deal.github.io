@@ -69,6 +69,41 @@
  <body>
    <div id="map"></div>
 
+   <!--Start of the leaderboard-->
+   <div>
+<table>
+<thead>
+  <th>User</th>
+  <th>Points</th>
+</thead>
+<tbody id="tbody1"></tbody>
+</table>
+</div>
+<script>
+
+  var tbody = document.getElementById('tbody1');
+  function AddItemToTable(user, points){
+    let trow = document.createElement("trow");
+    let td1 = document.createElement('td');
+    let td2 = document.createElement('td');
+
+    td2.innerHTML = user;
+    td3.innerHTML = points;
+
+    trow.appendChild(td1);
+    trow.appendChild(td2);
+
+    tbody.appendChild(trow);
+  }
+  function AddAllItemsToTable(users){
+    tbody.innerHTML="";
+    users.forEach(element => {
+      AddItemToTable(element.registerUser, element.Points)
+    });
+  }
+</script>
+<!--End of leaderboard-->
+
  </div>
  </body>
  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
