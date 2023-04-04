@@ -99,7 +99,7 @@ const firebaseConfig = {
   const ref = firebase.database().ref('/users');
   ref.once('registerUser').then((snapshot) => {
         const data = snapshot.val();
-        const dataElement = document.getElementById('data');
+        const dataElement = document.getElementById('registerUser');
         dataElement.innerHTML = `The value of the node is: ${data}`;
       }).catch((error) => {
         console.error(`Error reading data: ${error}`);
