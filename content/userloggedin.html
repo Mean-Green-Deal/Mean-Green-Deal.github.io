@@ -96,7 +96,8 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database()
   firebase.auth().onAuthStateChanged((user) => {
-  const ref = firebase.database().ref('users');
+  var user = auth.currentUser
+  const ref = firebase.database().ref('users/' + user.uid + '/Points');
   
   ref.once('value').then((snapshot) => {
         const data = snapshot.val();
