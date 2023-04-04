@@ -80,6 +80,8 @@
 </table>
 </div>
 <script>
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database()
   var ref = firebase.database().ref();
 
   ref.on("users", function(snapshot) {
