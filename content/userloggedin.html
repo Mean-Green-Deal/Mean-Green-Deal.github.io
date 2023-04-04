@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/userstyle.css">
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
   <!--<div class="logo">-->
     <!--<img src="pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%" /> width="78.125" height="93.75-->
      <!--<h1 style="font-size:4vw">UNT Recycling</h1> -->
@@ -76,7 +79,8 @@
   <th>User</th>
   <th>Points</th>
 </thead>
-<p id="demo"></p>
+<h1>Data from Firebase Realtime Database:</h1>
+    <div id="data"></div>
 </table>
 </div>
 <script>
@@ -91,13 +95,15 @@ const firebaseConfig = {
   };
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database()
-  var ref = firebase.database().ref();
 
-  ref.on("users", function(snapshot) {
-    console.log(snapshot.val());
-  }, function (error) {
-    console.log("Error: " + error.code);
-  });
+  const ref = firebase.database().ref('/users');
+  ref.once('registerUser').then((snapshot) => {
+        const data = snapshot.val();
+        const dataElement = document.getElementById('data');
+        dataElement.innerHTML = `The value of the node is: ${data}`;
+      }).catch((error) => {
+        console.error(`Error reading data: ${error}`);
+      });
   /*
   const ldr = ref(database, 'users/');
 onValue(ldr, (snapshot) => {
@@ -147,9 +153,6 @@ onValue(ldr, (snapshot) => {
 
  </div>
  </body>
- <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 <script src="/js/user.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap"></script>
  </html>
