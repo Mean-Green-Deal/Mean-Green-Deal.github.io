@@ -97,7 +97,7 @@ const firebaseConfig = {
   const database = firebase.database()
 
   const ref = firebase.database().ref('/Points');
-
+  firebase.auth().onAuthStateChanged((user) => {
   ref.once('value').then((snapshot) => {
         const data = snapshot.val();
         const dataElement = document.getElementById('data');
@@ -105,6 +105,7 @@ const firebaseConfig = {
       }).catch((error) => {
         console.error(`Error reading data: ${error}`);
       });
+    });
   /*
   const ldr = ref(database, 'users/');
 onValue(ldr, (snapshot) => {
