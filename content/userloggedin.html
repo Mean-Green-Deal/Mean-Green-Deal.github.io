@@ -102,7 +102,7 @@ const firebaseConfig = {
   
   ref.once('value').then((snapshot) => {
         const data = snapshot.val();
-        const dataElement = document.getElementById('Points');
+        const dataElement = document.getElementById('users/' + user.uid + '/Points');
         dataElement.innerHTML = `The value of the node is: ${data}`;
       }).catch((error) => {
         console.error(`Error reading data: ${error}`);
