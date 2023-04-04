@@ -76,8 +76,7 @@
    <div style="text-align: right;">
 <table>
 <thead>
-  <h2>User</h2>
-  <h2>Points</h2>
+  <h2>User Points</h2>
 </thead>
     <h3 id="output"></h3>
 </table>
@@ -119,67 +118,6 @@ const firebaseConfig = {
     console.log('Output div not found');
   }
 });
-  /*
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database()
-  const auth = firebase.auth()
-  firebase.auth().onAuthStateChanged((user) => {
-  var user = auth.currentUser
-  const ref = firebase.database().ref('users/' + user.uid + '/Points');
-  
-  ref.once('value').then((snapshot) => {
-        const data = snapshot.val();
-        const dataElement = document.getElementById('users/' + user.uid + '/Points');
-        dataElement.innerHTML = `The value of the node is: ${data}`;
-      }).catch((error) => {
-        console.error(`Error reading data: ${error}`);
-      });
-    });
-*/
-  /*
-  const ldr = ref(database, 'users/');
-onValue(ldr, (snapshot) => {
-  const data = snapshot.val();
-  document.getElementById("demo").innerHTML = data
-});
-*/
-/*
-  var tbody = document.getElementById('tbody1');
-  function AddItemToTable(user, points){
-    let trow = document.createElement("trow");
-    let td1 = document.createElement('td');
-    let td2 = document.createElement('td');
-
-    td2.innerHTML = user;
-    td3.innerHTML = points;
-
-    trow.appendChild(td1);
-    trow.appendChild(td2);
-
-    tbody.appendChild(trow);
-  }
-  function AddAllItemsToTable(users){
-    tbody.innerHTML="";
-    users.forEach(element => {
-      AddItemToTable(element.registerUser, element.Points)
-    });
-  }
-
-
-  function GetAllDataRealtime(){
-    const dbref = ref(database, "users");
-
-    onValue(dbRef,(snapshot)=>{
-      var users = [];
-      snapshot.foreEach(childSnapshot => {
-        users.push(childSnapshot.val());
-      });
-      AddAllItemsToTable(users)
-    })
-
-  }
-  window.onload = GetAllDataRealtime;
-  */
 </script>
 <!--End of leaderboard-->
 
