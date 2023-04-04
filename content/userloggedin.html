@@ -76,11 +76,16 @@
   <th>User</th>
   <th>Points</th>
 </thead>
-<tbody id="tbody1"></tbody>
+<p id="demo"></p>
 </table>
 </div>
 <script>
-
+  const ldr = ref(database, 'users/');
+onValue(ldr, (snapshot) => {
+  const data = snapshot.val();
+  document.getElementById("demo").innerHTML = data
+});
+/*
   var tbody = document.getElementById('tbody1');
   function AddItemToTable(user, points){
     let trow = document.createElement("trow");
@@ -116,6 +121,7 @@
 
   }
   window.onload = GetAllDataRealtime;
+  */
 </script>
 <!--End of leaderboard-->
 
