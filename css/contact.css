@@ -59,43 +59,6 @@ body {
     border-radius: 10px;
 }
 
-/* we will use a Media Query. This makes it so that when a condition is met, then something will execute.
-*/
-
-@media (max-width: 600px)   {
-    .toggle-button {
-        display: flex;
-    }
-
-    .navbar-links {
-        display: none;
-        width: 100%;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar-links ul {
-        width: 100px;
-        flex-direction: column;
-    }
-
-    .navbar-links li {
-        text-align: center;
-    }
-
-    .navbar-links li a {
-        padding: .5rem 1rem;
-    }
-
-    .navbar-links.active {
-        display: flex;
-    }
-}
-
-
 /********** Header ************/
 
 .header {
@@ -145,4 +108,41 @@ input[type=submit] {
 /*When havoring over the submit button, use a different color*/
 input[type=submit]:hover {
     background-color: #1b6e3b;
+}
+
+
+/* we will use a Media Query. This makes it so that when a condition is met, then something will execute.
+*/
+
+@media (max-width: 600px)   {
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul {
+        width: 100px;
+        flex-direction: column;
+    }
+
+    .navbar-links li {
+        text-align: center;
+    }
+
+    .navbar-links li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
 }
