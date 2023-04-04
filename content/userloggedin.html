@@ -80,11 +80,20 @@
 </table>
 </div>
 <script>
+  var ref = firebase.database().ref();
+
+  ref.on("users", function(snapshot) {
+    console.log(snapshot.val());
+  }, function (error) {
+    console.log("Error: " + error.code);
+  });
+  /*
   const ldr = ref(database, 'users/');
 onValue(ldr, (snapshot) => {
   const data = snapshot.val();
   document.getElementById("demo").innerHTML = data
 });
+*/
 /*
   var tbody = document.getElementById('tbody1');
   function AddItemToTable(user, points){
