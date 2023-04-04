@@ -76,10 +76,9 @@
    <div style="text-align: right;">
 <table>
 <thead>
-  <th>User</th>
-  <th>Points</th>
+  <h2>User</h2>
+  <h2>Points</h2>
 </thead>
-<h2>Data from Firebase Realtime Database:</h2>
     <h3 id="output"></h3>
 </table>
 </div>
@@ -108,7 +107,7 @@ const firebaseConfig = {
   var output = '';
   for (var key in data) {
     if (data.hasOwnProperty(key)) {
-      output += '<div>' + data[key].Points + ': ' + data[key].registerUser + '</div>';
+      output += '<div>' + data[key].Points + ' ' + data[key].registerUser + '</div>';
     }
   }
 
