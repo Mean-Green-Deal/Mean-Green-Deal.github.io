@@ -1,18 +1,9 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
-  authDomain: "mean-green-deal-726f9.firebaseapp.com",
-  projectId: "mean-green-deal-726f9",
-  storageBucket: "mean-green-deal-726f9.appspot.com",
-  messagingSenderId: "747867835951",
-  appId: "1:747867835951:web:084db4a1feb703eafe00da",
-  measurementId: "G-2QKNB5QXF4"
-  };
+
 
 let map, infoWinow;
 
 //FB Initializer
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database()
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -239,7 +230,6 @@ function Recycle(map) {
     ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
     ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
     ["Recycling Bin BB Out 9", 33.2089456, -97.1470882],
-    ["test bin", 33.2143333, -97.1656707],
   ];
   // Set CSS for the control.
   controlButton.style.backgroundColor = "#00853E";
@@ -266,23 +256,18 @@ function Recycle(map) {
       if (user) {
         const lat = position.coords.latitude
         const lng = position.coords.longitude
-        var nb = 0
       for (let i = 0; i < bins.length; i++){
-          var bin = bins[i];
-          if((bin[1]-1 < lat < bin[1]+1) && (bin[2]-1 < lng < bin[2]+1)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
+          const bin = bins[i];
+          if((bin[1]-0.0001 < lat < bin[1]+0.0001) && (bin[2]-0.0001 < lng < bin[2]+0.0001)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
             firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
             alert("Congrats you are awarded 1 point.")
             break
           }
           else{
-            nb = nb+1
+            alert("You are not near a bin")
+            break
           }
-          if (nb == 22){
-          alert("You are not near a bin")
-          break
         }
-        }
-        
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         //var user_data = {
