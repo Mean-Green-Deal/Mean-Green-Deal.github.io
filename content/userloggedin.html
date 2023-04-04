@@ -96,7 +96,7 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database()
   firebase.auth().onAuthStateChanged((user) => {
-  const ref = firebase.database().ref('/https://mean-green-deal-726f9-default-rtdb.firebaseio.com/users');
+  const ref = firebase.database().ref('users');
   
   ref.once('value').then((snapshot) => {
         const data = snapshot.val();
