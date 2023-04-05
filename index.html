@@ -55,6 +55,56 @@ button1 {background-color: #1b6e3b;}
 </style>
 <body>
   <div id="map"></div>
+  
+   <!--Start of the leaderboard-->
+   <div style="text-align: right;">
+    <table>
+    <thead>
+      <h2>User Points</h2>
+    </thead>
+        <h3 id="output"></h3>
+    </table>
+    </div>
+    <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
+      authDomain: "mean-green-deal-726f9.firebaseapp.com",
+      projectId: "mean-green-deal-726f9",
+      storageBucket: "mean-green-deal-726f9.appspot.com",
+      messagingSenderId: "747867835951",
+      appId: "1:747867835951:web:084db4a1feb703eafe00da",
+      measurementId: "G-2QKNB5QXF4"
+      };
+      firebase.initializeApp(firebaseConfig);
+    
+      // Create a reference to the database
+      var database = firebase.database();
+      var ref = database.ref('users');
+    
+      // Read the data
+      ref.once('value', function(snapshot) {
+      // Get the data as an object
+      var data = snapshot.val();
+    
+      // Loop through the data and create HTML elements to display it
+      var output = '';
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          output += '<div>' + data[key].registerUser + ' ' + data[key].Points + '</div>';
+        }
+      }
+      
+      // Display the output on the web page
+      var outputDiv = document.getElementById('output');
+      if (outputDiv) {
+        outputDiv.innerHTML = output;
+      } else {
+        console.log('Output div not found');
+      }
+    });
+    </script>
+    <!--End of leaderboard-->
+    
   <script src="js/map.js"></script>
   <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap">
