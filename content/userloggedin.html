@@ -72,9 +72,21 @@
  <body>
    <div id="map"></div>
 
-   <!--Start of the leaderboard-->
 <!--Start of the leaderboard-->
-<div style="text-align: right;">
+<title>User Points</title>
+<style>
+  table {
+    margin: 0;
+    float: right;
+    text-align: center;
+  }
+  tbody {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div>
   <table style="border-collapse: collapse; border: 1px solid white;">
     <thead style="background-color: green; color: white;">
       <tr><th><h2>User Points</h2></th></tr>
@@ -85,6 +97,7 @@
 </div>
 
 <script>
+  
 const firebaseConfig = {
   apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
   authDomain: "mean-green-deal-726f9.firebaseapp.com",
@@ -95,34 +108,35 @@ const firebaseConfig = {
   measurementId: "G-2QKNB5QXF4"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-// Create a reference to the database
-var database = firebase.database();
-var ref = database.ref('users');
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
 
-// Read the data
-ref.once('value', function(snapshot) {
-  // Get the data as an object
-  var data = snapshot.val();
+      // Create a reference to the database
+      var database = firebase.database();
+      var ref = database.ref('users');
 
-  // Loop through the data and create HTML elements to display it
-  var output = '';
-  for (var key in data) {
-    if (data.hasOwnProperty(key)) {
-      output += '<tr><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
-    }
-  }
+      // Read the data
+      ref.once('value', function(snapshot) {
+        // Get the data as an object
+        var data = snapshot.val();
 
-  // Display the output on the web page
-  var outputTbody = document.getElementById('output');
-  if (outputTbody) {
-    outputTbody.innerHTML = output;
-  } else {
-    console.log('Output tbody not found');
-  }
-});
+        // Loop through the data and create HTML elements to display it
+        var output = '';
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+            output += '<tr><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
+          }
+        }
+
+        // Display the output on the web page
+        var outputTbody = document.getElementById('output');
+        if (outputTbody) {
+          outputTbody.innerHTML = output;
+        } else {
+          console.log('Output tbody not found');
+        }
+      });
 </script>
 <!--End of leaderboard-->
 
