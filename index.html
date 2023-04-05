@@ -56,74 +56,90 @@ button1 {background-color: #1b6e3b;}
 <body>
   <div id="map"></div>
   
-   <!--Start of the leaderboard-->
-   <!-- <div style="text-align: right;">-->
-    <!-- <thead>-->
-     <!-- <h2>User Points</h2>-->
-    <!--</thead>-->
-        <!--<h3 id="output"></h3>-->
-    
+<!--Start of the leaderboard-->
+<title>User Points</title>
+    <style>
+      table {
+        margin-top: -35em;
+        margin-right: 10em;
+        float: right;
+        text-align: center;
+      }
+      th, td {
+        border: 1px solid white;
+        padding: 5px;
+        font-size: 16px;
+      }
+      tbody {
+        text-align: center;
+      }
+      @media screen and (max-width: 600px) {
+    table {
+      margin-top: 0;
+      margin-right: 0;
+      float: none;
+    }
+    th, td {
+      font-size: 14px;
+    }
+  }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table style="border-collapse: collapse;">
+        <thead style="background-color: green; color: white;">
+          <tr><th>User</th><th>Points</th></tr>
+        </thead>
+        <tbody id="output" style="background-color: green; color: white;">
+        </tbody>
+      </table>
     </div>
-    <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
-      authDomain: "mean-green-deal-726f9.firebaseapp.com",
-      projectId: "mean-green-deal-726f9",
-      storageBucket: "mean-green-deal-726f9.appspot.com",
-      messagingSenderId: "747867835951",
-      appId: "1:747867835951:web:084db4a1feb703eafe00da",
-      measurementId: "G-2QKNB5QXF4"
-      };
+
+
+<script>
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
+  authDomain: "mean-green-deal-726f9.firebaseapp.com",
+  projectId: "mean-green-deal-726f9",
+  storageBucket: "mean-green-deal-726f9.appspot.com",
+  messagingSenderId: "747867835951",
+  appId: "1:747867835951:web:084db4a1feb703eafe00da",
+  measurementId: "G-2QKNB5QXF4"
+};
+
+
+      // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-    
+
       // Create a reference to the database
       var database = firebase.database();
       var ref = database.ref('users');
-    
+
       // Read the data
       ref.once('value', function(snapshot) {
-      // Get the data as an object
-      var data = snapshot.val();
-    
-      // Loop through the data and create HTML elements to display it
-      var output = '';
-      for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-          output += data[key].registerUser + ',' + data[key].Points;
-          var dataArray = output.split(",");
-        }
-      }
-      
-      // Display the output on the web page
-      //var outputDiv = document.getElementById('output');
-      //if (outputDiv) {
-      //  outputDiv.innerHTML = output;
-      //} else {
-      //  console.log('Output div not found');
-      //}
-    });
-    </script>
-    
-    <div style="text-align: center;">
-      <div style="margin: 0 auto; width: fit-content;">
-        <table border="1">
-          <tr>
-            <th border="1" style="background-color: green; color: white">Header 1</th>
-            <th border="1" style="background-color: green; color: white">Header 2</th>
-          </tr>
-          <script>
-            for (var i = 0; i < dataArray.length; i += 2) {
-              document.write("<tr>");
-              document.write("<td border='1' style='background-color: green; color: white'>" + dataArray[i] + "</td>");
-              document.write("<td border='1' style='background-color: green; color: white'>" + dataArray[i+1] + "</td>");
-              document.write("</tr>");
-        }
-          </script>
-            </table>
-          </div>
-        </div>
+        // Get the data as an object
+        var data = snapshot.val();
 
-         <!--End of leaderboard-->   
+        // Loop through the data and create HTML elements to display it
+        var output = '';
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+            output += '<tr><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
+          }
+        }
+
+        // Display the output on the web page
+        var outputTbody = document.getElementById('output');
+        if (outputTbody) {
+          outputTbody.innerHTML = output;
+        } else {
+          console.log('Output tbody not found');
+        }
+      });
+</script>
+<!--End of leaderboard--> 
   <script src="js/map.js"></script>
   <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap">
