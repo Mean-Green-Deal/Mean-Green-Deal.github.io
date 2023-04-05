@@ -74,27 +74,33 @@
 
 <!--Start of the leaderboard-->
 <title>User Points</title>
-<style>
-  table {
-    margin: 0;
-    float: right;
-    text-align: center;
-  }
-  tbody {
-    text-align: center;
-  }
-</style>
-</head>
-<body>
-<div>
-  <table style="border-collapse: collapse; border: 1px solid white;">
-    <thead style="background-color: green; color: white;">
-      <tr><th><h2>User Points</h2></th></tr>
-    </thead>
-    <tbody id="output" style="background-color: green; color: white;">
-    </tbody>
-  </table>
-</div>
+    <style>
+      table {
+        margin: 0;
+        float: right;
+        text-align: center;
+      }
+      th, td {
+        border: 1px solid white;
+        padding: 5px;
+        font-size: 16px;
+      }
+      tbody {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table style="border-collapse: collapse;">
+        <thead style="background-color: green; color: white;">
+          <tr><th>User</th><th>Points</th></tr>
+        </thead>
+        <tbody id="output" style="background-color: green; color: white;">
+        </tbody>
+      </table>
+    </div>
+
 
 <script>
   
