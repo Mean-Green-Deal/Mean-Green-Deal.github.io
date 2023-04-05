@@ -24,15 +24,15 @@ h2{
   text-align: center;
   position: absolute;
   bottom: 30em;
-  right: 1.4em;
+  right: 4em;
   /*font-size: 60px*/
 }
 h3{
   font-family: 'Adobe Jenson', serif;
   text-align: center;
   position: absolute;
-  bottom: 27em;
-  right: 1.4em;
+  bottom: 29em;
+  right: 4em;
   /*font-size: 60px*/
 }
 #map {
