@@ -106,10 +106,10 @@ const firebaseConfig = {
   var output = '';
   for (var key in data) {
     if (data.hasOwnProperty(key)) {
-      output += '<div>' + data[key].Points + ' ' + data[key].registerUser + '</div>';
+      output += '<div>' + data[key].registerUser + ' ' + data[key].Points + '</div>';
     }
   }
-
+  
   // Display the output on the web page
   var outputDiv = document.getElementById('output');
   if (outputDiv) {
