@@ -92,8 +92,8 @@ function getLocation() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-          //infoWindow.setPosition(location);
-          //infoWindow.setContent("Location found.");
+          infoWindow.setPosition(location);
+          infoWindow.setContent("Location found.");
           //infoWindow.open(map);
           map.setCenter(location);
         },
