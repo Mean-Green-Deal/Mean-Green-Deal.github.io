@@ -58,19 +58,6 @@ function initMap() {
         },
         title: bin[0],
       });
-      
-      /*  
-      const infoWindow = new.google.maps.InfoWindow({
-          arialLabel: bin[0],
-      });    
-    }
-    
-    marker.addListener("click", () => {
-        infoWindow.open ({
-            anchor: marker,
-            map,
-        });
-       */    
       }
     
     // Create the DIV to hold the control.
@@ -84,7 +71,6 @@ function initMap() {
   }
 
 function getLocation() {
-  infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -92,9 +78,6 @@ function getLocation() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-          infoWindow.setPosition(location);
-          infoWindow.setContent("Location found.");
-          //infoWindow.open(map);
           map.setCenter(location);
         },
         () => {
