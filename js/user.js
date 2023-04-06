@@ -248,7 +248,7 @@ function Recycle(map) {
   controlButton.textContent = "I Recycled";
   controlButton.title = "I Recycled";
   controlButton.type = "button";
-  controlButton.style.width = "100%";
+  controlButton.style.width = "50%";
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
