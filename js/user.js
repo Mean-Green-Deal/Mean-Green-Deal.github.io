@@ -156,6 +156,7 @@ function RequestBin(map) {
   controlButton.textContent = "Request Bin Location";
   controlButton.title = "Request Bin Location";
   controlButton.type = "button";
+  controlButton.style.width = "100%";
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
@@ -247,6 +248,7 @@ function Recycle(map) {
   controlButton.textContent = "I Recycled";
   controlButton.title = "I Recycled";
   controlButton.type = "button";
+  controlButton.style.width = "100%";
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
