@@ -71,6 +71,7 @@ function initMap() {
   }
 
 function getLocation() {
+    infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
