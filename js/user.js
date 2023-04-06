@@ -113,7 +113,7 @@ function getLocation() {
           };
           infoWindow.setPosition(pos);
           infoWindow.setContent("Location found.");
-          infoWindow.open(map);
+          //infoWindow.open(map);
           map.setCenter(pos);
         },
         () => {
