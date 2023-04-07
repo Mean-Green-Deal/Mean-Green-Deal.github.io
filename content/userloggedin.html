@@ -37,21 +37,38 @@
          </a>
          <!--Hamburger button above ^^^^^^^^^^^^^^^-->
          <div class="navbar-links">
-             <ul>
-                 <li><a href="content/login.html">      
+             <ul>   
                   <script>
-                    function userid() {
-                      firebase.auth().onAuthStateChanged((user) => {
-                        user = user.uid
-                        document.getElementById("myid").innerHTML = user;
-                      });
+                    // Get the current user object from Firebase Auth.
+                    const user = firebase.auth().currentUser;
+
+                    // Define a function to set the user ID in the HTML element.
+                    function setUserId() {
+                      // Get the HTML element by its ID.
+                      const userIdElement = document.getElementById('myid');
+                      
+                      // Check if there is a current user signed in.
+                      if (user) {
+                        // Get the user's email or display name.
+                        const displayName = user.registerUser;
+                        
+                        // Set the text content of the HTML element to the user's email or display name.
+                        userIdElement.textContent = registerUser;
+                      } else {
+                        // If no user is signed in, display "Guest" as the user ID.
+                        userIdElement.textContent = 'Guest';
+                      }
                     }
+
+                    // Call the setUserId() function when the window has finished loading.
+                    window.onload = setUserId;
+                    
                    </script>
 
                    <!--<label for="email">email</label>-->
                    <!--<span id="email"></span></a></li>-->
                    
-                 <li><a onload="userid()" href="#"><span id="myid"></span></a></li>
+                  <li><a href="#"><span id="myid"></span></a></li>
                  <li><a href="content/about.html">Contact Us</a></li>
                  <li><a href="https://mean-green-deal.github.io/" onclick="signOut()">Sign Out</a></li>
              </ul>
