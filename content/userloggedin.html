@@ -39,40 +39,7 @@
          <div class="navbar-links">
              <ul>   
                   <script>
-                    const firebaseConfig2 = {
-                        apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
-                        authDomain: "mean-green-deal-726f9.firebaseapp.com",
-                        projectId: "mean-green-deal-726f9",
-                        storageBucket: "mean-green-deal-726f9.appspot.com",
-                        messagingSenderId: "747867835951",
-                        appId: "1:747867835951:web:084db4a1feb703eafe00da",
-                        measurementId: "G-2QKNB5QXF4"
-                        };
-                    // Initialize Firebase
-                    firebase.initializeApp(firebaseConfig2);
-                    // Get the current user object from Firebase Auth.
-                    const user = firebase.auth().currentUser;
-
-                    // Define a function to set the user ID in the HTML element.
-                    function setUserId() {
-                      // Get the HTML element by its ID.
-                      const userIdElement = document.getElementById('myid');
-                      
-                      // Check if there is a current user signed in.
-                      if (user) {
-                        // Get the user's email or display name.
-                        const registerUser = user.registerUser;
-                        
-                        // Set the text content of the HTML element to the user's email or display name.
-                        userIdElement.textContent = registerUser;
-                      } else {
-                        // If no user is signed in, display "Guest" as the user ID.
-                        userIdElement.textContent = 'Guest';
-                      }
-                    }
-
-                    // Call the setUserId() function when the window has finished loading.
-                    window.onload = setUserId;
+                    
                     
                    </script>
 
@@ -187,6 +154,31 @@ const firebaseConfig = {
           console.log('Output tbody not found');
         }
       });
+
+
+      // Get the current user object from Firebase Auth.
+      const user = firebase.auth().currentUser;
+
+      // Define a function to set the user ID in the HTML element.
+      function setUserId() {
+        // Get the HTML element by its ID.
+        const userIdElement = document.getElementById('myid');
+  
+      // Check if there is a current user signed in.
+      if (user) {
+        // Get the user's email or display name.
+        const email = user.email;
+        
+        // Set the text content of the HTML element to the user's email or display name.
+        userIdElement.textContent = email
+      } else {
+        // If no user is signed in, display "Guest" as the user ID.
+        userIdElement.textContent = 'Guest';
+      }
+    }
+
+// Call the setUserId() function when the window has finished loading.
+window.onload = setUserId;
 </script>
 <!--End of leaderboard-->
 
