@@ -141,12 +141,13 @@ const firebaseConfig = {
       ref.once('value', function(snapshot) {
         // Get the data as an object
         var data = snapshot.val();
-
+        var position = 1;
         // Loop through the data and create HTML elements to display it
         var output = '';
         for (var key in data) {
           if (data.hasOwnProperty(key)) {
-            output += '<tr><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
+            output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
+            position++;
           }
         }
 
