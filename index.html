@@ -81,13 +81,13 @@ button1 {background-color: #1b6e3b;}
     table {
       margin-top: -35em;
       margin-right: 0em;
-      width: 1%;
+      width: 0.6%;
       float: right;
       text-align: center;
     }
     th, td {
-      font-size: 0.875em;
-      min-width: 1.25em;
+      font-size: 0.5em;
+      min-width: 1em;
     }
   }
     </style>
@@ -96,7 +96,7 @@ button1 {background-color: #1b6e3b;}
     <div>
       <table style="border-collapse: collapse;">
         <thead style="background-color: green; color: white;">
-          <tr><th>User</th><th>Points</th></tr>
+          <tr><th></th><th>User</th><th>Points</th></tr>
         </thead>
         <tbody id="output" style="background-color: green; color: white;">
         </tbody>
@@ -128,12 +128,13 @@ const firebaseConfig = {
       ref.once('value', function(snapshot) {
         // Get the data as an object
         var data = snapshot.val();
-
+        var position = 1;
         // Loop through the data and create HTML elements to display it
         var output = '';
         for (var key in data) {
           if (data.hasOwnProperty(key)) {
-            output += '<tr><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
+            output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
+            position++;
           }
         }
 
