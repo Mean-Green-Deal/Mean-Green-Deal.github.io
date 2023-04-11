@@ -61,7 +61,19 @@ const firebaseConfig = {
         Points : 0
       }
       // Push to Firebase Database
-      database_ref.child('users/' + user.uid).set(user_data)
+      //database_ref.child('users/' + user.uid).set(user_data)
+        //NEW REDIRECT//
+      set(ref(database_ref, 'users/'+ user.uid), {
+        registerEmail : registerEmail,
+        registerUser : registerUser,
+        last_login : Date.now(),
+        Points : 0
+      }).then(() => {
+        alert("Your Account has been created!")
+        window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html" 
+      });
+      //NEW REDIRECT//
+
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
