@@ -70,7 +70,7 @@ function initMap() {
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
     
     const infoWindow = new google.maps.InfoWindow({
-        content "bin",
+        content: "bin",
     });
     
     marker.addListener("click", () => {
