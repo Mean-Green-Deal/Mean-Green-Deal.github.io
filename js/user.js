@@ -169,7 +169,7 @@ function RequestBin(map) {
             id: user.uid
          };
          var database_ref = database.ref()
-         database_ref.child('RequestedBin/').set(pos)
+         database_ref.child('RequestedBin/').push(pos)
         }
         else{
           alert("User not logged in.")
