@@ -80,7 +80,7 @@ function initMap() {
   }
 
 function getLocation() {
-    infoWindow = new google.maps.InfoWindow();
+    //infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -91,16 +91,16 @@ function getLocation() {
           map.setCenter(location);
         },
         () => {
-          handleLocationError(true, infoWindow, map.getCenter());
+          //handleLocationError(true, infoWindow, map.getCenter());
         }
       );
     } else {
       // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+      //handleLocationError(false, infoWindow, map.getCenter());
     }
 }
 
-  function handleLocationError(browserHasGeolocation, infoWindow, location) {
+  /*function handleLocationError(browserHasGeolocation, infoWindow, location) {
   infoWindow.setPosition(location);
   infoWindow.setContent(
     browserHasGeolocation
@@ -109,6 +109,7 @@ function getLocation() {
   );
   infoWindow.open(map);
 }
+*/
 //copying sams header
 const toggleButton = document.getElementsByClassName('toggle-button')[0]
 const navbarLinks = document.getElementsByClassName('navbar-links')[0]
