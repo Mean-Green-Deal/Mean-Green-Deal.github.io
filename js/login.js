@@ -26,16 +26,15 @@ const firebaseConfig = {
           var user = auth.currentUser
           // Add this user to Firebase Database
           var database_ref = database.ref()
-          // Create User data
-          var user_data = {
-            last_login : Date.now()
-          }
-          // Push to Firebase Database
-          database_ref.child('users/' + user.uid).update(user_data)
-          // DOne
-          alert('User Logged In!!')
-          //window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
-          //window.location.href = "/content/userloggedin.html"
+          
+          update(ref(database_ref, 'users/'+ user.uid), {
+            last_login: Date.now()
+          }).then(() => {
+            alert('User Logged In!!')
+            window.location.href = "http://www.w3schools.com" 
+          });
+
+
       })
           .catch(function(error) {
               // Firebase will use this to alert of its errors
