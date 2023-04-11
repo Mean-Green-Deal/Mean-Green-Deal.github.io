@@ -27,8 +27,11 @@ const firebaseConfig = {
           // Add this user to Firebase Database
           var database_ref = database.ref()
 
-          update(ref(database_ref, 'users/'+ user.uid), {
-            last_login: Date.now()
+          var user_data = {
+            last_login : Date.now()
+          }
+          // Push to Firebase Database
+          database_ref.child('users/' + user.uid).update(user_data)({
           }).then(() => {
             alert('User Logged In!!')
             window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html" 
