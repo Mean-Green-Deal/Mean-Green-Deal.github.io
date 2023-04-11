@@ -116,7 +116,6 @@ const firebaseConfig = {
   measurementId: "G-2QKNB5QXF4"
 };
 
-
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
 
@@ -124,20 +123,31 @@ const firebaseConfig = {
       var database = firebase.database();
       var ref = database.ref('users');
 
-      // Read the data
       ref.once('value', function(snapshot) {
         // Get the data as an object
         var data = snapshot.val();
         var position = 1;
-        // Loop through the data and create HTML elements to display it
-        var output = '';
-        for (var key in data) {
-          if (data.hasOwnProperty(key)) {
-            output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + data[key].Points + '</td></tr>';
-            position++;
-          }
-        }
 
+        // Convert the data object into an array of objects
+        var dataArray = Object.keys(data).map(function(key) {
+          return {
+            key: key,
+            registerUser: data[key].registerUser,
+            Points: data[key].Points
+          };
+        });
+
+        // Sort the array in descending order based on Points
+        dataArray.sort(function(a, b) {
+          return b.Points - a.Points;
+        });
+
+        // Loop through the sorted array and create HTML elements to display it
+        var output = '';
+        for (var i = 0; i < dataArray.length; i++) {
+          output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].Points + '</td></tr>';
+          position++;
+        }
         // Display the output on the web page
         var outputTbody = document.getElementById('output');
         if (outputTbody) {
