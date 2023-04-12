@@ -168,20 +168,19 @@ const firebaseConfig = {
       });
 
 //FIX HERE
-  const user = firebase.auth().currentUser;
-  const userIdElement = document.getElementById('myid');
-
-  // Check if there is a current user signed in.
-  if (user) {
-    // Get the user's email.
-    const email = user.email;
-
-    // Set the HTML content of the span element to the user's email.
-    userIdElement.innerHTML = email;
-  } else {
-    // If no user is signed in, display "Guest" as the user ID.
-    userIdElement.innerHTML = 'Guest';
-  }
+firebase.auth().onAuthStateChanged(function(user) {
+    const userIdElement = document.getElementById('myid');
+    // Check if there is a current user signed in.
+    if (user) {
+      // Get the user's email.
+      const email = user.email;
+      // Set the HTML content of the span element to the user's email.
+      userIdElement.innerHTML = email;
+    } else {
+      // If no user is signed in, display "Guest" as the user ID.
+      userIdElement.innerHTML = 'Guest';
+    }
+  });
    //FIX HERE
 </script>
 <!--End of leaderboard-->
