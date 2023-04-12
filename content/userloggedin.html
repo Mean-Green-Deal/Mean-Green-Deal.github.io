@@ -45,7 +45,7 @@
 
                    <!--<label for="email">email</label>-->
                    <!--<span id="email"></span></a></li>-->
-                   
+                   <!--Fix Here-->
                   <li><a href="#"><span id="myid"></span></a></li>
                  <li><a href="content/about.html">Contact Us</a></li>
                  <li><a href="https://mean-green-deal.github.io/" onclick="signOut()">Sign Out</a></li>
@@ -167,23 +167,21 @@ const firebaseConfig = {
         }
       });
 
-
+//FIX HERE
       // Get the current user object from Firebase Auth.
-      const user = firebase.auth().currentUser;
-      const userIdElement = document.getElementById('myid');
-  
-      // Check if there is a current user signed in.
+      firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        // Get the user's email.
+    // If user is signed in, get the user's email.
         const email = user.email;
-    
-      // Set the HTML content of the span element to the user's email.
+
+    // Set the HTML content of the span element to the user's email.
       userIdElement.innerHTML = email;
     } else {
-      // If no user is signed in, display "Guest" as the user ID.
+    // If no user is signed in, display "Guest" as the user ID.
       userIdElement.innerHTML = 'Guest';
-    }
-   
+  }
+});
+   //FIX HERE
 </script>
 <!--End of leaderboard-->
 
