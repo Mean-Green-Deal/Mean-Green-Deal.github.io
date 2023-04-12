@@ -31,27 +31,20 @@ const firebaseConfig = {
             last_login : Date.now()
           }
           // Push to Firebase Database
-          database_ref.child('users/' + user.uid).update(user_data)
+    var updatePromise = database_ref.child('users/' + user.uid).update(user_data)
 
-          /*
-          ({
-          }).then(() => {
-            alert('User Logged In!!')
-            window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html" 
-          });
-*/
+    // Return the update promise
+    return updatePromise;
+  }).then(() => {
+    alert('User Logged In!!')
+    window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+  }).catch(function(error) {
+    // Firebase will use this to alert of its errors
+    alert(error.message)
+    //location.href = "https://mean-green-deal.github.io";
+  });
+}
 
-      }).then(() => {
-        setTimeout(() => {  window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";  }, 5000);
-        alert('User Logged In!!')
-      })
-          .catch(function(error) {
-              // Firebase will use this to alert of its errors
-              alert(error.message)
-              //location.href = "https://mean-green-deal.github.io";
-            });
-
-  }
   function registerUser() {
     var registerUser = document.getElementById("newUser").value
     var registerEmail = document.getElementById("newEmail").value
