@@ -193,6 +193,7 @@ toggleButton.addEventListener('click', () => {
 
 window.onload = getLocation;
 window.initMap = initMap;
+
   function signOut(){
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -201,11 +202,14 @@ window.initMap = initMap;
     const database = firebase.database()
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
-      alert("signed out")
+    }).then(() => {
+      alert('User Signed Out!!')
+      window.location.href = "https://mean-green-deal.github.io/"
     }).catch((error) => {
       // An error happened.
     });
 }
+
 function Recycle(map) {
   const controlButton = document.createElement("button");
   const bins = [
