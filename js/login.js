@@ -65,24 +65,17 @@ const firebaseConfig = {
       // Push to Firebase Database
       //database_ref.child('users/' + user.uid).set(user_data)
         //NEW REDIRECT//
-      set(ref(database_ref, 'users/'+ user.uid), {
-        registerEmail : registerEmail,
-        registerUser : registerUser,
-        last_login : Date.now(),
-        Points : 0
-      }).then(() => {
-        alert("Your Account has been created!")
-        window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html" 
-      });
+        var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
       //NEW REDIRECT//
-
-    })
-    .catch(function(error) {
-      // Firebase will use this to alert of its errors
-      var error_code = error.code
-      var error_message = error.message
-      alert(error_message)
-    })
+        return updatePromise;
+    }).then(() => {
+        alert('User Logged In!!')
+        window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+      }).catch(function(error) {
+        // Firebase will use this to alert of its errors
+        alert(error.message)
+        //location.href = "https://mean-green-deal.github.io";
+      });
     expression = /^[^@]+@\w+(\.\w+)+\w$/
 
     if (expression.test(registerEmail) == false || registerPassword < 6) {
