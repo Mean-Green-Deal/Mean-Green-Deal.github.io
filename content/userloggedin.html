@@ -168,19 +168,20 @@ const firebaseConfig = {
       });
 
 //FIX HERE
-      // Get the current user object from Firebase Auth.
-      firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-    // If user is signed in, get the user's email.
-        const email = user.email;
+const user = firebase.auth().currentUser;
+  const userIdElement = document.getElementById('myid');
+
+  // Check if there is a current user signed in.
+  if (user) {
+    // Get the user's email.
+    const email = user.email;
 
     // Set the HTML content of the span element to the user's email.
-      userIdElement.innerHTML = email;
-    } else {
+    userIdElement.innerHTML = email;
+  } else {
     // If no user is signed in, display "Guest" as the user ID.
-      userIdElement.innerHTML = 'Guest';
+    userIdElement.innerHTML = 'Guest';
   }
-});
    //FIX HERE
 </script>
 <!--End of leaderboard-->
