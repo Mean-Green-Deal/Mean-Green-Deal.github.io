@@ -62,7 +62,7 @@ function initMap() {
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
-          
+        /*  
         const infoWindow = new google.maps.InfoWindow({
         content: bin[0],
         });
@@ -70,7 +70,7 @@ function initMap() {
         marker.addListener("click", () => {
         infowindow.open(map, marker);
         });    
-          
+          */
       });
       
       /*  
