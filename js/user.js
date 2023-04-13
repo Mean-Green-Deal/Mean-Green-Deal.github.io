@@ -62,6 +62,15 @@ function initMap() {
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
+          
+        const infoWindow = new google.maps.InfoWindow({
+        content: bin[0],
+        });
+    
+        marker.addListener("click", () => {
+        infowindow.open(map, marker);
+        });    
+          
       });
       
       /*  
@@ -125,7 +134,7 @@ function getLocation() {
       handleLocationError(false, infoWindow, map.getCenter());
     }
 }
-
+/*
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(
@@ -135,6 +144,7 @@ function getLocation() {
   );
   infoWindow.open(map);
 }
+*/
 
 //Request bin button
 function RequestBin(map) {
