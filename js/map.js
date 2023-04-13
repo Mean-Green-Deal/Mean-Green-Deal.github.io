@@ -101,7 +101,7 @@ function getLocation() {
     }
 }
 
-  /*function handleLocationError(browserHasGeolocation, infoWindow, location) {
+  function handleLocationError(browserHasGeolocation, infoWindow, location) {
   infoWindow.setPosition(location);
   infoWindow.setContent(
     browserHasGeolocation
@@ -110,7 +110,7 @@ function getLocation() {
   );
   infoWindow.open(map);
 }
-*/
+
 //copying sams header
 const toggleButton = document.getElementsByClassName('toggle-button')[0]
 const navbarLinks = document.getElementsByClassName('navbar-links')[0]
