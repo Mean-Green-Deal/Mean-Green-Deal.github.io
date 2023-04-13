@@ -58,6 +58,15 @@ function initMap() {
         },
         title: bin[0],
       });
+        
+        
+      const infoWindow = new google.maps.InfoWindow({
+        content: bin[0],
+        });
+    
+        marker.addListener("click", () => {
+        infowindow.open(map, marker);
+        });      
       }
     
     // Create the DIV to hold the control.
@@ -68,14 +77,6 @@ function initMap() {
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
-    
-    const infoWindow = new google.maps.InfoWindow({
-        content: bin[0],
-    });
-    
-    marker.addListener("click", () => {
-        infowindow.open(map, marker);
-    });    
     
   }
 
