@@ -88,7 +88,7 @@ function initMap() {
     //const customControl1  = Recycle(map);
     var customControl1 = new Recycle(map);
     customControl1.index = 2;
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(customControlDiv1);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(customControlDiv1);
     // Create the control.
     
     
