@@ -69,7 +69,7 @@ function initMap() {
         });
     
         marker.addListener("click", () => {
-        infowindow.open(map, marker);
+        infoWindow.open(map, marker);
         });    
      
       }
@@ -109,7 +109,6 @@ function getLocation() {
           };
           infoWindow.setPosition(pos);
           infoWindow.setContent("Location found.");
-          //infoWindow.open(map);
           map.setCenter(pos);
         },
         () => {
@@ -121,7 +120,7 @@ function getLocation() {
       handleLocationError(false, infoWindow, map.getCenter());
     }
 }
-/*
+
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(
@@ -131,7 +130,7 @@ function getLocation() {
   );
   infoWindow.open(map);
 }
-*/
+
 
 //Request bin button
 function RequestBin(map) {
