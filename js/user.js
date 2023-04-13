@@ -252,13 +252,14 @@ function Recycle(map) {
   controlButton.textContent = "I Recycled";
   controlButton.title = "I Recycled";
   controlButton.type = "button";
+  /*
   if (screen.width < 600) {
     // execute some code if the screen size is less than 600 pixels
     controlButton.style.width = "100%";
     controlButton.style.fontSize = "5px";
 
   }
-  
+  */
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
