@@ -65,7 +65,7 @@ function initMap() {
         });
     
         marker.addListener("click", () => {
-        if (infoWindow.open(map, marker) {
+        if ((infoWindow.open(map, marker)) {
             infoWindow.close();
         }
         else {
