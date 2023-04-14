@@ -65,7 +65,11 @@ function initMap() {
         });
     
         marker.addListener("click", () => {
-        infoWindow.open(map, marker);
+        if (infoWindow.open(map, marker) {
+            infoWindow.close();
+        }
+        else {
+            infoWindow.open(map, marker);               
         });      
       }
     
