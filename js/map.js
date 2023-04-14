@@ -69,7 +69,8 @@ function initMap() {
             infoWindow.close();
         }
         else {
-            infoWindow.open(map, marker);               
+            infoWindow.open(map, marker);   
+        }
         });      
       }
     
