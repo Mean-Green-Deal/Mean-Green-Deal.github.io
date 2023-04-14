@@ -65,7 +65,7 @@ function initMap() {
         });
     
         marker.addListener("click", () => {
-        if ((infoWindow.open(map, marker)) {
+        if (isInfoWindowOpen(infoWindow)) {
             infoWindow.close();
         }
         else {
@@ -74,6 +74,12 @@ function initMap() {
         });      
       }
     
+    function isInfoWindowOpen(infoWindow){
+    var map = infoWindow.getMap();
+    return (map !== null && typeof map !== "undefined");
+    }
+  
+      
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
