@@ -262,18 +262,23 @@ function Recycle(map) {
     navigator.geolocation.getCurrentPosition((position) => {
     firebase.auth().onAuthStateChanged((user) => {
       var database_ref = database.ref()
+      var break_count = 0;
       if (user) {
         const lat = position.coords.latitude
         const lng = position.coords.longitude
-        alert("user is defined")
       for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
-          if((bin[1]-0.0001 < lat < bin[1]+0.0001) && (bin[2]-0.0001 < lng < bin[2]+0.0001)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
+          if((bin[1]-0.001 < lat < bin[1]+0.001) && (bin[2]-0.001 < lng < bin[2]+0.001)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
             firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
             alert("Congrats you are awarded 1 point.")
             break
           }
           else{
+            break_count++
+            //alert("You are not near a bin")
+            //break
+          }
+          if(break_count == bins.length){
             alert("You are not near a bin")
             break
           }
