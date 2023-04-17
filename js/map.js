@@ -1,5 +1,4 @@
-let map
-var infoWindow = null;
+let map, infoWindow
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -61,7 +60,7 @@ function initMap() {
       });
         
         
-        infoWindow = new google.maps.InfoWindow({
+        const infoWindow = new google.maps.InfoWindow({
         content: bin[0],
         });
     
