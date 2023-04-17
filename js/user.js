@@ -268,7 +268,7 @@ function Recycle(map) {
         const lng = position.coords.longitude
       for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
-          if((bin[1]-0.001 < lat < bin[1]+0.001) && (bin[2]-0.001 < lng < bin[2]+0.001)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
+          if((bin[1]-0.01 < lat < bin[1]+0.01) && (bin[2]-0.01 < lng < bin[2]+0.01)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
             firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
             alert("Congrats you are awarded 1 point.")
             break
