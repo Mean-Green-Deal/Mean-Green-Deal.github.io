@@ -70,7 +70,7 @@ function initMap() {
             currentInfoWindow.close();
         }
         else {
-            infoWindow.open(map, marker);]
+            infoWindow.open(map, marker);
             currentInfoWindow = infoWindow;
         }
         });      
