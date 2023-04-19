@@ -76,8 +76,7 @@ function initMap() {
         
         marker.addListener("click", () => {
             
-             directionsService.route(
-              {
+             directionsService.route({
                 // origin: document.getElementById('start').value,
                 origin: myLatLng,
                 destination: {
@@ -92,8 +91,7 @@ function initMap() {
                 } else {
                   window.alert("Directions request failed due to " + status);
                 }
-              }
-            
+              });
         
             infoWindows.forEach((iw) => {
                 iw.close();
