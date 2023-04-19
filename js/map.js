@@ -83,7 +83,7 @@ function initMap() {
                     lat: bin[1],
                     lng: bin[2]
                 }    
-                travelMode: 'WALKING',
+                travelMode: 'WALKING'
               },
               function (response, status) {
                 if (status === "OK") {
