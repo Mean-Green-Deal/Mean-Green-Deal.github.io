@@ -79,7 +79,7 @@ function initMap() {
             });
             infoWindow.open(map, marker);
         });
-      }
+     
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
