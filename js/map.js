@@ -2,6 +2,8 @@ let map, infoWindow
 let infoWindows = []
 
 function initMap() {
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const directionsService = new google.maps.DirectionsService();
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
       zoom: 14.7,
@@ -17,6 +19,12 @@ function initMap() {
           ] 
         }
       ]
+        
+     directionsRenderer.setMap(map);
+     calculateAndDisplayRoute(directionsService, directionsRenderer);
+     document.getElementById("mode").addEventListener("change", () => {
+     calculateAndDisplayRoute(directionsService, directionsRenderer);
+  });   
     });
     google.maps.event.addDomListener(window, "resize", function() {
       var center = map.getCenter();
@@ -48,12 +56,6 @@ function initMap() {
       ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
     ];
     
-        
-    var directionsService = new google.maps.DirectionsService();
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-    
-    directionsDisplay.setMap(map);  
-   
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
   
@@ -75,37 +77,29 @@ function initMap() {
         infoWindows.push(infoWindow);
         
         marker.addListener("click", () => {
-            
-             directionsService.route({
-                // origin: document.getElementById('start').value,
-                origin: location,
-                destination: {
-                    lat: bin[1],
-                    lng: bin[2]
-                }    
-                travelMode: google.maps.TravelMode[WALKING],
-              },
-              function (response, status) {
-                if (status === "OK") {
-                  directionsDisplay.setDirections(response);
-                } else {
-                  window.alert("Directions request failed due to " + status);
-                }
-              });
-        
             infoWindows.forEach((iw) => {
                 iw.close();
             });
-            
             infoWindow.open(map, marker);
+            function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+              const selectedMode = document.getElementById("mode").value;
+
+              directionsService
+                .route({
+                  origin: location,
+                  destination: { lat: bin[1], lng: bin[2] },
+                  // Note that Javascript allows us to access the constant
+                  // using square brackets and a string value as its
+                  // "property."
+                  travelMode: google.maps.TravelMode.WALKING,
+                })
+                .then((response) => {
+                  directionsRenderer.setDirections(response);
+                })
+                .catch((e) => window.alert("Directions request failed due to " + status));
+            }
         });    
       }
-    
-      var directionsService = new google.maps.DirectionsService();
-      var directionsDisplay = new google.maps.DirectionsRenderer();
-    
-      directionsDisplay.setMap(map);      
-    
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
