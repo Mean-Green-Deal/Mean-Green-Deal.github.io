@@ -82,7 +82,7 @@ function initMap() {
                 origin: myLatLng,
                 destination: {
                     lat: bin[1],
-                    lng: bin[2]g
+                    lng: bin[2]
                 }    
                 travelMode: "walking",
               },
