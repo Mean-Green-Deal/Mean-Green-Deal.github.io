@@ -78,12 +78,12 @@ function initMap() {
             
              directionsService.route({
                 // origin: document.getElementById('start').value,
-                origin: myLatLng,
+                origin: location,
                 destination: {
                     lat: bin[1],
                     lng: bin[2]
                 }    
-                travelMode: 'WALKING'
+                travelMode: google.maps.TravelMode[WALKING],
               },
               function (response, status) {
                 if (status === "OK") {
