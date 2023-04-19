@@ -69,7 +69,7 @@ function initMap() {
         
         marker.addListener("click", () => {
         
-            infoWindows.forEach((iw). => {
+            infoWindows.forEach((iw) => {
                 iw.close();
             });
             
