@@ -20,7 +20,7 @@ function initMap() {
         }
       ]
         
-     directionsRenderer.setMap(map);
+     //directionsRenderer.setMap(map);
      calculateAndDisplayRoute(directionsService, directionsRenderer);
      document.getElementById("mode").addEventListener("change", () => {
      calculateAndDisplayRoute(directionsService, directionsRenderer);
