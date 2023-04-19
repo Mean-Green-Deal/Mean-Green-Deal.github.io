@@ -21,9 +21,6 @@ function initMap() {
       ]
         
      //directionsRenderer.setMap(map);
-     calculateAndDisplayRoute(directionsService, directionsRenderer);
-     document.getElementById("mode").addEventListener("change", () => {
-     calculateAndDisplayRoute(directionsService, directionsRenderer);
   });   
     });
     google.maps.event.addDomListener(window, "resize", function() {
@@ -81,6 +78,9 @@ function initMap() {
                 iw.close();
             });
             infoWindow.open(map, marker);
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
+            document.getElementById("mode").addEventListener("change", () => {
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
             function calculateAndDisplayRoute(directionsService, directionsRenderer) {
               const selectedMode = document.getElementById("mode").value;
 
