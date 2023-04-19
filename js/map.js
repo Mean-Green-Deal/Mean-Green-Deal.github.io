@@ -22,7 +22,7 @@ function initMap() {
         
      //directionsRenderer.setMap(map);
   });   
-}
+
     google.maps.event.addDomListener(window, "resize", function() {
       var center = map.getCenter();
       google.maps.event.trigger(map, "resize");
@@ -73,7 +73,7 @@ function initMap() {
     
         infoWindows.push(infoWindow);
         
-        marker.addListener("click", () => {
+        marker.addListener("click"), () => {
             infoWindows.forEach((iw) => {
                 iw.close();
             });
@@ -110,7 +110,7 @@ function initMap() {
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
     
   }
-
+}
 function getLocation() {
     //infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
