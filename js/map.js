@@ -1,5 +1,5 @@
 let map, infoWindow
-let currentInfoWindow = null;
+let infoWindows = []
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -65,15 +65,16 @@ function initMap() {
         content: bin[0],
         });
     
+        infoWindows.push(infoWindow);
+        
         marker.addListener("click", () => {
-        if (currentInfoWindow) {
-            currentInfoWindow.close();
-        }
-        else {
+        
+            infoWindows.forEach((iw). => {
+                iw.close();
+            });
+            
             infoWindow.open(map, marker);
-            currentInfoWindow = infoWindow;
-        }
-        });      
+        });    
       }
     
     function isInfoWindowOpen(infoWindow){
