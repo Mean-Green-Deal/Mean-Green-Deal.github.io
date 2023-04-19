@@ -47,6 +47,13 @@ function initMap() {
       ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
       ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
     ];
+    
+        
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    
+    directionsDisplay.setMap(map);  
+   
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
   
@@ -68,6 +75,25 @@ function initMap() {
         infoWindows.push(infoWindow);
         
         marker.addListener("click", () => {
+            
+             directionsService.route(
+              {
+                // origin: document.getElementById('start').value,
+                origin: myLatLng,
+                destination: {
+                    lat: bin[1],
+                    lng: bin[2]g
+                }    
+                travelMode: "walking",
+              },
+              function (response, status) {
+                if (status === "OK") {
+                  directionsDisplay.setDirections(response);
+                } else {
+                  window.alert("Directions request failed due to " + status);
+                }
+              }
+            
         
             infoWindows.forEach((iw) => {
                 iw.close();
@@ -77,12 +103,11 @@ function initMap() {
         });    
       }
     
-    function isInfoWindowOpen(infoWindow){
-    var map = infoWindow.getMap();
-    return (map !== null && typeof map !== "undefined");
-    }
-  
-      
+      var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+    
+      directionsDisplay.setMap(map);      
+    
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
