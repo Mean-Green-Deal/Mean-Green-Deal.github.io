@@ -1,7 +1,9 @@
 let map, infoWindow
-let currentInfoWindow = null;
+let infoWindows = []
 
 function initMap() {
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const directionsService = new google.maps.DirectionsService();
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
       zoom: 14.7,
@@ -17,6 +19,9 @@ function initMap() {
           ] 
         }
       ]
+        
+     //directionsRenderer.setMap(map);
+  });   
     });
     google.maps.event.addDomListener(window, "resize", function() {
       var center = map.getCenter();
@@ -47,6 +52,7 @@ function initMap() {
       ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
       ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
     ];
+    
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
   
@@ -65,23 +71,35 @@ function initMap() {
         content: bin[0],
         });
     
+        infoWindows.push(infoWindow);
+        
         marker.addListener("click", () => {
-        if (currentInfoWindow) {
-            currentInfoWindow.close();
-        }
-        else {
+            infoWindows.forEach((iw) => {
+                iw.close();
+            });
             infoWindow.open(map, marker);
-            currentInfoWindow = infoWindow;
-        }
-        });      
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
+            document.getElementById("mode").addEventListener("change", () => {
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
+            function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+              const selectedMode = document.getElementById("mode").value;
+
+              directionsService
+                .route({
+                  origin: location,
+                  destination: { lat: bin[1], lng: bin[2] },
+                  // Note that Javascript allows us to access the constant
+                  // using square brackets and a string value as its
+                  // "property."
+                  travelMode: google.maps.TravelMode.WALKING,
+                })
+                .then((response) => {
+                  directionsRenderer.setDirections(response);
+                })
+                .catch((e) => window.alert("Directions request failed due to " + status));
+            }
+        });    
       }
-    
-    function isInfoWindowOpen(infoWindow){
-    var map = infoWindow.getMap();
-    return (map !== null && typeof map !== "undefined");
-    }
-  
-      
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
