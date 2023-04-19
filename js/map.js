@@ -78,26 +78,6 @@ function initMap() {
                 iw.close();
             });
             infoWindow.open(map, marker);
-            calculateAndDisplayRoute(directionsService, directionsRenderer);
-            document.getElementById("mode").addEventListener("change", () => {
-            calculateAndDisplayRoute(directionsService, directionsRenderer);
-            function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-              const selectedMode = document.getElementById("mode").value;
-
-              directionsService
-                .route({
-                  origin: location,
-                  destination: { lat: bin[1], lng: bin[2] },
-                  // Note that Javascript allows us to access the constant
-                  // using square brackets and a string value as its
-                  // "property."
-                  travelMode: google.maps.TravelMode.WALKING,
-                })
-                .then((response) => {
-                  directionsRenderer.setDirections(response);
-                })
-                .catch((e) => window.alert("Directions request failed due to " + status));
-            }
         });    
       }
     // Create the DIV to hold the control.
