@@ -1,5 +1,7 @@
 let map, infoWindow
 let infoWindows = []
+let directionsService = new google.maps.DirectionsService()
+let directionsRenderer = new google.maps.DirectionsRenderer()
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -68,12 +70,25 @@ function initMap() {
         infoWindows.push(infoWindow);
         
         marker.addListener("click", () => {
+            var location = getLocation();
             
             infoWindows.forEach((iw) => {
                 iw.close();
             });
             
             infoWindow.open(map, marker);
+            
+            const request = {
+                origin: location,
+                desination: marker.getPosition(),
+                travelMode: google.maps.TravelMode.WALKING,
+            };
+            directionsService.route(request, (result, status) => {
+                if (status = google.maps.DirectionsStatus.OK) {
+                    directionsRenderer.setDirections(result);
+                    directionsRenderer.setMap(map);
+                }
+            });
         });    
       }
     
