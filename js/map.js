@@ -3,6 +3,7 @@ let infoWindows = []
 //let directionsService = new google.maps.DirectionsService()
 //let directionsRenderer = new google.maps.DirectionsRenderer()
 
+
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
