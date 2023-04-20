@@ -2,8 +2,6 @@ let map, infoWindow
 let infoWindows = []
 
 function initMap() {
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    const directionsService = new google.maps.DirectionsService();
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
       zoom: 14.7,
@@ -19,10 +17,7 @@ function initMap() {
           ] 
         }
       ]
-        
-     //directionsRenderer.setMap(map);
-  });   
-
+    });
     google.maps.event.addDomListener(window, "resize", function() {
       var center = map.getCenter();
       google.maps.event.trigger(map, "resize");
@@ -52,7 +47,7 @@ function initMap() {
       ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
       ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
     ];
-    
+   
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
   
@@ -66,19 +61,22 @@ function initMap() {
         title: bin[0],
       });
         
-        
         const infoWindow = new google.maps.InfoWindow({
         content: bin[0],
         });
     
         infoWindows.push(infoWindow);
         
-        marker.addListener("click"), () => {
+        marker.addListener("click", () => {
+            
             infoWindows.forEach((iw) => {
                 iw.close();
             });
+            
             infoWindow.open(map, marker);
+        });    
       }
+    
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
@@ -89,7 +87,7 @@ function initMap() {
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
     
   }
-}
+
 function getLocation() {
     //infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
@@ -140,4 +138,3 @@ window.initMap = initMap;
 //root.render(e(LikeButton));
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
-  
