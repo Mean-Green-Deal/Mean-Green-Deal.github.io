@@ -74,6 +74,19 @@ function initMap() {
             var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
             
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const  location = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+                 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            },
+            () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+              }
+            );
+            
             infoWindows.forEach((iw) => {
                 iw.close();
             });
