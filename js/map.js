@@ -77,6 +77,18 @@ function initMap() {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                        startLocation = new google.maps.LatLng(position.coords.latitiude, position.coords.longitude);
+                    
+                const request = {
+                        origin: startLocation,
+                        destination: endLocation,
+                        travelMode: google.maps.TravelMode.WALKING,
+                };
+                directionsService.route(request, (result, status) => {
+                    if (status = google.maps.DirectionsStatus.OK) {
+                        directionsRenderer.setDirections(result);
+                        directionsRenderer.setMap(map);
+                    }
+                });
             },
             () => {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -89,17 +101,7 @@ function initMap() {
             
             infoWindow.open(map, marker);
             
-            const request = {
-                origin: startLocation,
-                destination: endLocation,
-                travelMode: google.maps.TravelMode.WALKING,
-            };
-            directionsService.route(request, (result, status) => {
-                if (status = google.maps.DirectionsStatus.OK) {
-                    directionsRenderer.setDirections(result);
-                    directionsRenderer.setMap(map);
-                }
-            });
+           
         });    
       }
     /*
