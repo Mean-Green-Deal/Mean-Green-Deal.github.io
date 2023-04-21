@@ -77,7 +77,6 @@ function initMap() {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                        startLocation = new google.maps.LatLng(position.coords.latitiude, position.coords.longitude);
-                    };
             },
             () => {
                 handleLocationError(true, infoWindow, map.getCenter());
