@@ -76,7 +76,7 @@ function initMap() {
             
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                       startLocation = new google.maps.LatLng(position.coords.latitiude, position.coords.longitude);
+                       startLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     
                 const request = {
                         origin: startLocation,
