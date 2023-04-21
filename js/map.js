@@ -5,7 +5,7 @@ let infoWindows = []
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
-      zoom: 20,
+      zoom: 15,
       mapid: '576037077fe48406',
       mapTypeControl: false,
       fullscreenControl: false,
