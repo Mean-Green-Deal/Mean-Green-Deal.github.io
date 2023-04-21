@@ -1,7 +1,7 @@
 let map, infoWindow
 let infoWindows = []
-let directionsService = new google.maps.DirectionsService();
-let directionsRenderer = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
+var directionsRenderer = new google.maps.DirectionsRenderer();
 
 
 function initMap() {
