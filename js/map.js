@@ -68,8 +68,6 @@ function initMap() {
     
         infoWindows.push(infoWindow);
         
-        let currentRoute = null;
-        
         marker.addListener("click", () => {
             let directionsService = new google.maps.DirectionsService();
             let directionsRenderer = new google.maps.DirectionsRenderer({
@@ -77,6 +75,10 @@ function initMap() {
             });
             var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
             var startLocation;
+            
+            if (directionsRenderer.getMap()) {
+                directionsRenderer.setMap(null);
+            }
             
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -91,13 +93,8 @@ function initMap() {
                 directionsRenderer.setDirections(null);    
                 directionsService.route(request, (result, status) => {
                     if (status == google.maps.DirectionsStatus.OK) {
-                        
-                        if(currentRoute) {
-                            currentRoute.setMap(null);
-                        }
                         directionsRenderer.setDirections(result);
                         directionsRenderer.setMap(map);
-                        currentRoute = directionsRenderer;
                     }
                 });
             },
