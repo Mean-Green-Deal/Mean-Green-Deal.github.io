@@ -124,7 +124,6 @@ function getLocation() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
-    return location;
 }
 
   function handleLocationError(browserHasGeolocation, infoWindow, location) {
