@@ -75,11 +75,10 @@ function initMap() {
             
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const  location = {
+                    var startLocation = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                     };
-                 var startLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             },
             () => {
                 handleLocationError(true, infoWindow, map.getCenter());
