@@ -1,7 +1,5 @@
 let map, infoWindow
 let infoWindows = []
-var directionsService = new google.maps.DirectionsService();
-var directionsRenderer = new google.maps.DirectionsRenderer();
 
 
 function initMap() {
@@ -71,6 +69,8 @@ function initMap() {
         infoWindows.push(infoWindow);
         
         marker.addListener("click", () => {
+            let directionsService = new google.maps.DirectionsService();
+            let directionsRenderer = new google.maps.DirectionsRenderer();
             var location = getLocation();
             
             infoWindows.forEach((iw) => {
