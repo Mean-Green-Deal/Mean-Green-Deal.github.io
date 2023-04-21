@@ -71,7 +71,6 @@ function initMap() {
         marker.addListener("click", () => {
             let directionsService = new google.maps.DirectionsService();
             let directionsRenderer = new google.maps.DirectionsRenderer();
-            var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
             
             navigator.geolocation.getCurrentPosition(
