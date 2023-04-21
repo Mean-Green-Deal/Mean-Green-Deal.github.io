@@ -80,8 +80,8 @@ function initMap() {
             infoWindow.open(map, marker);
             
             const request = {
-                origin: location,
-                desination: marker.getPosition(),
+                origins: location,
+                destination: marker.getPosition(),
                 travelMode: google.maps.TravelMode.WALKING,
             };
             directionsService.route(request, (result, status) => {
