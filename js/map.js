@@ -86,10 +86,10 @@ function initMap() {
                         travelMode: google.maps.TravelMode.WALKING,
                 };
 
-                directionsRenderer.setMap(null);
                     
                 directionsService.route(request, (result, status) => {
-                    if (status = google.maps.DirectionsStatus.OK) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsRenderer.setMap(null);
                         directionsRenderer.setDirections(result);
                         directionsRenderer.setMap(map);
                     }
