@@ -1,13 +1,11 @@
 let map, infoWindow
 let infoWindows = []
-var directionsService = new google.maps.DirectionsService();
-var directionsRenderer = new google.maps.DirectionsRenderer();
 
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
-      zoom: 14.7,
+      zoom: 20,
       mapid: '576037077fe48406',
       mapTypeControl: false,
       fullscreenControl: false,
@@ -71,6 +69,8 @@ function initMap() {
         infoWindows.push(infoWindow);
         
         marker.addListener("click", () => {
+            let directionsService = new google.maps.DirectionsService();
+            let directionsRenderer = new google.maps.DirectionsRenderer();
             var location = getLocation();
             
             infoWindows.forEach((iw) => {
@@ -92,7 +92,7 @@ function initMap() {
             });
         });    
       }
-    
+    /*
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
@@ -101,7 +101,7 @@ function initMap() {
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
-    
+    */
   }
 
 function getLocation() {
