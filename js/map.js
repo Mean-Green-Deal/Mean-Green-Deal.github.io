@@ -85,17 +85,13 @@ function initMap() {
                         destination: endLocation,
                         travelMode: google.maps.TravelMode.WALKING,
                 };
-                    
-                let newDirectionsRenderer = new google.maps.DirectionsRenderer ({
-                    suppressMarkers: true
-                });
+
+                directionsRenderer.setMap(null);
                     
                 directionsService.route(request, (result, status) => {
                     if (status = google.maps.DirectionsStatus.OK) {
-                        newDirectionsRenderer.setDirections(result);
-                        newDirectionsRenderer.setMap(map);
-                        directionsRenderer.setMap(null);
-                        directionsRenderer = newDirectionsRenderer;
+                        directionsRenderer.setDirections(result);
+                        directionsRenderer.setMap(map);
                     }
                 });
             },
