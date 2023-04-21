@@ -87,7 +87,7 @@ function initMap() {
                 };
                 directionsService.route(request, (result, status) => {
                     if (status = google.maps.DirectionsStatus.OK) {
-                        directionsRenderer.setDirections({routes: []});
+                        directionsRenderer.setMap(null);
                         directionsRenderer.setMap(map);
                         directionsRenderer.setDirections(result);
                     }
