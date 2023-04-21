@@ -80,7 +80,7 @@ function initMap() {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                     };
-                 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                 var startLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             },
             () => {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -94,7 +94,7 @@ function initMap() {
             infoWindow.open(map, marker);
             
             const request = {
-                origin: location,
+                origin: startLocation,
                 destination: endLocation,
                 travelMode: google.maps.TravelMode.WALKING,
             };
