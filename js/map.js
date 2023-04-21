@@ -72,6 +72,7 @@ function initMap() {
             let directionsService = new google.maps.DirectionsService();
             let directionsRenderer = new google.maps.DirectionsRenderer();
             var location = getLocation();
+            var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
             
             infoWindows.forEach((iw) => {
                 iw.close();
@@ -81,7 +82,7 @@ function initMap() {
             
             const request = {
                 origin: location,
-                destination: marker.getPosition(),
+                destination: endLocation,
                 travelMode: google.maps.TravelMode.WALKING,
             };
             directionsService.route(request, (result, status) => {
@@ -116,13 +117,14 @@ function getLocation() {
           map.setCenter(location);
         },
         () => {
-          //handleLocationError(true, infoWindow, map.getCenter());
+          handleLocationError(true, infoWindow, map.getCenter());
         }
       );
     } else {
       // Browser doesn't support Geolocation
-      //handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, infoWindow, map.getCenter());
     }
+    return location;
 }
 
   function handleLocationError(browserHasGeolocation, infoWindow, location) {
