@@ -70,7 +70,9 @@ function initMap() {
         
         marker.addListener("click", () => {
             let directionsService = new google.maps.DirectionsService();
-            let directionsRenderer = new google.maps.DirectionsRenderer();
+            let directionsRenderer = new google.maps.DirectionsRenderer({
+                suppressMarkers: true
+            });
             var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
             var startLocation;
             
@@ -85,8 +87,8 @@ function initMap() {
                 };
                 directionsService.route(request, (result, status) => {
                     if (status = google.maps.DirectionsStatus.OK) {
-                        directionsRenderer.setDirections(result);
                         directionsRenderer.setMap(map);
+                        directionsRenderer.setDirections(result);
                     }
                 });
             },
