@@ -71,7 +71,7 @@ function initMap() {
         marker.addListener("click", () => {
             let directionsService = new google.maps.DirectionsService();
             let directionsRenderer = new google.maps.DirectionsRenderer({
-                suppressMarkers: true
+                suppressMarkers: true,
                 preserveViewport: true
             });
             var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
