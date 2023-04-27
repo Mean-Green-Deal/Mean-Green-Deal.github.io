@@ -69,18 +69,25 @@ header{
 }
 
 
-.navbar-links ul {
+.navbar {
   display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b6e3b; 
+  color: white;
 }
 
-.navbar-links li {
+.navbar-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-links li    {
   list-style: none;
 }
 
-.navbar-links li a {
+.navbar-links li a  {
   text-decoration: none;
   color: white;
   padding: 1rem;
