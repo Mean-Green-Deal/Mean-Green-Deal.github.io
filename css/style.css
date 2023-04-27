@@ -67,7 +67,14 @@ header{
   background-color: white;
   border-radius: 10px;
 }
-
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b6e3b; 
+  color: white;
+  height: 80px; /* increase the height to 80px */
+}
 
 .navbar-links ul {
   margin: 0;
