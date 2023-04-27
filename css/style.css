@@ -67,26 +67,25 @@ header{
   background-color: white;
   border-radius: 10px;
 }
-
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b6e3b; 
+  color: white;
+}
 
 .navbar-links ul {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
-.navbar-links li {
+.navbar-links li    {
   list-style: none;
-  margin-left: 20px;
 }
 
-.navbar-links li:first-child {
-  margin-left: 0;
-}
-
-.navbar-links li a {
+.navbar-links li a  {
   text-decoration: none;
   color: white;
   padding: 1rem;
