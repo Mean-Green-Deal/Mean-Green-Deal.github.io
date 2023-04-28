@@ -13,7 +13,9 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  background: url(/pictures/8q9lvH-420156787.png);
+  background-color: #69cb7a;
+  background-image: linear-gradient(45deg, #69cb7a 0%, #278530 50%, #44da41 100%);
+
   background-size: cover;
 }
 
