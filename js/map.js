@@ -68,7 +68,6 @@ function initMap() {
       ["Tennis courts 1", 33.2116943, -97.1499391],
       ["Wooten Out 1", 33.2114640, -97.1509385],
       ["Union out 1", 33.2114870, -97.1528060],
-
     ];
    
     for (let i = 0; i < bins.length; i++) {
