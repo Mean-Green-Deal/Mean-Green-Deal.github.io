@@ -1,9 +1,11 @@
-let map, infoWinow;
+let map, infoWindow
+let infoWindows = []
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 33.20750461273979, lng: -97.15295817275108 },
-      zoom: 14.7,
+      zoom: 15,
       mapid: '576037077fe48406',
       mapTypeControl: false,
       fullscreenControl: false,
@@ -44,8 +46,30 @@ function initMap() {
       ["Recycling Bin BB Out 6", 33.2088137, -97.1483073],
       ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
       ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
-      ["Recycling Bin BB Out 9", 333.2089456, -97.1470882],
+      ["Recycling Bin BB Out 9", 33.2089456, -97.1470882],
+      ["UN Out 1", 33.2097871, -97.1476220],
+      ["UN Out 2", 33.2097882, -97.1474946],
+      ["IDK 1", 33.2100766, -97.1473856],
+      ["IDK 2", 33.2101372, -97.1473789],
+      ["IDK 3", 33.2102825, -97.1473910],
+      ["IDK 4", 33.2109417, -97.1473789],
+      ["IDK 5", 33.2106071, -97.1483824],
+      ["MC Out 1", 33.2127530, -97.1485339],
+      ["Bahsen out 1", 33.2101027, -97.1529643],
+      ["Tennis courts 1", 33.2095843, -97.1542075],
+      ["Wooten Out 1", 33.2103782, -97.1452449],
+      ["Union out 1", 33.2103397, -97.1463228],
+      ["IDK 2", 33.2104486, -97.1486342],
+      ["IDK 3", 33.2113588, -97.1476153],
+      ["IDK 4", 33.2114250, -97.1477756],
+      ["IDK 5", 33.2119322, -97.1484585],
+      ["MC Out 1", 33.2117142, -97.1474624],
+      ["Bahsen out 1", 33.2112194, -97.1464754],
+      ["Tennis courts 1", 33.2116943, -97.1499391],
+      ["Wooten Out 1", 33.2114640, -97.1509385],
+      ["Union out 1", 33.2114870, -97.1528060],
     ];
+   
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
   
@@ -58,21 +82,58 @@ function initMap() {
         },
         title: bin[0],
       });
-      
-      /*  
-      const infoWindow = new.google.maps.InfoWindow({
-          arialLabel: bin[0],
-      });    
-    }
-    
-    marker.addListener("click", () => {
-        infoWindow.open ({
-            anchor: marker,
-            map,
+        
+        const infoWindow = new google.maps.InfoWindow({
+        content: bin[0],
         });
-       */    
-      }
     
+        infoWindows.push(infoWindow);
+        
+        marker.addListener("click", () => {
+            let directionsService = new google.maps.DirectionsService();
+            let directionsRenderer = new google.maps.DirectionsRenderer({
+                suppressMarkers: true,
+                preserveViewport: true
+            });
+            var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
+            var startLocation;
+            
+            if (directionsRenderer.getMap()) {
+                directionsRenderer.setMap(null);
+            }
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                       startLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    
+                const request = {
+                        origin: startLocation,
+                        destination: endLocation,
+                        travelMode: google.maps.TravelMode.WALKING,
+                };
+
+                directionsService.route(request, (result, status) => {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsRenderer.setDirections(result);
+                        directionsRenderer.setMap(map);
+                    }
+                });
+            },
+            () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+              }
+            );
+            
+            infoWindows.forEach((iw) => {
+                iw.close();
+            });
+            
+            infoWindow.open(map, marker);
+            
+           
+        });    
+      }
+    /*
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     // Create the control.
@@ -81,10 +142,11 @@ function initMap() {
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+    */
   }
 
 function getLocation() {
-  infoWindow = new google.maps.InfoWindow();
+    //infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -92,9 +154,6 @@ function getLocation() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-          infoWindow.setPosition(location);
-          infoWindow.setContent("Location found.");
-          //infoWindow.open(map);
           map.setCenter(location);
         },
         () => {
@@ -116,6 +175,7 @@ function getLocation() {
   );
   infoWindow.open(map);
 }
+
 //copying sams header
 const toggleButton = document.getElementsByClassName('toggle-button')[0]
 const navbarLinks = document.getElementsByClassName('navbar-links')[0]
@@ -135,4 +195,3 @@ window.initMap = initMap;
 //root.render(e(LikeButton));
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
-  

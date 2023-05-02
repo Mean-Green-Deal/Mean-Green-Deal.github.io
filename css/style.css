@@ -8,8 +8,10 @@ html{
   body{
     margin: 0;
     padding: 0;
-    background-color: #1b6e3b;
     color: #ffffff;
+    background-color: #1b6e3b;
+    background-image: linear-gradient(180deg, #1b6e3b 0%, #219633 50%, #1b6e3b 100%);
+
   }
 h1{
     font-family: 'Adobe Jenson', serif;
@@ -27,6 +29,7 @@ h1{
 header{
      border-bottom: 1px solid #E2E8F0;
 }
+/*
 .custom-map-control-button {
   background-color: #fff;
   border: 0;
@@ -42,6 +45,7 @@ header{
 .custom-map-control-button:hover {
   background: rgb(235, 235, 235);
 }
+*/
 /*copying sams header*/
 .brand-title {
   font-size: 3.5vw;
@@ -65,8 +69,6 @@ header{
   background-color: white;
   border-radius: 10px;
 }
-
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -130,5 +132,8 @@ header{
   .navbar-links.active {
       display: flex;
   }
+}
+.gm-style-iw-d {
+    color: #000000;
 }
 

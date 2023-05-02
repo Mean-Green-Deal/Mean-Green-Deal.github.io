@@ -26,23 +26,25 @@ const firebaseConfig = {
           var user = auth.currentUser
           // Add this user to Firebase Database
           var database_ref = database.ref()
-          // Create User data
+
           var user_data = {
             last_login : Date.now()
           }
           // Push to Firebase Database
-          database_ref.child('users/' + user.uid).update(user_data)
-          // DOne
-          alert('User Logged In!!')
-          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html";
-      })
-          .catch(function(error) {
-              // Firebase will use this to alert of its errors
-              alert(error.message)
-              location.href = "https://mean-green-deal.github.io";
-            })
+    var updatePromise = database_ref.child('users/' + user.uid).update(user_data)
 
-  }
+    // Return the update promise
+    return updatePromise;
+  }).then(() => {
+    alert('User Logged In!!')
+    window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+  }).catch(function(error) {
+    // Firebase will use this to alert of its errors
+    alert(error.message)
+    //location.href = "https://mean-green-deal.github.io";
+  });
+}
+
   function registerUser() {
     var registerUser = document.getElementById("newUser").value
     var registerEmail = document.getElementById("newEmail").value
@@ -61,14 +63,19 @@ const firebaseConfig = {
         Points : 0
       }
       // Push to Firebase Database
-      database_ref.child('users/' + user.uid).set(user_data)
-    })
-    .catch(function(error) {
-      // Firebase will use this to alert of its errors
-      var error_code = error.code
-      var error_message = error.message
-      alert(error_message)
-    })
+      //database_ref.child('users/' + user.uid).set(user_data)
+        //NEW REDIRECT//
+        var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
+      //NEW REDIRECT//
+        return updatePromise;
+    }).then(() => {
+        alert('User Logged In!!')
+        window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+      }).catch(function(error) {
+        // Firebase will use this to alert of its errors
+        alert(error.message)
+        //location.href = "https://mean-green-deal.github.io";
+      });
     expression = /^[^@]+@\w+(\.\w+)+\w$/
 
     if (expression.test(registerEmail) == false || registerPassword < 6) {

@@ -62,20 +62,16 @@ function initMap() {
           scaledSize: new google.maps.Size(28.5, 23.25) 
         },
         title: bin[0],
-      });
-      
-      /*  
-      const infoWindow = new.google.maps.InfoWindow({
-          arialLabel: bin[0],
-      });    
-    }
-    
-    marker.addListener("click", () => {
-        infoWindow.open ({
-            anchor: marker,
-            map,
+       });
+        
+        const infoWindow = new google.maps.InfoWindow({
+        content: bin[0],
         });
-       */    
+    
+        marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+        });    
+     
       }
     
     // Create the DIV to hold the control.
@@ -88,7 +84,7 @@ function initMap() {
     //const customControl1  = Recycle(map);
     var customControl1 = new Recycle(map);
     customControl1.index = 2;
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(customControlDiv1);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(customControlDiv1);
     // Create the control.
     
     
@@ -113,7 +109,6 @@ function getLocation() {
           };
           infoWindow.setPosition(pos);
           infoWindow.setContent("Location found.");
-          infoWindow.open(map);
           map.setCenter(pos);
         },
         () => {
@@ -136,6 +131,7 @@ function getLocation() {
   infoWindow.open(map);
 }
 
+
 //Request bin button
 function RequestBin(map) {
   const controlButton = document.createElement("button");
@@ -156,6 +152,7 @@ function RequestBin(map) {
   controlButton.textContent = "Request Bin Location";
   controlButton.title = "Request Bin Location";
   controlButton.type = "button";
+  controlButton.style.width = "100%";
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
@@ -168,7 +165,7 @@ function RequestBin(map) {
             id: user.uid
          };
          var database_ref = database.ref()
-         database_ref.child('RequestedBin/').set(pos)
+         database_ref.child('RequestedBin/').push(pos)
         }
         else{
           alert("User not logged in.")
@@ -192,6 +189,7 @@ toggleButton.addEventListener('click', () => {
 
 window.onload = getLocation;
 window.initMap = initMap;
+
   function signOut(){
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -200,11 +198,14 @@ window.initMap = initMap;
     const database = firebase.database()
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
-      alert("signed out")
+    }).then(() => {
+      alert('User Signed Out!!')
+      window.location.href = "https://mean-green-deal.github.io/"
     }).catch((error) => {
       // An error happened.
     });
 }
+
 function Recycle(map) {
   const controlButton = document.createElement("button");
   const bins = [
@@ -230,6 +231,27 @@ function Recycle(map) {
     ["Recycling Bin BB Out 7", 33.2090435, -97.1482168],
     ["Recycling Bin BB Out 8", 33.2091924, -97.1463922],
     ["Recycling Bin BB Out 9", 33.2089456, -97.1470882],
+    ["UN Out 1", 33.2097871, -97.1476220],
+    ["UN Out 2", 33.2097882, -97.1474946],
+    ["IDK 1", 33.2100766, -97.1473856],
+    ["IDK 2", 33.2101372, -97.1473789],
+    ["IDK 3", 33.2102825, -97.1473910],
+    ["IDK 4", 33.2109417, -97.1473789],
+    ["IDK 5", 33.2106071, -97.1483824],
+    ["MC Out 1", 33.2127530, -97.1485339],
+    ["Bahsen out 1", 33.2101027, -97.1529643],
+    ["Tennis courts 1", 33.2095843, -97.1542075],
+    ["Wooten Out 1", 33.2103782, -97.1452449],
+    ["Union out 1", 33.2103397, -97.1463228],
+    ["IDK 2", 33.2104486, -97.1486342],
+    ["IDK 3", 33.2113588, -97.1476153],
+    ["IDK 4", 33.2114250, -97.1477756],
+    ["IDK 5", 33.2119322, -97.1484585],
+    ["MC Out 1", 33.2117142, -97.1474624],
+    ["Bahsen out 1", 33.2112194, -97.1464754],
+    ["Tennis courts 1", 33.2116943, -97.1499391],
+    ["Wooten Out 1", 33.2114640, -97.1509385],
+    ["Union out 1", 33.2114870, -97.1528060],
   ];
   // Set CSS for the control.
   controlButton.style.backgroundColor = "#00853E";
@@ -247,23 +269,37 @@ function Recycle(map) {
   controlButton.textContent = "I Recycled";
   controlButton.title = "I Recycled";
   controlButton.type = "button";
+  /*
+  if (screen.width < 600) {
+    // execute some code if the screen size is less than 600 pixels
+    controlButton.style.width = "100%";
+    controlButton.style.fontSize = "5px";
+
+  }
+  */
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
     navigator.geolocation.getCurrentPosition((position) => {
     firebase.auth().onAuthStateChanged((user) => {
       var database_ref = database.ref()
+      var break_count = 0;
       if (user) {
         const lat = position.coords.latitude
         const lng = position.coords.longitude
       for (let i = 0; i < bins.length; i++){
           const bin = bins[i];
-          if((bin[1]-0.0001 < lat < bin[1]+0.0001) && (bin[2]-0.0001 < lng < bin[2]+0.0001)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
+          if((bin[1]-0.01 < lat < bin[1]+0.01) && (bin[2]-0.01 < lng < bin[2]+0.01)) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
             firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
             alert("Congrats you are awarded 1 point.")
             break
           }
           else{
+            break_count++
+            //alert("You are not near a bin")
+            //break
+          }
+          if(break_count == bins.length){
             alert("You are not near a bin")
             break
           }
