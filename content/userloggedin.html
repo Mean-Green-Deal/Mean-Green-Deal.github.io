@@ -178,7 +178,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       userIdElement.innerHTML = email;
     } else {
       // If no user is signed in, display "Guest" as the user ID.
-      userIdElement.innerHTML = 'Guest';
+      userIdElement.innerHTML = '';
     }
   });
 </script>

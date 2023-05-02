@@ -21,7 +21,8 @@
         <!--Hamburger button above ^^^^^^^^^^^^^^^-->
         <div class="navbar-links">
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="#"><span id="myid"></span></a></li>
+                <li><a href="https://mean-green-deal.github.io/content/userloggedin.html">Home</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="contact.html">Contact US</a></li>
             </ul>
@@ -61,3 +62,18 @@
     <script src="../js/about.js" defer></script> <!--Allows code to load before Javascript comes in-->
 </body>
 </html>
+<script>
+    firebase.auth().onAuthStateChanged(function(user) {
+    const userIdElement = document.getElementById('myid');
+    // Check if there is a current user signed in.
+    if (user) {
+      // Get the user's email.
+      const email = user.email;
+      // Set the HTML content of the span element to the user's email.
+      userIdElement.innerHTML = email;
+    } else {
+      // If no user is signed in, display "Guest" as the user ID.
+      userIdElement.innerHTML = '';
+    }
+  });
+</script>
