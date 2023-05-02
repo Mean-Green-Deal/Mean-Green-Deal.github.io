@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNT Recycling Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/userstyle.css">
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <!--<div class="logo">-->
+    <!--<img src="pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%" /> width="78.125" height="93.75-->
+     <!--<h1 style="font-size:4vw">UNT Recycling</h1> -->
+    <!--<h1>UNT Recycling</h1>-->
+  <!--</div>-->
+
+ 
+ <!--copying sams header-->
+ <!--User form for people who are logged in-->
+ <form id="User">
+ </head>
+ <body>
+     <nav class="navbar">
+         <div class="brand-title">
+           <img align="left" src="/pictures/website-logo.png" alt="Mean Green Deal Logo" width="10%" height="10%" />
+           UNT Recycling</div>
+ 
+         <!--Creating the hamburger button-->
+         <a href="#" class="toggle-button">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+         </a>
+         <!--Hamburger button above ^^^^^^^^^^^^^^^-->
+         <div class="navbar-links">
+             <ul>   
+                  <script>
+                    
+                    
+                   </script>
+
+                   <!--<label for="email">email</label>-->
+                   <!--<span id="email"></span></a></li>-->
+                   <!--Fix Here-->
+                  <li><a href="#"><span id="myid"></span></a></li>
+                  <li><a href="/content/recinfo.html">How To Recycle</a></li>
+                  <li><a href="/content/about.html">About Us</a></li>
+                 <li><a href="/content/contact.html">Contact Us</a></li>
+                 <li><a href="https://mean-green-deal.github.io/" onclick="signOut()">Sign Out</a></li>
+             </ul>
+         </div>
+     </nav>
+  <!--end of copying sams header-->
+ 
+     <!--Reagan's Wacky Login Page Venture-->
+   <!--<div class="login">-->
+   <!--  <ul>-->
+   <!--    <li><a href="login.html">Login</a></li>-->
+   <!--</div>-->
+   <!--End of Reagan's Wacky Login Page Venture-->
+ </head>
+ <style>
+ button1 {background-color: #1b6e3b;}	
+ </style>
+ <body>
+   <div id="map"></div>
+
+<!--Start of the leaderboard-->
+<title>User Points</title>
+    <style>
+      table {
+        margin-top: -35%;
+        margin-right: 5%;
+        width: 20%;
+        float: right;
+        text-align: center;
+      }
+      th, td {
+        border: 0.0625em solid white;
+        padding: 0.3125em;
+        font-size: 1.5em;
+      }
+      tbody {
+        text-align: center;
+      }
+      @media screen and (max-width: 600px) {
+    table {
+      margin-top: -35em;
+      margin-right: 0em;
+      width: 1%;
+      float: right;
+      text-align: center;
+    }
+    th, td {
+      font-size: 0.5em;
+      min-width: 1.2em;
+    }
+  }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table style="border-collapse: collapse;">
+        <thead style="background-color: green; color: white;">
+          <tr><th></th><th>User</th><th>Points</th></tr>
+        </thead>
+        <tbody id="output" style="background-color: green; color: white;">
+        </tbody>
+      </table>
+    </div>
+
+
+<script>
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
+  authDomain: "mean-green-deal-726f9.firebaseapp.com",
+  projectId: "mean-green-deal-726f9",
+  storageBucket: "mean-green-deal-726f9.appspot.com",
+  messagingSenderId: "747867835951",
+  appId: "1:747867835951:web:084db4a1feb703eafe00da",
+  measurementId: "G-2QKNB5QXF4"
+};
+
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Create a reference to the database
+      var database = firebase.database();
+      var ref = database.ref('users');
+
+      ref.once('value', function(snapshot) {
+        // Get the data as an object
+        var data = snapshot.val();
+        var position = 1;
+
+        // Convert the data object into an array of objects
+        var dataArray = Object.keys(data).map(function(key) {
+          return {
+            key: key,
+            registerUser: data[key].registerUser,
+            Points: data[key].Points
+          };
+        });
+
+        // Sort the array in descending order based on Points
+        dataArray.sort(function(a, b) {
+          return b.Points - a.Points;
+        });
+
+        // Loop through the sorted array and create HTML elements to display it
+        var output = '';
+        for (var i = 0; i < dataArray.length; i++) {
+          output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].Points + '</td></tr>';
+          position++;
+        }
+
+        // Display the output on the web page
+        var outputTbody = document.getElementById('output');
+        if (outputTbody) {
+          outputTbody.innerHTML = output;
+        } else {
+          console.log('Output tbody not found');
+        }
+      });
+firebase.auth().onAuthStateChanged(function(user) {
+    const userIdElement = document.getElementById('myid');
+    // Check if there is a current user signed in.
+    if (user) {
+      // Get the user's email.
+      const email = user.email;
+      // Set the HTML content of the span element to the user's email.
+      userIdElement.innerHTML = email;
+    } else {
+      // If no user is signed in, display "Guest" as the user ID.
+      userIdElement.innerHTML = '';
+    }
+  });
+</script>
+<!--End of leaderboard-->
+
+ </div>
+ </body>
+<script src="/js/user.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap"></script>
+ </html>
+ </form>

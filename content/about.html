@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/about.css"/>
-    <script src="../js/about.js" defer></script>
     <title>About Us - MGD</title>
 </head>
 <body>
     <nav class="navbar">
-        <div class="brand-title">UNT Recycling</div>
+        <div class="brand-title"> 
+        <img align="left" src="/pictures/website-logo.png" alt="Mean Green Deal Logo" width="10%" height="10%" />
+          UNT Recycling</div>
         <!--Creating the hamburger button-->
         <a href="#" class="toggle-button">
             <span class="bar"></span>
@@ -20,22 +21,26 @@
         <!--Hamburger button above ^^^^^^^^^^^^^^^-->
         <div class="navbar-links">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="https://mean-green-deal.github.io/content/about.html">About Us</a></li>
-                <li><a href="#">Contact US</a></li>
+                <li><a href="#"><span id="myid"></span></a></li>
+                <li><a href="https://mean-green-deal.github.io/content/userloggedin.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">Contact US</a></li>
             </ul>
         </div>
 
     </nav>
+    <!--Changed variable names so that they're more descriptive-->
     <div class="main-container">
-        <div class="title-container">
-            <h2 class="main-title">Our Team:</h2>
+        <div class="about-container">
+            <div class="title-container">
+                <h2 class="main-title">Our Team:</h2>
+            </div>
         </div>
         <div class="row">
             <div class="column">
                 <h3>Samuel Alvizo</h3>
                 <img src="/pictures/samuel-alvizo.jpg" alt="Picture of Samuel Alvizo" class="profile-pics">
-                <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada nunc vel risus commodo. Tempor orci eu lobortis elementum nibh tellus. Etiam sit amet nisl purus in mollis nunc sed id. Ac tortor vitae purus faucibus ornare suspendisse. Duis at tellus at urna condimentum mattis. Justo nec ultrices dui sapien eget mi proin. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Enim nulla aliquet porttitor lacus luctus.</p>
+                <p class="bio">I'm a current student at the University of North Texas majoring in Computer Science. I take joy in upkeeping with the newest technologies revolving cloud computing, artificial intelligence, and web development. I'm currently pursuing a position as a software engineer/cloud engineer.</p>
             </div>
             <div class="column">
                 <h3>CEO: Scott Avery</h3>
@@ -54,5 +59,21 @@
             </div>
         </div>
     </div>
+    <script src="../js/about.js" defer></script> <!--Allows code to load before Javascript comes in-->
 </body>
 </html>
+<script>
+    firebase.auth().onAuthStateChanged(function(user) {
+    const userIdElement = document.getElementById('myid');
+    // Check if there is a current user signed in.
+    if (user) {
+      // Get the user's email.
+      const email = user.email;
+      // Set the HTML content of the span element to the user's email.
+      userIdElement.innerHTML = email;
+    } else {
+      // If no user is signed in, display "Guest" as the user ID.
+      userIdElement.innerHTML = '';
+    }
+  });
+</script>

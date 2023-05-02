@@ -8,21 +8,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-
-
- 
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
   <!--<div class="logo">-->
     <!--<img src="pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%" /> width="78.125" height="93.75-->
      <!--<h1 style="font-size:4vw">UNT Recycling</h1> -->
     <!--<h1>UNT Recycling</h1>-->
   <!--</div>-->
- 
+
   <!--copying sams header-->
+  <!--Guest form for people who are not logged in-->
+<form id="Guest">
 </head>
 <body>
     <nav class="navbar">
         <div class="brand-title">
-          <img src="pictures/tmplogomeangreendeal.svg" alt="Mean Green Deal Logo" width="5%" height="5%" />
+          <img align="left" src="pictures/website-logo.png" alt="Mean Green Deal Logo" width="10%" height="10%" />
           UNT Recycling</div>
 
         <!--Creating the hamburger button-->
@@ -36,8 +38,9 @@
         <div class="navbar-links">
             <ul>
                 <li><a href="content/login.html">Login/Signup</a></li>
+                <li><a href="content/recinfo.html">How To Recycle</a></li>
                 <li><a href="content/about.html">About Us</a></li>
-                <li><a href="#">Contact US</a></li>
+                <li><a href="content/contact.html">Contact US</a></li>
             </ul>
         </div>
 
@@ -56,6 +59,106 @@ button1 {background-color: #1b6e3b;}
 </style>
 <body>
   <div id="map"></div>
+  
+<!--Start of the leaderboard-->
+<title>User Points</title>
+    <style>
+      table {
+        margin-top: -35%;
+        margin-right: 5%;
+        width: 20%;
+        float: right;
+        text-align: center;
+      }
+      th, td {
+        border: 0.0625em solid white;
+        padding: 0.3125em;
+        font-size: 1.5em;
+      }
+      tbody {
+        text-align: center;
+      }
+      @media screen and (max-width: 600px) {
+    table {
+      margin-top: -30em;
+      margin-right: 0em;
+      width: 0.8%;
+      float: right;
+      text-align: center;
+    }
+    th, td {
+      font-size: 0.5em;
+      min-width: 1em;
+    }
+  }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table style="border-collapse: collapse;">
+        <thead style="background-color: green; color: white;">
+          <tr><th></th><th>User</th><th>Points</th></tr>
+        </thead>
+        <tbody id="output" style="background-color: green; color: white;">
+        </tbody>
+      </table>
+    </div>
+
+
+<script>
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
+  authDomain: "mean-green-deal-726f9.firebaseapp.com",
+  projectId: "mean-green-deal-726f9",
+  storageBucket: "mean-green-deal-726f9.appspot.com",
+  messagingSenderId: "747867835951",
+  appId: "1:747867835951:web:084db4a1feb703eafe00da",
+  measurementId: "G-2QKNB5QXF4"
+};
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Create a reference to the database
+      var database = firebase.database();
+      var ref = database.ref('users');
+
+      ref.once('value', function(snapshot) {
+        // Get the data as an object
+        var data = snapshot.val();
+        var position = 1;
+
+        // Convert the data object into an array of objects
+        var dataArray = Object.keys(data).map(function(key) {
+          return {
+            key: key,
+            registerUser: data[key].registerUser,
+            Points: data[key].Points
+          };
+        });
+
+        // Sort the array in descending order based on Points
+        dataArray.sort(function(a, b) {
+          return b.Points - a.Points;
+        });
+
+        // Loop through the sorted array and create HTML elements to display it
+        var output = '';
+        for (var i = 0; i < dataArray.length; i++) {
+          output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].Points + '</td></tr>';
+          position++;
+        }
+        // Display the output on the web page
+        var outputTbody = document.getElementById('output');
+        if (outputTbody) {
+          outputTbody.innerHTML = output;
+        } else {
+          console.log('Output tbody not found');
+        }
+      });
+</script>
+<!--End of leaderboard-->
   <script src="js/map.js"></script>
   <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap">
@@ -63,3 +166,4 @@ button1 {background-color: #1b6e3b;}
 </div>
 </body>
 </html>
+</form>
