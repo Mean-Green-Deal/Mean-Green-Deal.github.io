@@ -1,128 +1,3 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
-    authDomain: "mean-green-deal-726f9.firebaseapp.com",
-    projectId: "mean-green-deal-726f9",
-    storageBucket: "mean-green-deal-726f9.appspot.com",
-    messagingSenderId: "747867835951",
-    appId: "1:747867835951:web:084db4a1feb703eafe00da",
-    measurementId: "G-2QKNB5QXF4"
-    };
-     // Initialize Firebase
-     firebase.initializeApp(firebaseConfig);
-     // Initialize variables
-     const auth = firebase.auth()
-     const database = firebase.database()
-
-     function login() {
-      var email = document.getElementById("email").value
-      var password = document.getElementById("password").value
-        expression = /^[^@]+@\w+(\.\w+)+\w$/
-        if (expression.test(email) == false || password < 6) {
-          alert('Email or Password is Outta Line!!')
-          return
-        }
-        auth.signInWithEmailAndPassword(email, password).then(function() {
-          // Declare user variable
-          var user = auth.currentUser
-          // Add this user to Firebase Database
-          var database_ref = database.ref()
-
-          var user_data = {
-            last_login : Date.now()
-          }
-          // Push to Firebase Database
-    var updatePromise = database_ref.child('users/' + user.uid).update(user_data)
-
-    // Return the update promise
-    return updatePromise;
-  }).then(() => {
-    alert('User Logged In!!')
-    window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
-  }).catch(function(error) {
-    // Firebase will use this to alert of its errors
-    alert(error.message)
-    //location.href = "https://mean-green-deal.github.io";
-  });
-}
-
-  function registerUser() {
-    var registerUser = document.getElementById("newUser").value
-    var registerEmail = document.getElementById("newEmail").value
-    var registerPassword = document.getElementById("newPassword").value
-    var registerConfirmPassword = document.getElementById("confirmPassword").value
-    auth.createUserWithEmailAndPassword(registerEmail, registerPassword).then(function() {
-      // Declare user variable
-      var user = auth.currentUser
-      // Add this user to Firebase Database
-      var database_ref = database.ref()
-      // Create User data
-      var user_data = {
-        registerEmail : registerEmail,
-        registerUser : registerUser,
-        last_login : Date.now(),
-        Points : 0
-      }
-      // Push to Firebase Database
-      //database_ref.child('users/' + user.uid).set(user_data)
-        //NEW REDIRECT//
-        var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
-      //NEW REDIRECT//
-        return updatePromise;
-    }).then(() => {
-        alert('User Logged In!!')
-        window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
-      }).catch(function(error) {
-        // Firebase will use this to alert of its errors
-        alert(error.message)
-        //location.href = "https://mean-green-deal.github.io";
-      });
-    expression = /^[^@]+@\w+(\.\w+)+\w$/
-
-    if (expression.test(registerEmail) == false || registerPassword < 6) {
-      alert('Email or Password is Outta Line!!')
-      return
-      // Don't continue running the code
-    }
-  ///////////////////////////////Valid Credentials ///////////////////////////////////////////
-  
-  if (registerUser.length < 3) return alert("That username is too short.");
-  
-  else if (registerEmail.length < 3) return alert("That email is too short.");
-  
-  else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
-  
-  else if (registerPassword.length < 3) return alert("That password is too short.");
-
-  for (i = 0; i <LoginInfo.length; i++){
-      if(registerUser==LoginInfo[i].username){
-          alert("That username is already in use, choose another")
-          return
-      }
-  }
-  for (i = 0; i <LoginInfo.length; i++){
-      if(registerEmail==LoginInfo[i].email){
-          alert("That email is already in use, choose another")
-          return
-      }
-  }
-  if (registerPassword == registerConfirmPassword)
-  {
-      var newUser = {
-          username: registerUser,
-          email: registerEmail
-      }
-      LoginInfo.push(newUser)
-      alert("Your Account has been created!")
-
-      location.href = 'https://mean-green-deal.github.io/';
-      return
-  }
-  else{
-      alert("Passwords do not match. Try again")
-      return
-  }
-  }
-
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
 
@@ -143,7 +18,6 @@ function clearInputError(inputElement) {
     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 
 }
-<<<<<<< HEAD
 
 var LoginInfo = [
     {
@@ -247,8 +121,6 @@ function registerUser() {
         return;
     }
 }
-=======
->>>>>>> 5e8b0b3441d8e21ed1e882d53b4af92d89f627b6
 ///////////////////////////////Valid Credentials///////////////////////////////////////////
 
 
