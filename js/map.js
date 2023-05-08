@@ -183,7 +183,10 @@ function getLocation() {
     fillOpacity: 0.1,
     strokeColor: "#0088ff",
     strokeOpacity: 0.5,
-    strokeWeight: 1
+    strokeWeight: 1,
+    map: map,
+    center: location,
+    radius: accuracy
   });
 
   if (navigator.geolocation) {
@@ -202,6 +205,11 @@ function getLocation() {
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
+      },
+        {
+        enableHighAccuracy: true, // setting high accuracy
+        maximumAge: 0, // forcing the service to get fresh location
+        timeout: 5000 // timeout after 5 seconds
       }
     );
   } else {
