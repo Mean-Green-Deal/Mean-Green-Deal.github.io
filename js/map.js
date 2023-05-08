@@ -183,10 +183,7 @@ function getLocation() {
     fillOpacity: 0.1,
     strokeColor: "#0088ff",
     strokeOpacity: 0.5,
-    strokeWeight: 1,
-    map: map,
-    center: location,
-    radius: accuracy
+    strokeWeight: 1
   });
 
   if (navigator.geolocation) {
