@@ -90,12 +90,37 @@ function initMap() {
         infoWindows.push(infoWindow);
         
         marker.addListener("click", () => {
-            let directionsService = new google.maps.DirectionsService();
+            
+            getDirections(bin[1], bin[2]);
+            
+            infoWindows.forEach((iw) => {
+                iw.close();
+            });
+            
+            infoWindow.open(map, marker);
+            
+           
+        });    
+      }
+    /*
+    // Create the DIV to hold the control.
+    const centerControlDiv = document.createElement("div");
+    // Create the control.
+    const centerControl = createCenterControl(map);
+
+    // Append the control to the DIV.
+    centerControlDiv.appendChild(centerControl);
+    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
+    */
+  }
+
+function getDirections(lat, lng) {
+    let directionsService = new google.maps.DirectionsService();
             let directionsRenderer = new google.maps.DirectionsRenderer({
                 suppressMarkers: true,
                 preserveViewport: true
             });
-            var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
+            var endLocation =  new google.maps.LatLng(lat, lng);
             var startLocation;
             
             if (directionsRenderer.getMap()) {
@@ -123,27 +148,7 @@ function initMap() {
                 handleLocationError(true, infoWindow, map.getCenter());
               }
             );
-            
-            infoWindows.forEach((iw) => {
-                iw.close();
-            });
-            
-            infoWindow.open(map, marker);
-            
-           
-        });    
-      }
-    /*
-    // Create the DIV to hold the control.
-    const centerControlDiv = document.createElement("div");
-    // Create the control.
-    const centerControl = createCenterControl(map);
-
-    // Append the control to the DIV.
-    centerControlDiv.appendChild(centerControl);
-    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(centerControlDiv);
-    */
-  }
+}    
 
 function getLocation() {
     //infoWindow = new google.maps.InfoWindow();
