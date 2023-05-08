@@ -101,7 +101,7 @@ function initMap() {
             
             binDirections.push(directionsRenderer);
             binDirections.forEach((dr) => {
-                dr.close();
+                dr.setMap(null);
             });
             
             
@@ -148,40 +148,7 @@ function initMap() {
     */
   }
 
-function getDirections(lat, lng) {
-    let directionsService = new google.maps.DirectionsService();
-            let directionsRenderer = new google.maps.DirectionsRenderer({
-                suppressMarkers: true,
-                preserveViewport: true
-            });
-            var endLocation =  new google.maps.LatLng(lat, lng);
-            var startLocation;
-            
-            
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                       startLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    
-                const request = {
-                        origin: startLocation,
-                        destination: endLocation,
-                        travelMode: google.maps.TravelMode.WALKING,
-                };
-
-                directionsService.route(request, (result, status) => {
-                    if (status == google.maps.DirectionsStatus.OK) {
-                        directionsRenderer.setDirections(result);
-                        directionsRenderer.setMap(map);
-                    }
-                });
-            },
-            () => {
-                handleLocationError(true, infoWindow, map.getCenter());
-              }
-            );
-}    
-
-function getLocation() {
+ffunction getLocation() {
     //infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
