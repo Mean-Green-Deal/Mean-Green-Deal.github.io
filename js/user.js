@@ -1,8 +1,8 @@
 
 
-let map, infoWinow;
-let infoWindows [];
-let binDirections [];
+let map, infoWinow
+let infoWindows = []
+let binDirections  = []
 //FB Initializer
 
 
