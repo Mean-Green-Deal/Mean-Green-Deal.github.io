@@ -54,7 +54,6 @@ function initMap() {
     ];
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
-  
       const marker = new google.maps.Marker({
         position: { lat: bin[1], lng: bin[2] },
         map,
@@ -64,13 +63,10 @@ function initMap() {
         },
         title: bin[0],
        });
-        
         const infoWindow = new google.maps.InfoWindow({
         content: bin[0],
         });
-        
         infoWindows.push(infoWindow);
-    
         marker.addListener("click", () => {
         let directionsService = new google.maps.DirectionsService();
             let directionsRenderer = new google.maps.DirectionsRenderer({
@@ -79,13 +75,10 @@ function initMap() {
             });
             var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
             var startLocation;
-            
             binDirections.push(directionsRenderer);
             binDirections.forEach((dr) => {
                 dr.setMap(null);
             });
-            
-            
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                        startLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -116,29 +109,20 @@ function initMap() {
         });    
      
       }
-    
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
     const centerControl = RequestBin(map);
     centerControlDiv.index = 1;
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
-
     const customControlDiv1 = document.createElement("div");
     //const customControl1  = Recycle(map);
     var customControl1 = new Recycle(map);
     customControl1.index = 2;
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(customControlDiv1);
     // Create the control.
-    
-    
-
     // Append the control to the DIV.
     centerControlDiv.appendChild(centerControl);
-    
     customControlDiv1.appendChild(customControl1);
-    
-
-    
   }
 
 function getLocation() {
