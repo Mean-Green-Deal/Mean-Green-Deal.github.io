@@ -148,7 +148,7 @@ function initMap() {
     */
   }
 
-ffunction getLocation() {
+function getLocation() {
     //infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
