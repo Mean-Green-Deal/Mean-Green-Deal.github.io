@@ -1,7 +1,8 @@
 
 
 let map, infoWinow;
-
+let infoWindows [];
+let binDirections [];
 //FB Initializer
 
 
@@ -67,9 +68,51 @@ function initMap() {
         const infoWindow = new google.maps.InfoWindow({
         content: bin[0],
         });
+        
+        infoWindows.push(infoWindow);
     
         marker.addListener("click", () => {
-        infoWindow.open(map, marker);
+        let directionsService = new google.maps.DirectionsService();
+            let directionsRenderer = new google.maps.DirectionsRenderer({
+                suppressMarkers: true,
+                preserveViewport: true
+            });
+            var endLocation =  new google.maps.LatLng(bin[1], bin[2]);
+            var startLocation;
+            
+            binDirections.push(directionsRenderer);
+            binDirections.forEach((dr) => {
+                dr.setMap(null);
+            });
+            
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                       startLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    
+                const request = {
+                        origin: startLocation,
+                        destination: endLocation,
+                        travelMode: google.maps.TravelMode.WALKING,
+                };
+
+                directionsService.route(request, (result, status) => {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsRenderer.setDirections(result);
+                        directionsRenderer.setMap(map);
+                    }
+                });
+            },
+            () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+              }
+            );
+            
+            infoWindows.forEach((iw) => {
+                iw.close();
+            });
+            
+            infoWindow.open(map, marker);
         });    
      
       }
