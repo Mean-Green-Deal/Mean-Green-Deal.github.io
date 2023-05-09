@@ -103,6 +103,7 @@ function initMap() {
             binDirections.forEach((dr) => {
                 dr.setMap(null);
             });
+            binDirections = [];
             
             
             navigator.geolocation.getCurrentPosition(
@@ -132,7 +133,7 @@ function initMap() {
             });
             
             infoWindow.open(map, marker);
-            
+            binDirections.push(directionsRenderer);
            
         });    
       }
