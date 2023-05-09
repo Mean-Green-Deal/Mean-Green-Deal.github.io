@@ -126,6 +126,7 @@ function initMap() {
   }
 
 function getLocation() {
+  /*
   infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -146,6 +147,51 @@ function getLocation() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
+    */
+    const marker = new google.maps.Marker({
+    map: map,
+    icon: {
+      url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+    }
+  });
+
+  // Create a new circle to represent the user's location accuracy
+  const circle = new google.maps.Circle({
+    map: map,
+    fillColor: "#0088ff",
+    fillOpacity: 0.1,
+    strokeColor: "#0088ff",
+    strokeOpacity: 0.5,
+    strokeWeight: 1
+  });
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(
+      (position) => {
+        const location = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        // Update the marker and circle positions
+        marker.setPosition(location);
+        circle.setCenter(location);
+        circle.setRadius(position.coords.accuracy);
+
+        map.setCenter(location);
+      },
+      () => {
+        handleLocationError(true, infoWindow, map.getCenter());
+      },
+        {
+        enableHighAccuracy: true, // setting high accuracy
+        maximumAge: 0, // forcing the service to get fresh location
+        timeout: 5000 // timeout after 5 seconds
+      }
+    );
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 }
 
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
