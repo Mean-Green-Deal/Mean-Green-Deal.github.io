@@ -334,6 +334,7 @@ function signOut() {
     })
     .catch((error) => {
       // Handle error
+      alert('Error while signing out');
     });
 }
 
