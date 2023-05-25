@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/userstyle.css">
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
@@ -17,49 +17,58 @@
     <!--<h1>UNT Recycling</h1>-->
   <!--</div>-->
 
-  <!--copying sams header-->
-  <!--Guest form for people who are not logged in-->
-<form id="Guest">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="brand-title">
-          <img align="left" src="pictures/website-logo.png" alt="Mean Green Deal Logo" width="10%" height="10%" />
-          UNT Recycling</div>
+ 
+ <!--copying sams header-->
+ <!--User form for people who are logged in-->
+ <form id="User">
+ </head>
+ <body>
+     <nav class="navbar">
+         <div class="brand-title">
+           <img align="left" src="/pictures/website-logo.png" alt="Mean Green Deal Logo" width="10%" height="10%" />
+           UNT Recycling</div>
+ 
+         <!--Creating the hamburger button-->
+         <a href="#" class="toggle-button">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+         </a>
+         <!--Hamburger button above ^^^^^^^^^^^^^^^-->
+         <div class="navbar-links">
+             <ul>   
+                  <script>
+                    
+                    
+                   </script>
 
-        <!--Creating the hamburger button-->
-        <a href="#" class="toggle-button">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </a>
-        <!--Hamburger button above ^^^^^^^^^^^^^^^-->
-        <div class="navbar-links">
-            <ul>
-                <li><a href="content/login.html">Login/Signup</a></li>
-                <li><a href="content/recinfo.html">How To Recycle</a></li>
-                <li><a href="content/about.html">About Us</a></li>
-                <li><a href="content/contact.html">Contact US</a></li>
-            </ul>
-        </div>
+                   <!--<label for="email">email</label>-->
+                   <!--<span id="email"></span></a></li>-->
+                   <!--Fix Here-->
+                  <li><a href="#"><span id="myid"></span></a></li>
+                  <li><a href="/content/recinfo.html">How To Recycle</a></li>
+                  <li><a href="/content/about.html">About Us</a></li>
+                 <li><a href="/content/contact.html">Contact Us</a></li>
+                 <li><a href="https://mean-green-deal.github.io/" onclick="signOut()">Sign Out</a></li>
+             </ul>
+         </div>
+     </nav>
+  <!--end of copying sams header-->
+ 
+     <!--Reagan's Wacky Login Page Venture-->
+   <!--<div class="login">-->
+   <!--  <ul>-->
+   <!--    <li><a href="login.html">Login</a></li>-->
+   <!--</div>-->
+   <!--End of Reagan's Wacky Login Page Venture-->
+ </head>
+ <style>
+ button1 {background-color: #1b6e3b;}	
+ </style>
+ <body>
+   <div id="map"></div>
 
-    </nav>
- <!--end of copying sams header-->
-
-    <!--Reagan's Wacky Login Page Venture-->
-  <!--<div class="login">-->
-  <!--  <ul>-->
-  <!--    <li><a href="login.html">Login</a></li>-->
-  <!--</div>-->
-  <!--End of Reagan's Wacky Login Page Venture-->
-</head>
-<style>
-button1 {background-color: #1b6e3b;}	
-</style>
-<body>
-  <div id="map"></div>
-  
 <!--Start of the leaderboard-->
 <title>User Points</title>
     <style>
@@ -80,15 +89,15 @@ button1 {background-color: #1b6e3b;}
       }
       @media screen and (max-width: 600px) {
     table {
-      margin-top: -30em;
+      margin-top: -35em;
       margin-right: 0em;
-      width: 0.8%;
+      width: 1%;
       float: right;
       text-align: center;
     }
     th, td {
       font-size: 0.5em;
-      min-width: 1em;
+      min-width: 1.2em;
     }
   }
     </style>
@@ -116,6 +125,7 @@ const firebaseConfig = {
   appId: "1:747867835951:web:084db4a1feb703eafe00da",
   measurementId: "G-2QKNB5QXF4"
 };
+
 
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
@@ -149,6 +159,7 @@ const firebaseConfig = {
           output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].Points + '</td></tr>';
           position++;
         }
+
         // Display the output on the web page
         var outputTbody = document.getElementById('output');
         if (outputTbody) {
@@ -157,13 +168,25 @@ const firebaseConfig = {
           console.log('Output tbody not found');
         }
       });
+firebase.auth().onAuthStateChanged(function(user) {
+    const userIdElement = document.getElementById('myid');
+    // Check if there is a current user signed in.
+    if (user) {
+      // Get the user's email.
+      const email = user.email;
+      // Set the HTML content of the span element to the user's email.
+      userIdElement.innerHTML = email;
+    } else {
+      // If no user is signed in, display "Guest" as the user ID.
+      userIdElement.innerHTML = '';
+    }
+  });
 </script>
 <!--End of leaderboard-->
-  <script src="js/user.js"></script>
-  <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap">
-</script>
-</div>
-</body>
-</html>
-</form>
+
+ </div>
+ </body>
+<script src="/js/user.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYLVwj3fXBYqPBzAhQUlOtJEtMq-Gqe0c&map_ids=576037077fe48406&callback=initMap"></script>
+ </html>
+ </form>
