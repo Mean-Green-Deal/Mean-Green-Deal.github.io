@@ -330,7 +330,6 @@ function signOut() {
   })
     .then(() => {
       alert('User Signed Out!!');
-      window.location.href = "https://mean-green-deal.github.io/";
     })
     .catch((error) => {
       // Handle error
