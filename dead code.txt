@@ -1,0 +1,34 @@
+//end of user.js
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        //var user_data = {
+        //  Points : Points+1
+        //}
+        //database_ref.child('users/' + user.uid).update(user_data)
+        
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  });
+    /*
+    navigator.geolocation.getCurrentPosition((position) => {
+    const pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    for (let i = 0; i < bins.length; i++){
+      const bin = bins[i];
+      if(lat == bins[1] && lng == bins[2]){
+        var user_data = {
+          Points : Points+1
+        }
+        var database_ref = database.ref()
+        //database_ref.child('users/' + user.uid).update(user_data)
+      }
+    }
+    },
+    );
+    */

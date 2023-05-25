@@ -152,21 +152,26 @@ function initMap() {
         });    
      
       }
-    // Create the DIV to hold the control.
-    const centerControlDiv = document.createElement("div");
-    const centerControl = RequestBin(map);
-    centerControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
-    const customControlDiv1 = document.createElement("div");
-    //const customControl1  = Recycle(map);
-    var customControl1 = new Recycle(map);
-    customControl1.index = 2;
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(customControlDiv1);
-    // Create the control.
-    // Append the control to the DIV.
-    centerControlDiv.appendChild(centerControl);
-    customControlDiv1.appendChild(customControl1);
-  }
+      firebase.auth().onAuthStateChanged(function(user) {
+        // Create the DIV to hold the control.
+        if (user){
+          const centerControlDiv = document.createElement("div");
+          const centerControl = RequestBin(map);
+          centerControlDiv.index = 1;
+          map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
+          const customControlDiv1 = document.createElement("div");
+          //const customControl1  = Recycle(map);
+          var customControl1 = new Recycle(map);
+          customControl1.index = 2;
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(customControlDiv1);
+          // Create the control.
+          // Append the control to the DIV.
+          centerControlDiv.appendChild(centerControl);
+          customControlDiv1.appendChild(customControl1);
+      }
+  });
+}
+
 
 function getLocation() {
   /*
@@ -419,39 +424,12 @@ function Recycle(map) {
             break
           }
         }
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        //var user_data = {
-        //  Points : Points+1
-        //}
-        //database_ref.child('users/' + user.uid).update(user_data)
-        
-        // ...
       } else {
         // User is signed out
         // ...
       }
     });
   });
-    /*
-    navigator.geolocation.getCurrentPosition((position) => {
-    const pos = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    };
-    for (let i = 0; i < bins.length; i++){
-      const bin = bins[i];
-      if(lat == bins[1] && lng == bins[2]){
-        var user_data = {
-          Points : Points+1
-        }
-        var database_ref = database.ref()
-        //database_ref.child('users/' + user.uid).update(user_data)
-      }
-    }
-    },
-    );
-    */
   });
   return controlButton;
 }
