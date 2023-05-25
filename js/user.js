@@ -311,19 +311,29 @@ toggleButton.addEventListener('click', () => {
 window.onload = getLocation;
 window.initMap = initMap;
 
-  function signOut(){
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    // Initialize variables
-    const auth = firebase.auth()
-    const database = firebase.database()
-    firebase.auth().signOut().then(() => {
-      // Sign-out successful.
-    }).then(() => {
-      alert('User Signed Out!!')
-      window.location.href = "https://mean-green-deal.github.io/"
-    }).catch((error) => {
-      // An error happened.
+function signOut() {
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  // Initialize variables
+  const auth = firebase.auth();
+  const database = firebase.database();
+  
+  return new Promise((resolve, reject) => {
+    auth.signOut()
+      .then(() => {
+        resolve();
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+    .then(() => {
+      alert('User Signed Out!!');
+      window.location.href = "https://mean-green-deal.github.io/";
+    })
+    .catch((error) => {
+      // Handle error
     });
 }
 
