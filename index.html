@@ -50,7 +50,7 @@
                   <li><a href="/content/recinfo.html">How To Recycle</a></li>
                   <li><a href="/content/about.html">About Us</a></li>
                  <li><a href="/content/contact.html">Contact Us</a></li>
-                 <li><a href="https://mean-green-deal.github.io/" onclick="signOut()">Sign Out</a></li>
+                 <li><a onclick="signOut()">Sign Out</a></li>
              </ul>
          </div>
      </nav>
@@ -178,7 +178,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       userIdElement.innerHTML = email;
     } else {
       // If no user is signed in, display "Guest" as the user ID.
-      userIdElement.innerHTML = '';
+      userIdElement.innerHTML = 'Login/Sign Up';
     }
   });
 </script>

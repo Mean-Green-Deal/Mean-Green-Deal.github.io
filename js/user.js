@@ -311,31 +311,13 @@ toggleButton.addEventListener('click', () => {
 window.onload = getLocation;
 window.initMap = initMap;
 
-function signOut() {
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  
-  // Initialize variables
-  const auth = firebase.auth();
-  const database = firebase.database();
-  
-  return new Promise((resolve, reject) => {
-    signOut(auth)
-    .then(() => {
-      // code for redirect user to Log-in page
-      // ...
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  })
-    .then(() => {
-      alert('User Signed Out!!');
-    })
-    .catch((error) => {
-      // Handle error
-      alert('Error while signing out');
-    });
+function signOut(){
+  const auth = getAuth();
+  signOut(auth).then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
 }
 
 function Recycle(map) {
