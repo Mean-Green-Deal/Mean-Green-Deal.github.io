@@ -320,13 +320,14 @@ function signOut() {
   const database = firebase.database();
   
   return new Promise((resolve, reject) => {
-    auth.signOut()
-      .then(() => {
-        resolve();
-      })
-      .catch((error) => {
-        reject(error);
-      });
+    signOut(auth)
+    .then(() => {
+      // code for redirect user to Log-in page
+      // ...
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   })
     .then(() => {
       alert('User Signed Out!!');
