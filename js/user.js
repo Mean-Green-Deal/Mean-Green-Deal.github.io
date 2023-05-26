@@ -312,8 +312,6 @@ window.onload = getLocation;
 window.initMap = initMap;
 
 function signOut(){
-   // Initialize Firebase
-   firebase.initializeApp(firebaseConfig);
    // Initialize variables
    const auth = firebase.auth();
   signOut(auth).then(() => {
