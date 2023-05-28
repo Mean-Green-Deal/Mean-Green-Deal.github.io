@@ -103,13 +103,16 @@
     </style>
   </head>
   <body>
-    <div>
+    <div style="height: 300px; overflow-y: scroll;">
       <table style="border-collapse: collapse;">
         <thead style="background-color: green; color: white;">
-          <tr><th></th><th>User</th><th>Points</th></tr>
+          <tr>
+            <th></th>
+            <th>User</th>
+            <th>Points</th>
+          </tr>
         </thead>
-        <tbody id="output" style="background-color: green; color: white;">
-        </tbody>
+        <tbody id="output" style="background-color: green; color: white;"></tbody>
       </table>
     </div>
 
@@ -126,48 +129,54 @@ const firebaseConfig = {
   measurementId: "G-2QKNB5QXF4"
 };
 
+const firebaseConfig = {
+  // Your Firebase configuration
+};
 
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-      // Create a reference to the database
-      var database = firebase.database();
-      var ref = database.ref('users');
+// Create a reference to the database
+var database = firebase.database();
+var ref = database.ref('users');
 
-      ref.once('value', function(snapshot) {
-        // Get the data as an object
-        var data = snapshot.val();
-        var position = 1;
+ref.once('value', function(snapshot) {
+  // Get the data as an object
+  var data = snapshot.val();
+  var position = 1;
 
-        // Convert the data object into an array of objects
-        var dataArray = Object.keys(data).map(function(key) {
-          return {
-            key: key,
-            registerUser: data[key].registerUser,
-            Points: data[key].Points
-          };
-        });
+  // Convert the data object into an array of objects
+  var dataArray = Object.keys(data).map(function(key) {
+    return {
+      key: key,
+      registerUser: data[key].registerUser,
+      Points: data[key].Points
+    };
+  });
 
-        // Sort the array in descending order based on Points
-        dataArray.sort(function(a, b) {
-          return b.Points - a.Points;
-        });
+  // Sort the array in descending order based on Points
+  dataArray.sort(function(a, b) {
+    return b.Points - a.Points;
+  });
 
-        // Loop through the sorted array and create HTML elements to display it
-        var output = '';
-        for (var i = 0; i < dataArray.length; i++) {
-          output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + dataArray[i].Points + '</td></tr>';
-          position++;
-        }
+  // Get the top 10 users
+  var topUsers = dataArray.slice(0, 10);
 
-        // Display the output on the web page
-        var outputTbody = document.getElementById('output');
-        if (outputTbody) {
-          outputTbody.innerHTML = output;
-        } else {
-          console.log('Output tbody not found');
-        }
-      });
+  // Loop through the sorted array and create HTML elements to display it
+  var output = '';
+  for (var i = 0; i < topUsers.length; i++) {
+    output += '<tr><td style="border: 1px solid white; padding: 5px;">' + position + '</td><td style="border: 1px solid white; padding: 5px;">' + topUsers[i].registerUser + '</td><td style="border: 1px solid white; padding: 5px;">' + topUsers[i].Points + '</td></tr>';
+    position++;
+  }
+
+  // Display the output on the web page
+  var outputTbody = document.getElementById('output');
+  if (outputTbody) {
+    outputTbody.innerHTML = output;
+  } else {
+    console.log('Output tbody not found');
+  }
+});
 firebase.auth().onAuthStateChanged(function(user) {
     const userIdElement = document.getElementById('myid');
     // Check if there is a current user signed in.
