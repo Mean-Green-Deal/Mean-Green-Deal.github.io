@@ -312,12 +312,12 @@ window.onload = getLocation;
 window.initMap = initMap;
 
 function signOut(){
-   // Initialize variables
-   const auth = firebase.auth();
-  signOut(auth).then(() => {
+  const auth = firebase.auth();
+  firebase.auth().signOut().then(function() {
     // Sign-out successful.
-  }).catch((error) => {
+  }).catch(function(error) {
     // An error happened.
+    console.log(error);
   });
 }
 
