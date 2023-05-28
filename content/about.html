@@ -91,12 +91,13 @@ firebase.auth().onAuthStateChanged(function(user) {
       // If no user is signed in, display "Guest" as the user ID.
       userIdElement.innerHTML = 'Login/Sign Up';
       signOutButtonContainer.style.display = 'none'; // Hide the sign out button when user is not logged in
+       // Add a click event listener to the authButton
+    const authButton = document.getElementById('authButton');
+    authButton.addEventListener('click', function() {
+    // Redirect to your login page
+    window.location.href = 'content/login.html';
+});
     }
   });
-  // Add a click event listener to the authButton
-  const authButton = document.getElementById('authButton');
-  authButton.addEventListener('click', function() {
-  // Redirect to your login page
-  window.location.href = 'content/login.html';
-});
+ 
 </script>
