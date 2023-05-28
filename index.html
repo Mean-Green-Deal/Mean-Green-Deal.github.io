@@ -50,7 +50,7 @@
                   <li><a href="/content/recinfo.html">How To Recycle</a></li>
                   <li><a href="/content/about.html">About Us</a></li>
                  <li><a href="/content/contact.html">Contact Us</a></li>
-                 <li><a onclick="signOut()">Sign Out</a></li>
+                 <li id="signOutButtonContainer" style="display: none;"><a onclick="signOut()">Sign Out</a></li>
              </ul>
          </div>
      </nav>
@@ -176,9 +176,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       const email = user.email;
       // Set the HTML content of the span element to the user's email.
       userIdElement.innerHTML = email;
+      signOutButtonContainer.style.display = 'inline'; // Show the sign out button when user is logged in
     } else {
       // If no user is signed in, display "Guest" as the user ID.
       userIdElement.innerHTML = 'Login/Sign Up';
+      signOutButtonContainer.style.display = 'none'; // Hide the sign out button when user is not logged in
     }
   });
   // Add a click event listener to the authButton
