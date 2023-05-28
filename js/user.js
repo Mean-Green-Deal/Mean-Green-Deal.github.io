@@ -321,8 +321,6 @@ function signOut(){
     appId: "1:747867835951:web:084db4a1feb703eafe00da",
     measurementId: "G-2QKNB5QXF4"
     };
-     // Initialize Firebase
-     firebase.initializeApp(firebaseConfig);
      // Initialize variables
      const auth = firebase.auth()
      const database = firebase.database()
