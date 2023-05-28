@@ -67,20 +67,7 @@
 </body>
 </html>
 <script>
-    firebase.auth().onAuthStateChanged(function(user) {
-    const userIdElement = document.getElementById('myid');
-    // Check if there is a current user signed in.
-    if (user) {
-      // Get the user's email.
-      const email = user.email;
-      // Set the HTML content of the span element to the user's email.
-      userIdElement.innerHTML = email;
-    } else {
-      // If no user is signed in, display "Guest" as the user ID.
-      userIdElement.innerHTML = '';
-    }
-  });
-  const firebaseConfig = {
+      const firebaseConfig = {
   apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
   authDomain: "mean-green-deal-726f9.firebaseapp.com",
   projectId: "mean-green-deal-726f9",
@@ -89,11 +76,8 @@
   appId: "1:747867835951:web:084db4a1feb703eafe00da",
   measurementId: "G-2QKNB5QXF4"
 };
-
-
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(function(user) {
     const userIdElement = document.getElementById('myid');
     // Check if there is a current user signed in.
