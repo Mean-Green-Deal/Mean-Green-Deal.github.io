@@ -72,34 +72,40 @@
 <!--Start of the leaderboard-->
 <title>User Points</title>
     <style>
+     table {
+      margin-top: -35%;
+      margin-right: 5%;
+      width: 20%;
+      float: right;
+      text-align: center;
+      overflow-y: scroll;
+      max-height: 200px; /* Adjust the max-height as needed */
+    }
+
+    th, td {
+      border: 0.0625em solid white;
+      padding: 0.3125em;
+      font-size: 1.5em;
+    }
+
+    tbody {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 600px) {
       table {
-        margin-top: -35%;
-        margin-right: 5%;
-        width: 20%;
+        margin-top: -35em;
+        margin-right: 0em;
+        width: 1%;
         float: right;
         text-align: center;
       }
+
       th, td {
-        border: 0.0625em solid white;
-        padding: 0.3125em;
-        font-size: 1.5em;
+        font-size: 0.5em;
+        min-width: 1.2em;
       }
-      tbody {
-        text-align: center;
-      }
-      @media screen and (max-width: 600px) {
-    table {
-      margin-top: -35em;
-      margin-right: 0em;
-      width: 1%;
-      float: right;
-      text-align: center;
     }
-    th, td {
-      font-size: 0.5em;
-      min-width: 1.2em;
-    }
-  }
     </style>
   </head>
   <body>
