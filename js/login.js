@@ -91,8 +91,9 @@ const firebaseConfig = {
   else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
   
   else if (registerPassword.length < 3) return alert("That password is too short.");
+  */
   }
-*/
+
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
     messageElement.textContext = message;
