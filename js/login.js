@@ -81,17 +81,6 @@ const firebaseConfig = {
       return
       // Don't continue running the code
     }
-  ///////////////////////////////Valid Credentials ///////////////////////////////////////////
-  //More tests for username, email and password
-  /*
-  if (registerUser.length < 3) return alert("That username is too short.");
-  
-  else if (registerEmail.length < 3) return alert("That email is too short.");
-  
-  else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
-  
-  else if (registerPassword.length < 3) return alert("That password is too short.");
-  */
   }
 
 function setFormMessage(formElement, type, message) {

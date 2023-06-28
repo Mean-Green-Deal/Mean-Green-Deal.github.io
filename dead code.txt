@@ -119,3 +119,15 @@ End of login.js 6/27
       return
   }
 */
+//Middle of login.js
+  ///////////////////////////////Valid Credentials ///////////////////////////////////////////
+  //More tests for username, email and password
+  /*
+  if (registerUser.length < 3) return alert("That username is too short.");
+  
+  else if (registerEmail.length < 3) return alert("That email is too short.");
+  
+  else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
+  
+  else if (registerPassword.length < 3) return alert("That password is too short.");
+  */
