@@ -32,7 +32,7 @@
     },
     );
     */
-    End of login.js
+    End of login.js 6/27
     /*
 //FIREBASE DATABASE AUTHENTICATION
 // Import the functions you need from the SDKs you need
@@ -64,4 +64,58 @@ onAuthStateChanged(auth, user => {
         console.log('No user');
     }
 });
+*/
+End of login.js 6/27
+   //Tutorial's login method.
+/*
+    loginForm.addEventListener("submit", e=> {
+        e.preventDefault();
+
+        // Perform your AJAX/Fetch login
+
+        setFormMessage(loginForm, "error", "Invalid username/password combination");
+    });
+
+    document.querySelectorAll(".form__input").forEach(inputElement => {
+        inputElement.addEventListener("blur", e => {
+            if (e.target.id == "newUser" && e.target.value.length > 0 && e.target.value.length < 4) {
+                setInputError(inputElement, "Username must be at least 4 characters in length");
+            }
+        });
+
+        inputElement.addEventListener("input", e => {
+            clearInputError(inputElement);
+        })
+    });
+    */
+    Middle of login.js 6/27
+    /*
+  for (i = 0; i <LoginInfo.length; i++){
+      if(registerUser==LoginInfo[i].username){
+          alert("That username is already in use, choose another")
+          return
+      }
+  }
+  for (i = 0; i <LoginInfo.length; i++){
+      if(registerEmail==LoginInfo[i].email){
+          alert("That email is already in use, choose another")
+          return
+      }
+  }
+  if (registerPassword == registerConfirmPassword)
+  {
+      var newUser = {
+          username: registerUser,
+          email: registerEmail
+      }
+      LoginInfo.push(newUser)
+      alert("Your Account has been created!")
+
+      location.href = 'https://mean-green-deal.github.io/';
+      return
+  }
+  else{
+      alert("Passwords do not match. Try again")
+      return
+  }
 */
