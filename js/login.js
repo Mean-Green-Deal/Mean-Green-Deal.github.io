@@ -1,3 +1,4 @@
+//Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
     authDomain: "mean-green-deal-726f9.firebaseapp.com",
@@ -12,40 +13,41 @@ const firebaseConfig = {
      // Initialize variables
      const auth = firebase.auth()
      const database = firebase.database()
-
+    //////////////////////Login function//////////////////////
      function login() {
       var email = document.getElementById("email").value
       var password = document.getElementById("password").value
-        expression = /^[^@]+@\w+(\.\w+)+\w$/
-        if (expression.test(email) == false || password < 6) {
-          alert('Email or Password is Outta Line!!')
-          return
-        }
+      //Tests the email and password
+      expression = /^[^@]+@\w+(\.\w+)+\w$/
+      if (expression.test(email) == false || password < 6) {
+        alert('Email or Password is Outta Line!!')
+        return
+      }
         auth.signInWithEmailAndPassword(email, password).then(function() {
-          // Declare user variable
-          var user = auth.currentUser
-          // Add this user to Firebase Database
-          var database_ref = database.ref()
-
-          var user_data = {
-            last_login : Date.now()
-          }
-          // Push to Firebase Database
-    var updatePromise = database_ref.child('users/' + user.uid).update(user_data)
-
-    // Return the update promise
-    return updatePromise;
-  }).then(() => {
-    alert('User Logged In!!')
-    window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
-  }).catch(function(error) {
-    // Firebase will use this to alert of its errors
-    alert(error.message)
-    //location.href = "https://mean-green-deal.github.io";
+        // Declare user variable
+        var user = auth.currentUser
+        // Add this user to Firebase Database
+        //Make reference to firebase
+        var database_ref = database.ref()
+        //Update User info with last logged in
+        var user_data = {
+          last_login : Date.now()
+        }
+        //Push to Firebase Database and Added promise to fix redirect
+        var updatePromise = database_ref.child('users/' + user.uid).update(user_data)
+        // Return the update promise
+        return updatePromise;
+        }).then(() => {
+          alert('User Logged In!!')
+          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+        }).catch(function(error) {
+        // Firebase will use this to alert of its errors
+          alert(error.message)
   });
 }
-
+  //////////////////////Function for registering user//////////////////////
   function registerUser() {
+    //Getting user credentials
     var registerUser = document.getElementById("newUser").value
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
@@ -62,29 +64,26 @@ const firebaseConfig = {
         last_login : Date.now(),
         Points : 0
       }
-      // Push to Firebase Database
-      //database_ref.child('users/' + user.uid).set(user_data)
-        //NEW REDIRECT//
-        var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
-      //NEW REDIRECT//
-        return updatePromise;
-    }).then(() => {
+      // Push to Firebase Database and Added promise to fix redirect
+      var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
+      // Return the update promise
+      return updatePromise;
+      }).then(() => {
         alert('User Logged In!!')
         window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
       }).catch(function(error) {
-        // Firebase will use this to alert of its errors
-        alert(error.message)
-        //location.href = "https://mean-green-deal.github.io";
+          alert(error.message)
       });
+      //Tests email and password
     expression = /^[^@]+@\w+(\.\w+)+\w$/
-
     if (expression.test(registerEmail) == false || registerPassword < 6) {
       alert('Email or Password is Outta Line!!')
       return
       // Don't continue running the code
     }
   ///////////////////////////////Valid Credentials ///////////////////////////////////////////
-  
+  //More tests for username, email and password
+  /*
   if (registerUser.length < 3) return alert("That username is too short.");
   
   else if (registerEmail.length < 3) return alert("That email is too short.");
@@ -92,41 +91,10 @@ const firebaseConfig = {
   else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
   
   else if (registerPassword.length < 3) return alert("That password is too short.");
-/*
-  for (i = 0; i <LoginInfo.length; i++){
-      if(registerUser==LoginInfo[i].username){
-          alert("That username is already in use, choose another")
-          return
-      }
-  }
-  for (i = 0; i <LoginInfo.length; i++){
-      if(registerEmail==LoginInfo[i].email){
-          alert("That email is already in use, choose another")
-          return
-      }
-  }
-  if (registerPassword == registerConfirmPassword)
-  {
-      var newUser = {
-          username: registerUser,
-          email: registerEmail
-      }
-      LoginInfo.push(newUser)
-      alert("Your Account has been created!")
-
-      location.href = 'https://mean-green-deal.github.io/';
-      return
-  }
-  else{
-      alert("Passwords do not match. Try again")
-      return
   }
 */
-  }
-
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
-
     messageElement.textContext = message;
     messageElement.classList.remove("form__message--success", "form_message-error");
     messageElement.classList.add('form__message--${type}');
@@ -162,28 +130,4 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.classList.remove("form--hidden");
         createAccountForm.classList.add("form--hidden");
     });
-
-    //Tutorial's login method.
-/*
-    loginForm.addEventListener("submit", e=> {
-        e.preventDefault();
-
-        // Perform your AJAX/Fetch login
-
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
-    });
-
-    document.querySelectorAll(".form__input").forEach(inputElement => {
-        inputElement.addEventListener("blur", e => {
-            if (e.target.id == "newUser" && e.target.value.length > 0 && e.target.value.length < 4) {
-                setInputError(inputElement, "Username must be at least 4 characters in length");
-            }
-        });
-
-        inputElement.addEventListener("input", e => {
-            clearInputError(inputElement);
-        })
-    });
-    */
-  
 });
