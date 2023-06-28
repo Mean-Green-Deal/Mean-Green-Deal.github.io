@@ -13,38 +13,6 @@ const firebaseConfig = {
      // Initialize variables
      const auth = firebase.auth()
      const database = firebase.database()
-    //////////////////////Login function//////////////////////
-     function login() {
-      var email = document.getElementById("email").value
-      var password = document.getElementById("password").value
-      //Tests the email and password
-      expression = /^[^@]+@\w+(\.\w+)+\w$/
-      if (expression.test(email) == false || password < 6) {
-        alert('Email or Password is Outta Line!!')
-        return
-      }
-        auth.signInWithEmailAndPassword(email, password).then(function() {
-        // Declare user variable
-        var user = auth.currentUser
-        // Add this user to Firebase Database
-        //Make reference to firebase
-        var database_ref = database.ref()
-        //Update User info with last logged in
-        var user_data = {
-          last_login : Date.now()
-        }
-        //Push to Firebase Database and Added promise to fix redirect
-        var updatePromise = database_ref.child('users/' + user.uid).update(user_data)
-        // Return the update promise
-        return updatePromise;
-        }).then(() => {
-          alert('User Logged In!!')
-          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
-        }).catch(function(error) {
-        // Firebase will use this to alert of its errors
-          alert(error.message)
-  });
-}
   //////////////////////Function for registering user//////////////////////
   function registerUser() {
     //Getting user credentials
@@ -82,7 +50,38 @@ const firebaseConfig = {
       // Don't continue running the code
     }
   }
-
+    //////////////////////Login function//////////////////////
+     function login() {
+      var email = document.getElementById("email").value
+      var password = document.getElementById("password").value
+      //Tests the email and password
+      expression = /^[^@]+@\w+(\.\w+)+\w$/
+      if (expression.test(email) == false || password < 6) {
+        alert('Email or Password is Outta Line!!')
+        return
+      }
+        auth.signInWithEmailAndPassword(email, password).then(function() {
+        // Declare user variable
+        var user = auth.currentUser
+        // Add this user to Firebase Database
+        //Make reference to firebase
+        var database_ref = database.ref()
+        //Update User info with last logged in
+        var user_data = {
+          last_login : Date.now()
+        }
+        //Push to Firebase Database and Added promise to fix redirect
+        var updatePromise = database_ref.child('users/' + user.uid).update(user_data)
+        // Return the update promise
+        return updatePromise;
+        }).then(() => {
+          alert('User Logged In!!')
+          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+        }).catch(function(error) {
+        // Firebase will use this to alert of its errors
+          alert(error.message)
+  });
+}
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
     messageElement.textContext = message;
