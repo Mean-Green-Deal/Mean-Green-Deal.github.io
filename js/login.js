@@ -92,7 +92,7 @@ const firebaseConfig = {
   else if(emailRegex(registerEmail) == false) return alert("Invalid email.");
   
   else if (registerPassword.length < 3) return alert("That password is too short.");
-
+/*
   for (i = 0; i <LoginInfo.length; i++){
       if(registerUser==LoginInfo[i].username){
           alert("That username is already in use, choose another")
@@ -122,7 +122,7 @@ const firebaseConfig = {
       return
   }
   }
-
+*/
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
 
