@@ -1,10 +1,15 @@
 <?php
-// the message
-$msg = "First line of text\nSecond line of text";
 
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
+if(isset($_POST['submit'])){
+    $Fname = $_POST['firstName']
+    $Lname = $_POST['lastName']
+    $Email = $_POST['studentEmail']
+    $Subject = $_POST['subject']
 
-// send email
-mail("scottavery2001@gmail.com","My subject",$msg);
-?>
+    $mailTo = "meangreendeal@gmail.com";
+    $headers = "From: ".$Email;
+    $txt = "You have received an email from ".$Fname.".\n\n".$Subject;
+
+    mail($mailTo, $Lname, $txt, $headers);
+    header("Location: contact.html?mailsend");
+}
