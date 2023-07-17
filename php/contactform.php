@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['submit'])){
+if(isset($_POST['Submit'])){
     $Fname = $_POST['firstName']
     $Lname = $_POST['lastName']
     $Email = $_POST['studentEmail']
