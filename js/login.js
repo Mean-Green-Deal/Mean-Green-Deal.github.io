@@ -38,7 +38,7 @@ const firebaseConfig = {
       return updatePromise;
       }).then(() => {
         alert('User Logged In!!')
-        window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+        window.location.href = "https://mean-green-deal.github.io/"
       }).catch(function(error) {
           alert(error.message)
       });
