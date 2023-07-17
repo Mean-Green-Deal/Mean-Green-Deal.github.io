@@ -13,3 +13,4 @@ if(isset($_POST['submit'])){
     mail($mailTo, $Lname, $txt, $headers);
     header("Location: contact.html?mailsend");
 }
+?>
