@@ -76,7 +76,7 @@ const firebaseConfig = {
         return updatePromise;
         }).then(() => {
           alert('User Logged In!!')
-          window.location.href = "https://mean-green-deal.github.io/content/userloggedin.html"
+          window.location.href = "https://mean-green-deal.github.io/"
         }).catch(function(error) {
         // Firebase will use this to alert of its errors
           alert(error.message)
