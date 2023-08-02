@@ -90,7 +90,7 @@ body {
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #1b6e3b; /*sets the width of the border and how it appears*/
+    border: 1px solid #009507; /*sets the width of the border and how it appears*/
     border-radius: 4px; /* Rounded borders */
     box-sizing: border-box; /* Makes sure that padding and width stays in place */
     margin-top: 6px;
@@ -100,7 +100,7 @@ input[type=text], select, textarea {
 
 /* Style the submit button with a specific background color */
 input[type=submit] {
-    background-color: #2daf6f;
+    background-color: #009507;
     color: white;
     padding: 12px 20px;
     border: none;
