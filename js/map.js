@@ -137,6 +137,15 @@ function initMap() {
            
         });    
       }
+      const marker = new google.maps.Marker({
+        position: { lat: 33.214311, lng: -97.165776 },
+        map,
+        icon: {
+          url: "pictures/Original recycling bin.png",
+          scaledSize: new google.maps.Size(28.5, 23.25) 
+        },
+        title: "OG Bin",
+      });
     /*
     // Create the DIV to hold the control.
     const centerControlDiv = document.createElement("div");
