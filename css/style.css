@@ -194,7 +194,6 @@ body {
   background-position: center; /* Center the image within the element */
   background-size: cover; /* Ensure the image covers the entire background of the element */
 }
-
 #closePopup {
   display: block;
   margin-top: 10px;

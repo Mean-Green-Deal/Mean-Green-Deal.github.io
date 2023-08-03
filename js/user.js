@@ -457,7 +457,7 @@ function Recycle(map) {
 function showPopup() {
   const popupContainer = document.getElementById('popupContainer');
   const overlay = document.querySelector('.dark-overlay');
-  popupContainer.style.display = 'flex';
+  popup.style.display = 'block';
   overlay.style.display = 'block';
 }
 
@@ -493,11 +493,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     // ...
   }
 });
-
-// Show the popup only if the user is not logged in
-if (!firebase.auth().currentUser) {
-  showPopup();
-}
 
 // Close the popup when the close button or overlay is clicked
 document.getElementById('closePopup').addEventListener('click', closePopup);
