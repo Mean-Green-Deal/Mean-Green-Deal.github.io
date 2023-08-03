@@ -138,7 +138,7 @@ function initMap() {
         });    
       }
       const marker = new google.maps.Marker({
-        position: { lat: 33.214311, lng: -97.165776 },
+        position: { lat: 33.214311, lng: 33.214311, },
         map,
         icon: {
           url: "pictures/Original recycling bin.png",

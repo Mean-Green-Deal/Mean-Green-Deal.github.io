@@ -451,3 +451,54 @@ function Recycle(map) {
   });
   return controlButton;
 }
+
+/////////////////////////////////////////Start of Pop Up/////////////////////////////////////////////////////////
+// Check if the user is new or existing
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    const userId = user.uid;
+
+    // Check the isNewUser flag in the Realtime Database
+    database.ref('users/' + userId + '/isNewUser').once('value').then(function(snapshot) {
+      const isNewUser = snapshot.val();
+      if (isNewUser === "true") {
+        // The user is new, show the popup message
+        showPopup();
+        // Set the isNewUser flag to false so that the popup won't show again for this user
+        database.ref('users/' + userId).update({ isNewUser: false });
+      }
+    });
+
+    // The rest of your code for logged-in users...
+    // ...
+
+  } else {
+    // User is not logged in, you can handle this case if needed...
+    // ...
+  }
+});
+
+// Function to show the popup for new users
+function showPopup() {
+  const popup = document.getElementById('popupContainer');
+  const overlay = document.querySelector('.dark-overlay');
+  popup.style.display = 'block';
+  overlay.style.display = 'block';
+}
+
+// Function to close the popup
+function closePopup() {
+  const popup = document.getElementById('popupContainer');
+  const overlay = document.querySelector('.dark-overlay');
+  popup.style.display = 'none';
+  overlay.style.display = 'none';
+}
+
+// Show the popup only if the user is not logged in
+if (!firebase.auth().currentUser) {
+  showPopup();
+}
+
+// Close the popup when the close button or overlay is clicked
+document.getElementById('closePopup').addEventListener('click', closePopup);
+document.querySelector('.dark-overlay').addEventListener('click', closePopup);

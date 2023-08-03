@@ -30,7 +30,8 @@ const firebaseConfig = {
         registerEmail : registerEmail,
         registerUser : registerUser,
         last_login : Date.now(),
-        Points : 0
+        Points : 0,
+        isNewUser : true
       }
       // Push to Firebase Database and Added promise to fix redirect
       var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
