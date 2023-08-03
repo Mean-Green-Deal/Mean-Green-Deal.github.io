@@ -453,47 +453,25 @@ function Recycle(map) {
 }
 
 /////////////////////////////////////////Start of Pop Up/////////////////////////////////////////////////////////
-// Function to show the popup for new users
-function showPopup() {
-  const popupContainer = document.getElementById('popupContainer');
-  const overlay = document.querySelector('.dark-overlay');
-  popup.style.display = 'block';
-  overlay.style.display = 'block';
-}
+// Your existing JavaScript here
 
-// Function to close the popup
-function closePopup() {
-  const popupContainer = document.getElementById('popupContainer');
-  const overlay = document.querySelector('.dark-overlay');
-  popupContainer.style.display = 'none';
-  overlay.style.display = 'none';
-}
+// JavaScript to handle the pop-up guide
+document.addEventListener("DOMContentLoaded", function() {
+  const popupContainer = document.getElementById("popupContainer");
+  const closeButton = document.getElementById("closeButton");
 
-// Firebase Auth State Change Listener
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    const userId = user.uid;
+  // Check if the user is a new user (you can implement your logic here)
+  const isNewUser = true;
 
-    // Check the isNewUser flag in the Realtime Database
-    database.ref('users/' + userId + '/isNewUser').once('value').then(function(snapshot) {
-      const isNewUser = snapshot.val();
-      if (isNewUser === true) { // Note the change from "true" to true (boolean value)
-        // The user is new, show the popup message
-        showPopup();
-        // Set the isNewUser flag to false so that the popup won't show again for this user
-        database.ref('users/' + userId).update({ isNewUser: false });
-      }
-    });
-
-    // The rest of your code for logged-in users...
-    // ...
-
-  } else {
-    // User is not logged in, you can handle this case if needed...
-    // ...
+  if (isNewUser) {
+    // Show the pop-up guide
+    popupContainer.style.display = "flex";
   }
+
+  closeButton.addEventListener("click", function() {
+    // Hide the pop-up guide when the close button is clicked
+    popupContainer.style.display = "none";
+  });
 });
 
-// Close the popup when the close button or overlay is clicked
-document.getElementById('closePopup').addEventListener('click', closePopup);
-document.querySelector('.dark-overlay').addEventListener('click', closePopup);
+
