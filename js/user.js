@@ -453,7 +453,23 @@ function Recycle(map) {
 }
 
 /////////////////////////////////////////Start of Pop Up/////////////////////////////////////////////////////////
-// Check if the user is new or existing
+// Function to show the popup for new users
+function showPopup() {
+  const popupContainer = document.getElementById('popupContainer');
+  const overlay = document.querySelector('.dark-overlay');
+  popupContainer.style.display = 'flex';
+  overlay.style.display = 'block';
+}
+
+// Function to close the popup
+function closePopup() {
+  const popupContainer = document.getElementById('popupContainer');
+  const overlay = document.querySelector('.dark-overlay');
+  popupContainer.style.display = 'none';
+  overlay.style.display = 'none';
+}
+
+// Firebase Auth State Change Listener
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     const userId = user.uid;
@@ -461,7 +477,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // Check the isNewUser flag in the Realtime Database
     database.ref('users/' + userId + '/isNewUser').once('value').then(function(snapshot) {
       const isNewUser = snapshot.val();
-      if (isNewUser === "true") {
+      if (isNewUser === true) { // Note the change from "true" to true (boolean value)
         // The user is new, show the popup message
         showPopup();
         // Set the isNewUser flag to false so that the popup won't show again for this user
@@ -477,22 +493,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     // ...
   }
 });
-
-// Function to show the popup for new users
-function showPopup() {
-  const popup = document.getElementById('popupContainer');
-  const overlay = document.querySelector('.dark-overlay');
-  popup.style.display = 'block';
-  overlay.style.display = 'block';
-}
-
-// Function to close the popup
-function closePopup() {
-  const popup = document.getElementById('popupContainer');
-  const overlay = document.querySelector('.dark-overlay');
-  popup.style.display = 'none';
-  overlay.style.display = 'none';
-}
 
 // Show the popup only if the user is not logged in
 if (!firebase.auth().currentUser) {
