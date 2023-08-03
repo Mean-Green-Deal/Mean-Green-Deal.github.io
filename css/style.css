@@ -143,58 +143,56 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Add this style to hide the popup container by default */
-.popup {
-  display: none;
-}
-
-/* Styles for the darkened background */
-.dark-overlay {
-  display: none;
+.popup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.7); /* Darkened background */
+  z-index: 9999; /* Ensure the popup is above other elements */
+  visibility: hidden; /* Initially invisible */
 }
 
-.popup h2 {
-  margin-top: 0;
-}
-
-.arrow {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-}
-.arrow-left {
-  top: 50%;
-  left: -20px; /* Adjust the positioning to center the arrow */
+.popup {
   position: relative;
-  display: inline-block;
-  padding-right: 20px; /* To give space for the arrow */
-  transform: translateY(-50%); /* Center the arrow vertically */
-  width: 20px; /* Set the width of the arrow element */
-  height: 20px; /* Set the height of the arrow element */
-  background-image: url('arrow.png'); /* Use the arrow image as the background */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-position: center; /* Center the image within the element */
-  background-size: cover; /* Ensure the image covers the entire background of the element */
-}
-#closePopup {
-  display: block;
-  margin-top: 10px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
 }
 
-#closePopup:hover {
-  background-color: #0056b3;
+.popup-message {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.popup-arrow-left,
+.popup-arrow-right {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.popup-arrow-left {
+  top: 50%;
+  left: 5px;
+  border-width: 10px 15px 10px 0;
+  border-color: transparent #fff transparent transparent;
+  transform: translateY(-50%);
+}
+
+.popup-arrow-right {
+  top: 50%;
+  right: 5px;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #fff;
+  transform: translateY(-50%);
 }
