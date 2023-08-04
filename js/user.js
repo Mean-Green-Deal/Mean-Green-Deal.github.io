@@ -453,25 +453,4 @@ function Recycle(map) {
 }
 
 /////////////////////////////////////////Start of Pop Up/////////////////////////////////////////////////////////
-// Your existing JavaScript here
-
-// JavaScript to handle the pop-up guide
-document.addEventListener("DOMContentLoaded", function() {
-  const popupContainer = document.getElementById("popupContainer");
-  const closeButton = document.getElementById("closeButton");
-
-  // Check if the user is a new user (you can implement your logic here)
-  const isNewUser = true;
-
-  if (isNewUser) {
-    // Show the pop-up guide
-    popupContainer.style.display = "flex";
-  }
-
-  closeButton.addEventListener("click", function() {
-    // Hide the pop-up guide when the close button is clicked
-    popupContainer.style.display = "none";
-  });
-});
-
 
