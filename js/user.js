@@ -457,13 +457,42 @@ document.addEventListener("DOMContentLoaded", function() {
   const popup = document.getElementById("popup");
   const closeBtn = document.getElementById("closeBtn");
 
-  // Show the popup when the page is fully loaded
-  overlay.style.display = "block";
-  popup.style.display = "block";
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
-  // Close the popup when the close button is clicked
-  closeBtn.addEventListener("click", function() {
-    overlay.style.display = "none";
-    popup.style.display = "none";
+  // Create a reference to the database
+  var database = firebase.database();
+  var ref = database.ref('users');
+
+  ref.once('value', function(snapshot) {
+    // Get the data as an object
+    var data = snapshot.val();
+
+    // Function to check if the user is new based on the isNewUser value in the data object
+    function isNewUser() {
+      return data && data.isNewUser === true;
+    }
+
+    // Show the popup if the user is new, otherwise hide it
+    if (isNewUser()) {
+      overlay.style.display = "block";
+      popup.style.display = "block";
+    } else {
+      overlay.style.display = "none";
+      popup.style.display = "none";
+    }
+
+    // Close the popup when the close button is clicked and update the isNewUser value in the database
+    closeBtn.addEventListener("click", function() {
+      overlay.style.display = "none";
+      popup.style.display = "none";
+
+      // Update the isNewUser value in the database to "false" for the current user
+      if (data) {
+        database.ref('users').update({
+          isNewUser: false
+        });
+      }
+    });
   });
 });
