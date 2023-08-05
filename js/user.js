@@ -452,47 +452,17 @@ function Recycle(map) {
   return controlButton;
 }
 /////////////////////////////////////////Start of Pop Up/////////////////////////////////////////////////////////
-const ModalWindow = {
-  init() {
-      document.body.addEventListener("click", e => {
-          if (e.target.classList.contains("modal__close")) {
-              this.closeModal(e.target);
-          }
-      });
-    
-    this.openModal();
-  },
+document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("closeBtn");
 
-  getHtmlTemplate(modalOptions) {
-      return `
-          <div class="modal__overlay">
-              <div class="modal__window">
-                  <div class="modal__titlebar">
-                      <span class="modal__title">${modalOptions.title}</span>
-                      <button class="modal__close material-icons">close</button>
-                  </div>
-                  <div class="modal__content">
-                      ${modalOptions.content}
-                  </div>
-              </div>
-          </div>
-      `;
-  },
+  // Show the popup when the page is fully loaded
+  popup.style.opacity = "1";
+  popup.style.pointerEvents = "auto";
 
-  openModal(modalOptions = {}) {
-      modalOptions = Object.assign({
-          title: 'Modal Title',
-          content: 'Modal Content'
-      }, modalOptions);
-
-      const modalTemplate = this.getHtmlTemplate(modalOptions);
-      document.body.insertAdjacentHTML("afterbegin", modalTemplate);
-  },
-
-  closeModal(closeButton) {
-      const modalOverlay = closeButton.parentElement.parentElement.parentElement;
-      document.body.removeChild(modalOverlay);
-  }
-};
-
-document.addEventListener("DOMContentLoaded", () => ModalWindow.init());
+  // Close the popup when the close button is clicked
+  closeBtn.addEventListener("click", function() {
+    popup.style.opacity = "0";
+    popup.style.pointerEvents = "none";
+  });
+});
