@@ -137,12 +137,9 @@ background-color: #555;
   color: #000000;
 }
 /*////////////////////////////START OF POP UP////////////////////////////*/
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
+/* Your existing CSS styles */
 
+/* Additional styles for the popup */
 .overlay {
   display: none;
   position: fixed;
