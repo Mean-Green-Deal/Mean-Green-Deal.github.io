@@ -453,16 +453,17 @@ function Recycle(map) {
 }
 /////////////////////////////////////////Start of Pop Up/////////////////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", function() {
+  const overlay = document.getElementById("overlay");
   const popup = document.getElementById("popup");
   const closeBtn = document.getElementById("closeBtn");
 
   // Show the popup when the page is fully loaded
-  popup.style.opacity = "1";
-  popup.style.pointerEvents = "auto";
+  overlay.style.display = "block";
+  popup.style.display = "block";
 
   // Close the popup when the close button is clicked
   closeBtn.addEventListener("click", function() {
-    popup.style.opacity = "0";
-    popup.style.pointerEvents = "none";
+    overlay.style.display = "none";
+    popup.style.display = "none";
   });
 });

@@ -143,10 +143,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.popup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.overlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -154,15 +152,23 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
-  opacity: 0;
-  pointer-events: none;
 }
 
-.popup-content {
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.popup-content {
+  text-align: center;
 }
 
 button {
