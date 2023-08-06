@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Show the popup if the user is new or isNewUser is undefined, otherwise hide it
 
-    if (firebase.database().ref('users').child(currentUser.uid).child('isNewUser') === 'true' || firebase.database().ref('users').child(user.uid).child('isNewUser') === undefined) {
+    if (firebase.database().ref('users').child(currentUser.uid).child('isNewUser') === 'true'){
       overlay.style.display = "block";
       popup.style.display = "block";
       database.ref('users/' + currentUser.uid).update({
