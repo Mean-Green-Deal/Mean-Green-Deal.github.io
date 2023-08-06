@@ -463,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const currentUser = firebase.auth().currentUser;
 
   // Show the popup if the user is new or isNewUser is undefined, otherwise hide it
-  const isNewUserRef = firebase.database().ref('users').child(currentUser.uid).child('isNewUser');
+  const isNewUserRef = firebase.database().ref('users').child(user.uid).child('isNewUser');
   isNewUserRef.once('value').then((snapshot) => {
     const isNewUserValue = snapshot.val(); // Retrieve the value from the snapshot
     if (isNewUserValue === 'true' || isNewUserValue === undefined){
