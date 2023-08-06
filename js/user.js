@@ -457,9 +457,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const popup = document.getElementById("popup");
   const closeBtn = document.getElementById("closeBtn");
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
   // Create a reference to the database
   var database = firebase.database();
   var ref = database.ref('users');
