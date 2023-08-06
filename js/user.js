@@ -463,17 +463,18 @@ document.addEventListener("DOMContentLoaded", function() {
   // Create a reference to the database
   var database = firebase.database();
   var ref = database.ref('users');
+  const currentUser = firebase.auth().currentUser;
 
+  // Function to check if the user is new based on the isNewUser value in the data object
+  function isNewUser() {
+    return currentUser && data[currentUser.uid] && (data[currentUser.uid].isNewUser === true || data[currentUser.uid].isNewUser === undefined);
+  }
+
+  // Show the popup if the user is new or isNewUser is undefined, otherwise hide it
   ref.once('value', function(snapshot) {
     // Get the data as an object
     var data = snapshot.val();
 
-    // Function to check if the user is new based on the isNewUser value in the data object
-    function isNewUser() {
-      return data && data.isNewUser === true;
-    }
-
-    // Show the popup if the user is new, otherwise hide it
     if (isNewUser()) {
       overlay.style.display = "block";
       popup.style.display = "block";
@@ -481,18 +482,18 @@ document.addEventListener("DOMContentLoaded", function() {
       overlay.style.display = "none";
       popup.style.display = "none";
     }
+  });
 
-    // Close the popup when the close button is clicked and update the isNewUser value in the database
-    closeBtn.addEventListener("click", function() {
-      overlay.style.display = "none";
-      popup.style.display = "none";
+  // Close the popup when the close button is clicked and update the isNewUser value in the database
+  closeBtn.addEventListener("click", function() {
+    overlay.style.display = "none";
+    popup.style.display = "none";
 
-      // Update the isNewUser value in the database to "false" for the current user
-      if (data) {
-        database.ref('users').update({
-          isNewUser: false
-        });
-      }
-    });
+    // Update the isNewUser value in the database to "false" for the current user
+    if (currentUser) {
+      database.ref('users/' + currentUser.uid).update({
+        isNewUser: false
+      });
+    }
   });
 });
