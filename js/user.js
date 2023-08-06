@@ -476,6 +476,7 @@ document.addEventListener("DOMContentLoaded", function() {
       overlay.style.display = "none";
       popup.style.display = "none";
     }
+  });
   // Close the popup when the close button is clicked and update the isNewUser value in the database
   closeBtn.addEventListener("click", function() {
     overlay.style.display = "none";
