@@ -460,7 +460,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Create a reference to the database
   var database = firebase.database();
   var ref = database.ref();
-  const currentUser = firebase.auth().currentUser;
   firebase.auth().onAuthStateChanged((user) => {
   // Show the popup if the user is new or isNewUser is undefined, otherwise hide it
   const isNewUserVal = firebase.database().ref('users').child(user.uid).child('isNewUser');
