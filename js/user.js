@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const overlay = document.getElementById("overlay");
   const popup = document.getElementById("popup");
   const closeBtn = document.getElementById("closeBtn");
-
+ });
   // Create a reference to the database
   var database = firebase.database();
   var ref = database.ref();
@@ -486,5 +486,5 @@ document.addEventListener("DOMContentLoaded", function() {
   closeBtn.addEventListener("click", function() {
     overlay.style.display = "none";
     popup.style.display = "none";
-  });
+ 
 });
