@@ -481,6 +481,8 @@ document.addEventListener("DOMContentLoaded", function() {
             isNewUserRef.set(false)
               .then(function() {
                 console.log("isNewUser updated to false.");
+                overlay.style.display = "block";
+                popup.style.display = "block";
               })
               .catch(function(error) {
                 console.error("Error updating isNewUser:", error);
