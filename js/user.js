@@ -419,36 +419,38 @@ function Recycle(map) {
   controlButton.addEventListener("click", () => {
     map.setCenter();
     navigator.geolocation.getCurrentPosition((position) => {
-    firebase.auth().onAuthStateChanged((user) => {
-      var database_ref = database.ref()
-      var break_count = 0;
-      if (user) {
-        const lat = position.coords.latitude
-        const lng = position.coords.longitude
-      for (let i = 0; i < bins.length; i++){
-          const bin = bins[i];
-          if(bin[1]-0.01 < lat && lat < bin[1]+0.01 && bin[2]-0.01 < lng && lng < bin[2]+0.01) { //1 = 111km => 0.001 = 111m => 0.00001 = 1.11m
-            firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1))
-            alert("Congrats you are awarded 1 point.")
-            break
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const latRange = 0.01;
+          const lngRange = 0.01;
+
+          let isNearBin = false;
+
+          for (const bin of bins) {
+            const [binName, binLat, binLng] = bin;
+            if (
+              binLat - latRange < lat &&
+              lat < binLat + latRange &&
+              binLng - lngRange < lng &&
+              lng < binLng + lngRange
+            ) {
+              firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1));
+              alert("Congrats! You are awarded 1 point.");
+              isNearBin = true;
+              break;
+            }
           }
-          else{
-            break_count++
-            //alert("You are not near a bin")
-            //break
-          }
-          if(break_count == bins.length){
-            alert("You are not near a bin")
-            break
+
+          if (!isNearBin) {
+            alert("You are not near a bin.");
           }
         }
-      } else {
-        // User is signed out
-        // ...
-      }
+      });
     });
   });
-  });
+
   return controlButton;
 }
 /////////////////////////////////////////Start of Pop Up/////////////////////////////////////////////////////////
