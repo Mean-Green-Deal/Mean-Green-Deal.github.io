@@ -460,25 +460,31 @@ document.addEventListener("DOMContentLoaded", function() {
   // Create a reference to the database
   var database = firebase.database();
   var ref = database.ref();
-  firebase.auth().onAuthStateChanged((user) => {
-  // Show the popup if the user is new or isNewUser is undefined, otherwise hide it
-  const isNewUserVal = firebase.database().ref('users').child(user.uid).child('isNewUser');
 
-    if (isNewUserVal === 'true' || isNewUserVal === undefined){
-      overlay.style.display = "block";
-      popup.style.display = "block";
-      database.ref('users/' + user.uid).update({
-        isNewUser: false
-      });
-    } else {
-      overlay.style.display = "none";
-      popup.style.display = "none";
-    }
+  firebase.auth().onAuthStateChanged((user) => {
+    // Show the popup if the user is new or isNewUser is undefined, otherwise hide it
+    const isNewUserRef = firebase.database().ref('users').child(user.uid).child('isNewUser');
+    isNewUserRef.once('value').then((snapshot) => {
+      const isNewUserValue = snapshot.val(); // Retrieve the value from the snapshot
+      if (isNewUserValue === 'true' || isNewUserValue === undefined) {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+        database.ref('users/' + user.uid).update({
+          isNewUser: false
+        });
+      } else {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+      }
+    }).catch((error) => {
+      // Handle any errors that might occur during the database retrieval
+      console.error('Error fetching isNewUser value:', error);
+    });
   });
+
   // Close the popup when the close button is clicked and update the isNewUser value in the database
   closeBtn.addEventListener("click", function() {
     overlay.style.display = "none";
     popup.style.display = "none";
-
   });
 });
