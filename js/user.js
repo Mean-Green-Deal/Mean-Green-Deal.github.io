@@ -456,35 +456,48 @@ document.addEventListener("DOMContentLoaded", function() {
   const overlay = document.getElementById("overlay");
   const popup = document.getElementById("popup");
   const closeBtn = document.getElementById("closeBtn");
- });
-  // Create a reference to the database
+   
+  // Get a reference to the database
   var database = firebase.database();
-  var ref = database.ref();
 
-  firebase.auth().onAuthStateChanged((user) => {
-    // Show the popup if the user is new or isNewUser is undefined, otherwise hide it
-    const isNewUserRef = firebase.database().ref('users').child(user.uid).child('isNewUser');
-    isNewUserRef.once('value').then((snapshot) => {
-      const isNewUserValue = snapshot.val(); // Retrieve the value from the snapshot
-      if (isNewUserValue === 'true' || isNewUserValue === undefined) {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-        database.ref('users/' + user.uid).update({
-          isNewUser: false
+  // Check if a user is logged in
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in, retrieve the UID
+      var uid = user.uid;
+
+      // Get a reference to the "isNewUser" field for the specific user
+      var isNewUserRef = database.ref("users/" + uid + "/isNewUser");
+
+      // Fetch the "isNewUser" value for the specific user
+      isNewUserRef.once("value")
+        .then(function(snapshot) {
+          // The data is available in the snapshot object
+          var isNewUserValue = snapshot.val();
+          console.log("isNewUser:", isNewUserValue);
+
+          // Update the "isNewUser" field to false
+          if (isNewUserValue === true) {
+            isNewUserRef.set(false)
+              .then(function() {
+                console.log("isNewUser updated to false.");
+              })
+              .catch(function(error) {
+                console.error("Error updating isNewUser:", error);
+              });
+          }
+        })
+        .catch(function(error) {
+          console.error("Error fetching isNewUser value:", error);
         });
-      } else {
-        overlay.style.display = "none";
-        popup.style.display = "none";
-      }
-    }).catch((error) => {
-      // Handle any errors that might occur during the database retrieval
-      console.error('Error fetching isNewUser value:', error);
-    });
+    } else {
+      // User is not signed in, handle this case accordingly
+      console.log("User is not logged in.");
+    }
   });
-
   // Close the popup when the close button is clicked and update the isNewUser value in the database
   closeBtn.addEventListener("click", function() {
     overlay.style.display = "none";
     popup.style.display = "none";
- 
+  });
 });
