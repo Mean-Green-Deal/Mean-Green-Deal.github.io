@@ -384,6 +384,8 @@ function Recycle(map) {
 
   controlButton.addEventListener("click", () => {
     map.setCenter();
+    //Change from 'I Recycled' to loading
+    updateButtonContent('<div class="loading-circle"></div>'); 
     navigator.geolocation.getCurrentPosition((position) => {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -403,6 +405,7 @@ function Recycle(map) {
               lng < binLng + lngRange
             ) {
               firebase.database().ref('users').child(user.uid).child('Points').set(firebase.database.ServerValue.increment(1));
+              updateButtonContent("I Recycled");
               alert("Congrats! You are awarded 1 point.");
               isNearBin = true;
               break;
@@ -410,6 +413,7 @@ function Recycle(map) {
           }
 
           if (!isNearBin) {
+            updateButtonContent("I Recycled");
             alert("You are not near a bin.");
           }
         }
@@ -471,3 +475,7 @@ document.addEventListener("DOMContentLoaded", function() {
     popup.style.display = "none";
   });
 });
+//Function to update button to loading screen
+function updateButtonContent(content) {
+  controlButton.innerHTML = content;
+}
