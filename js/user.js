@@ -199,7 +199,7 @@ function getLocation() {
       },
         {
         enableHighAccuracy: true, // setting high accuracy
-        maximumAge: 0, // forcing the service to get fresh location
+        maximumAge: 5, // forcing the service to get fresh location
         timeout: 5000 // timeout after 5 seconds
       }
     );
