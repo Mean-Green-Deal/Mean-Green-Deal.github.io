@@ -215,3 +215,18 @@ button:hover {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.tablefin{
+  overflow-y: auto; 
+  height: 26.25em; 
+  margin-top: -35%; 
+  margin-right: 5%;
+}
+@media screen and (max-width: 600px) {
+  .tablefin{
+    overflow-y: auto; 
+    height: 26.25em; 
+    margin-top: 0%; 
+    margin-right: 0%;
+  }
+}
