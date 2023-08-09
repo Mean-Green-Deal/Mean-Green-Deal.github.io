@@ -219,14 +219,14 @@ button:hover {
 .tablefin{
   overflow-y: auto; 
   height: 26.25em; 
-  margin-top: -35%; 
+  margin-top: -10%; 
   margin-right: 5%;
 }
 @media screen and (max-width: 600px) {
   .tablefin{
     overflow-y: auto; 
     height: 26.25em; 
-    margin-top: 0%; 
+    margin-top: -10%; 
     margin-right: 0%;
   }
 }
