@@ -230,4 +230,8 @@ button:hover {
     margin-top: -10%; 
     margin-right: 10%;
   }
+  th, td {
+    font-size: 0.5em;
+    min-width: 1.2em;
+  }
 }
