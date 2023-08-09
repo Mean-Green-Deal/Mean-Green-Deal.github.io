@@ -227,6 +227,6 @@ button:hover {
     overflow-y: auto; 
     height: 5em; 
     margin-top: -10%; 
-    margin-right: 0%;
+    margin-right: 5%;
   }
 }
