@@ -233,6 +233,6 @@ button:hover {
   }
   .tablefin th, .tablefin td {
     font-size: 0.5em;
-    min-width: 1.2em;
+    min-width: 0.8em;
   }
 }
