@@ -243,6 +243,7 @@ function RequestBin(map) {
   controlButton.style.width = "100%";
 
   controlButton.addEventListener("click", () => {
+    controlButton.innerHTML = '<div class="loading-circle"></div>';
     map.setCenter();
     navigator.geolocation.getCurrentPosition((position) => {
       firebase.auth().onAuthStateChanged((user) => {
@@ -254,10 +255,12 @@ function RequestBin(map) {
          };
          var database_ref = database.ref()
          database_ref.child('RequestedBin/').push(pos)
+         controlButton.textContent = "Request Bin Location";
         }
         else{
           alert("User not logged in.")
           window.location.href = "https://mean-green-deal.github.io/content/login.html";
+          controlButton.textContent = "Request Bin Location";
         }
       });
     },
