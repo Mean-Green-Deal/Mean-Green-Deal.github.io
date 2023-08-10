@@ -226,13 +226,13 @@ button:hover {
   .tablefin{
     overflow-y: auto; 
     float: right;
-    width: 4em;
+    width: 6em;
     height: 15em; 
     margin-top: -80%; 
     margin-right: -1%;
   }
   .tablefin th, .tablefin td {
-    font-size: 0.5em;
+    font-size: 0.4em;
     min-width: 1.2em;
     width: 1em;
   }
