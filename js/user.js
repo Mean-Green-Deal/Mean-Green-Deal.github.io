@@ -195,7 +195,7 @@ function getLocation() {
         map.setCenter(location);
       },
       () => {
-        handleLocationError(true, infoWindow, map.getCenter());
+        handleLocationError(true, map.getCenter());
       },
         {
         enableHighAccuracy: true, // setting high accuracy
@@ -205,7 +205,7 @@ function getLocation() {
     );
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    handleLocationError(false, map.getCenter());
   }
 }
 
