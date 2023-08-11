@@ -388,3 +388,14 @@ window.initMap = initMap;
 //root.render(e(LikeButton));
   //svg image url: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-solid-dark-blue.png
   //33.20750461273979, -97.15295817275108
+
+/////////////////Geo Location at user.js error handeling///////////////////
+ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
+  infoWindow.open(map);
+}
