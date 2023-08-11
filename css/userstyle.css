@@ -235,11 +235,10 @@ tbody {
 }
 @media screen and (max-width: 600px) {
   .tablefin{
-    margin-top: -35em;
-    margin-right: 0em;
-    width: 1%;
     float: right;
-    text-align: center;
+    width: 5em;
+    height: 15em; 
+    margin-top: -80%; 
     overflow-y: scroll;
   }
   .tablefin th, .tablefin td {
@@ -248,5 +247,9 @@ tbody {
     width: 0.5em;
     border: 0.0625em solid white;
     padding: 0.3125em;
+  }
+  tbody {
+    text-align: center;
+    overflow-y: scroll;
   }
 }
