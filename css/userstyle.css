@@ -222,6 +222,7 @@ button:hover {
   margin-top: -40%; 
   margin-right: 5%;
   text-align: center;
+  float: right;
 }
 .tablefin th, .tablefin td {
   border: 0.0625em solid white;
