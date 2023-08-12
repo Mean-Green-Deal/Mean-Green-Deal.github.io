@@ -6,62 +6,61 @@ body {
   background-image: linear-gradient(90deg, #1b6e3b 0%, #219633 46%, #1b6e3b 100%);
 }
 .container {
-    max-width: 50em;
-    margin: 0 auto;
-    padding: 1.25em;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 2.25em;
-    margin-bottom: 1.875em;
-    color: #ffffff;
-  }
-  
-  .recycling-level {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2.5em;
-    justify-content: space-between;
-  }
-  
-  .recycling-level img {
-    max-width: 12.5em;
-    margin-left: 2.5em;
-  }
-  
-  .recycling-level .description {
-    flex: 1;
-    margin-left: 2.5em;
-  }
-  
-  .recycling-level .recycling-symbol {
-    font-size: 1.5em;
-    margin-right: 0.625em;
-    align-self: flex-start;
-    color: #ffffff;
-  }
-  
-  .recycling-level h2 {
-    font-size: 1.5em;
-    margin-bottom: 1.25em;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  
-  .recycling-level p {
-    line-height: 1.5;
-    font-size: 1.125em;
-    color: #ffffff;
-  }
-  
-  .footer {
-    text-align: center;
-    margin-top: 3.125em;
-    font-size: 0.875em;
-    color: #ffffff;
-  }
-  
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
+}
+
+h1 {
+text-align: center;
+font-size: 36px;
+margin-bottom: 30px;
+color: #ffffff;
+}
+
+.recycling-level {
+display: flex;
+align-items: center;
+margin-bottom: 40px;
+justify-content: space-between;
+}
+
+.recycling-level img {
+max-width: 200px;
+margin-left: 40px;
+}
+
+.recycling-level .description {
+flex: 1;
+margin-left: 40px;
+}
+
+.recycling-level .recycling-symbol {
+font-size: 24px;
+margin-right: 10px;
+align-self: flex-start;
+color: #ffffff;
+}
+
+.recycling-level h2 {
+font-size: 24px;
+margin-bottom: 20px;
+font-weight: bold;
+color: #ffffff;
+}
+
+.recycling-level p {
+line-height: 1.5;
+font-size: 18px;
+color: #ffffff;
+}
+
+.footer {
+text-align: center;
+margin-top: 50px;
+font-size: 14px;
+color: #ffffff;
+}
 /*copying sams header*/
 .navbar {
   display: flex;
@@ -152,4 +151,63 @@ body {
   }
   .gm-style-iw-d {
     color: #000000;
+  }
+  /*MAKING CONTENT MORE RESPONSIVE WITH PHONE*/
+  @media (max-width: 600px)   {
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        
+        h1 {
+        text-align: center;
+        font-size: 12px;
+        margin-bottom: 30px;
+        color: #ffffff;
+        }
+        
+        .recycling-level {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        justify-content: space-between;
+        }
+        
+        .recycling-level img {
+        max-width: 66.6666px;
+        margin-left: 40px;
+        }
+        
+        .recycling-level .description {
+        flex: 1;
+        margin-left: 40px;
+        }
+        
+        .recycling-level .recycling-symbol {
+        font-size: 8px;
+        margin-right: 10px;
+        align-self: flex-start;
+        color: #ffffff;
+        }
+        
+        .recycling-level h2 {
+        font-size: 8px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #ffffff;
+        }
+        
+        .recycling-level p {
+        line-height: 1.5;
+        font-size: 6px;
+        color: #ffffff;
+        }
+        
+        .footer {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 4.66px;
+        color: #ffffff;
+        }
   }
