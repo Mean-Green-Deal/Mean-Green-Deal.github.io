@@ -237,6 +237,7 @@ tbody {
   .tablefin{
     float: right;
     width: 7.5em;
+    margin-right: -10%;
     height: 15em; 
     margin-top: -80%; 
     overflow-y: scroll;
