@@ -239,7 +239,7 @@ button:hover {
     width: 7.5em;
     margin-right: -2%;
     height: 15em; 
-    margin-top: -80%; 
+    margin-top: -60%; 
     overflow-y: scroll;
   }
   .tablefin th, .tablefin td {
