@@ -240,7 +240,7 @@ button:hover {
     width: 7.5em;
     margin-right: -2%;
     height: 15em; 
-    margin-top: -60%; 
+    margin-top: 10%; 
     overflow-y: scroll;
   }
   .tablefin th, .tablefin td {
