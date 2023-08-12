@@ -152,3 +152,62 @@ color: #ffffff;
   .gm-style-iw-d {
     color: #000000;
   }
+  /*MAKING CONTENT MORE RESPONSIVE WITH PHONE*/
+  @media (max-width: 600px)   {
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+        
+        h1 {
+        text-align: center;
+        font-size: 12px;
+        margin-bottom: 30px;
+        color: #ffffff;
+        }
+        
+        .recycling-level {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        justify-content: space-between;
+        }
+        
+        .recycling-level img {
+        max-width: 66.6666px;
+        margin-left: 40px;
+        }
+        
+        .recycling-level .description {
+        flex: 1;
+        margin-left: 40px;
+        }
+        
+        .recycling-level .recycling-symbol {
+        font-size: 8px;
+        margin-right: 10px;
+        align-self: flex-start;
+        color: #ffffff;
+        }
+        
+        .recycling-level h2 {
+        font-size: 8px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #ffffff;
+        }
+        
+        .recycling-level p {
+        line-height: 1.5;
+        font-size: 6px;
+        color: #ffffff;
+        }
+        
+        .footer {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 4.66px;
+        color: #ffffff;
+        }
+  }
