@@ -102,11 +102,11 @@ display: none; /* if we want to only show it while it while minimized, set this 
 flex-direction: column; /* Shows spans vertically */
 justify-content: space-between; /* leaves enough space between spans */
 width: 30px;
-height: 21px;
+height: 4vw;
 }
 
 .toggle-button .bar {
-height: 4vw;
+height: 3px;
 width: 100%;
 background-color: white;
 border-radius: 10px;
