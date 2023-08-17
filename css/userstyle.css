@@ -67,11 +67,7 @@ align-items: center;
 background-color: #1b6e3b; 
 color: white;
 }
-@media (max-width: 600px)   {
-  .navbar {
-    height: 2em
-  }
-}
+
 .brand-title {
 font-size: 4vw;
 margin: 0.5vw;
@@ -110,7 +106,7 @@ height: 21px;
 }
 
 .toggle-button .bar {
-height: 3px;
+height: 4vw;
 width: 100%;
 background-color: white;
 border-radius: 10px;
