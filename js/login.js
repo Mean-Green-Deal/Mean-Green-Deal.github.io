@@ -20,6 +20,20 @@ const firebaseConfig = {
     var registerEmail = document.getElementById("newEmail").value
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
+
+      //Tests email and password
+      expression = /^[^@]+@\w+(\.\w+)+\w$/
+      if (expression.test(registerEmail) == false || registerPassword.length < 6) {
+        alert('Email or Password is Outta Line!!')
+        return
+        // Don't continue running the code
+      }
+      if (registerUser.length > 8) {
+        alert('Display name must be no longer than 8 characters!!')
+        return
+        // Don't continue running the code
+      }
+
     auth.createUserWithEmailAndPassword(registerEmail, registerPassword).then(function() {
       // Declare user variable
       var user = auth.currentUser
@@ -43,18 +57,6 @@ const firebaseConfig = {
       }).catch(function(error) {
           alert(error.message)
       });
-      //Tests email and password
-    expression = /^[^@]+@\w+(\.\w+)+\w$/
-    if (expression.test(registerEmail) == false || registerPassword < 6) {
-      alert('Email or Password is Outta Line!!')
-      return
-      // Don't continue running the code
-    }
-    if (registerUser > 8) {
-      alert('Display name must be no longer than 8 characters!!')
-      return
-      // Don't continue running the code
-    }
   }
     //////////////////////Login function//////////////////////
      function login() {
