@@ -162,7 +162,7 @@ color: #ffffff;
         
         h1 {
         text-align: center;
-        font-size: 18px;
+        font-size: 14.4px;
         margin-bottom: 30px;
         color: #ffffff;
         }
@@ -175,7 +175,7 @@ color: #ffffff;
         }
         
         .recycling-level img {
-        max-width: 100px;
+        max-width: 40px;
         margin-left: 40px;
         }
         
@@ -185,14 +185,14 @@ color: #ffffff;
         }
         
         .recycling-level .recycling-symbol {
-        font-size: 12px;
+        font-size: 9.6px;
         margin-right: 10px;
         align-self: flex-start;
         color: #ffffff;
         }
         
         .recycling-level h2 {
-        font-size: 12px;
+        font-size: 9.6px;
         margin-bottom: 20px;
         font-weight: bold;
         color: #ffffff;
@@ -200,14 +200,14 @@ color: #ffffff;
         
         .recycling-level p {
         line-height: 1.5;
-        font-size: 9px;
+        font-size: 7.2px;
         color: #ffffff;
         }
         
         .footer {
         text-align: center;
         margin-top: 50px;
-        font-size: 7px;
+        font-size: 5.6px;
         color: #ffffff;
         }
   }
