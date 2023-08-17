@@ -96,12 +96,12 @@ background-color: #555;
 
 .toggle-button {
 position: absolute; /* This makes it so that position doesn't change no matter what */
-top: .75rem; /* gives space from the top */
+top: .5rem; /* gives space from the top */
 right: 1rem; /* gives space from the right */
 display: none; /* if we want to only show it while it while minimized, set this as none */
 flex-direction: column; /* Shows spans vertically */
 justify-content: space-between; /* leaves enough space between spans */
-width: 30px;
+width: 20px;
 height: 4vw;
 }
 
