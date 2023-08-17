@@ -50,6 +50,11 @@ const firebaseConfig = {
       return
       // Don't continue running the code
     }
+    if (registerUser > 8) {
+      alert('Display name must be no longer than 8 characters!!')
+      return
+      // Don't continue running the code
+    }
   }
     //////////////////////Login function//////////////////////
      function login() {
