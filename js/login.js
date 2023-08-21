@@ -47,6 +47,8 @@ const firebaseConfig = {
         Points : 0,
         isNewUser : true
       }
+      var filter = require('profanity-filter');
+      alert(filter.clean());
       // Push to Firebase Database and Added promise to fix redirect
       var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
       // Return the update promise
