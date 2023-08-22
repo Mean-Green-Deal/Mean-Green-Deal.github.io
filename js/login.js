@@ -21,6 +21,10 @@ const firebaseConfig = {
     var registerPassword = document.getElementById("newPassword").value
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
+    //PROFANITY FILTER//
+    var filter = require('profanity-filter');
+    alert(filter.clean(registerUser));
+    
       //Tests email and password
       expression = /^[^@]+@\w+(\.\w+)+\w$/
       if (expression.test(registerEmail) == false || registerPassword.length < 6) {
@@ -47,8 +51,6 @@ const firebaseConfig = {
         Points : 0,
         isNewUser : true
       }
-      var filter = require('profanity-filter');
-      alert(filter.clean());
       // Push to Firebase Database and Added promise to fix redirect
       var updatePromise = database_ref.child('users/' + user.uid).set(user_data)
       // Return the update promise
