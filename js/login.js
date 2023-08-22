@@ -22,9 +22,9 @@ const firebaseConfig = {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
     //PROFANITY FILTER//
-    var filter = require('profanity-filter');
+    var filter = require('profanity-filter-master/test/test.js');
     alert(filter.clean(registerUser));
-    
+
       //Tests email and password
       expression = /^[^@]+@\w+(\.\w+)+\w$/
       if (expression.test(registerEmail) == false || registerPassword.length < 6) {
