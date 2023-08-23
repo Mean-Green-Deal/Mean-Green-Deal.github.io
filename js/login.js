@@ -22,8 +22,7 @@ const firebaseConfig = {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
     //PROFANITY FILTER//
-    for (const bad_word of bad_words) {
-    if(registerUser == bad_word){
+    if(profanity.exists('I like big butts and I cannot lie')){
       alert("Please avoid any profanity in display name.");
       return
     }
