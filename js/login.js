@@ -22,15 +22,20 @@ const firebaseConfig = {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
     //PROFANITY FILTER//
+    var shouldExit = false;
+
     const script = document.createElement('script');
     script.src = '/node_modules/@2toad/profanity.js'; // Adjust the path as needed
     script.onload = function() {
     if (profanity.exists(registerUser)) {
       alert("Please avoid any profanity in display name.");
-      return;
+      shouldExit = true; // Set the flag to true
     }
   };
-
+      if (shouldExit) {
+        alert("Please avoid any profanity in display name.");
+        return;
+      }
       //Tests email and password
       expression = /^[^@]+@\w+(\.\w+)+\w$/
       if (expression.test(registerEmail) == false || registerPassword.length < 6) {
