@@ -44,7 +44,7 @@ body {
 
 .toggle-button {
     position: absolute; /* This makes it so that position doesn't change no matter what */
-    top: .75rem; /* gives space from the top */
+    top: .4rem; /* gives space from the top */
     right: 1rem; /* gives space from the right */
     display: none; /* if we want to only show it while it while minimized, set this as none */
     flex-direction: column; /* Shows spans vertically */
@@ -54,7 +54,7 @@ body {
 }
 
 .toggle-button .bar {
-    height: 3px;
+    height: 2.5px;
     width: 100%;
     background-color: white;
     border-radius: 10px;
