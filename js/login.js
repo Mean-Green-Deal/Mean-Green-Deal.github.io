@@ -25,7 +25,7 @@ const firebaseConfig = {
     var shouldExit = false;
 
     const script = document.createElement('script');
-    script.src = '/node_modules/@2toad/profanity.js'; // Adjust the path as needed
+    script.src = '/node_modules/@2toad/profanity/profanity.js'; // Adjust the path as needed
     script.onload = function() {
     if (profanity.exists(registerUser)) {
       alert("Please avoid any profanity in display name.");
