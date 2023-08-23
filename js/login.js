@@ -1,3 +1,6 @@
+import { profanity } from '/node_modules/@2toad/profanity';
+
+
 //Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
@@ -22,7 +25,6 @@ const firebaseConfig = {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
     //PROFANITY FILTER//
-    var profanity = require('/node_modules/@2toad/profanity').profanity;
     if(profanity.exists('I like big butts and I cannot lie')){
       alert("Please avoid any profanity in display name.");
       return
