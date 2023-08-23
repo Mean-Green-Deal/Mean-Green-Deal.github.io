@@ -34,7 +34,7 @@ const firebaseConfig = {
   };
       if (shouldExit) {
         alert("Please avoid any profanity in display name.");
-        return;
+        return
       }
       //Tests email and password
       expression = /^[^@]+@\w+(\.\w+)+\w$/
