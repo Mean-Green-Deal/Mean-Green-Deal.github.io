@@ -1,6 +1,3 @@
-import { profanity } from '/node_modules/@2toad/profanity';
-
-
 //Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
@@ -25,10 +22,13 @@ const firebaseConfig = {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
     //PROFANITY FILTER//
-    if(profanity.exists('I like big butts and I cannot lie')){
+    src="/js/profanity.js"
+    for (const bad_word of bad_words) {
+    if(registerUser == bad_word){
       alert("Please avoid any profanity in display name.");
       return
     }
+  }
       //Tests email and password
       expression = /^[^@]+@\w+(\.\w+)+\w$/
       if (expression.test(registerEmail) == false || registerPassword.length < 6) {

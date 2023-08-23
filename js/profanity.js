@@ -1,8 +1,5 @@
-"use strict";
-// WARNING: this file contains profanity. The below list of profane words is necessary for this tool to function properly.
-// Do not read below this line if you do not wish to be exposed to lots of profane words
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = [
+//An array of bad words//
+const bad_words = [
     "4r5e",
     "5h1t",
     "5hit",
@@ -453,4 +450,3 @@ exports.default = [
     "willies",
     "willy",
 ];
-//# sourceMappingURL=profane-words.js.map
