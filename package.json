@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@2toad/profanity": "^2.2.0",
     "firebase": "^9.17.2"
   }
 }

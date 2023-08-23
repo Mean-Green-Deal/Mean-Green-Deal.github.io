@@ -1,3 +1,6 @@
+//IMPORT PROFANITY FILTER//
+import { profanity } from '@2toad/profanity';
+
 //Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
@@ -22,8 +25,10 @@ const firebaseConfig = {
     var registerConfirmPassword = document.getElementById("confirmPassword").value
 
     //PROFANITY FILTER//
-    src='profanity-filter-master/test/test.js'
-    alert(filter.clean(registerUser));
+    if(profanity.exists(registerUser)){
+      alert("Please avoid any profanity in display name.")
+      return
+    }
 
       //Tests email and password
       expression = /^[^@]+@\w+(\.\w+)+\w$/
