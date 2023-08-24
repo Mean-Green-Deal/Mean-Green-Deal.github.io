@@ -475,7 +475,7 @@ const firebaseConfig = {
     ]
     const exit_loop = false;
     for (const bad_word of bad_words) {
-      if(registerUser == bad_word){
+      if(registerUser.includes(bad_word)){
         alert("Please avoid any profanity in display name.");
         exit_loop = true;
         return
