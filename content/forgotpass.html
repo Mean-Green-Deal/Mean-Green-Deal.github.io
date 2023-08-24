@@ -50,7 +50,7 @@
         <p class="form__text">Remembered your password? <a href="login.html" class="form__link">Sign in here</a></p>
     </div>
 
-    <script src="navbar.js"></script>
+    <!--<script src="navbar.js"></script>-->
 </body>
 <script>
     const firebaseConfig = {
@@ -64,9 +64,12 @@
     };
     
     
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
     
+    //PASSWORD RESET FUNCTION//
+    firebase.auth().sendPasswordResetEmail(document.getElementById("email").value)
+
     firebase.auth().onAuthStateChanged(function(user) {
         const userIdElement = document.getElementById('myid');
         // Check if there is a current user signed in.
