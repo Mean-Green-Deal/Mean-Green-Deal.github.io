@@ -473,11 +473,17 @@ const firebaseConfig = {
       "willies",
       "willy",
     ]
+    const exit_loop = false;
     for (const bad_word of bad_words) {
       if(registerUser == bad_word){
         alert("Please avoid any profanity in display name.");
+        exit_loop = true;
         return
       }
+    }
+    if(exit_loop){
+      return
+    }
       //Tests email and password
       expression = /^[^@]+@\w+(\.\w+)+\w$/
       if (expression.test(registerEmail) == false || registerPassword.length < 6) {
