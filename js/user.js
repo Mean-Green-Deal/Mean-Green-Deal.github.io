@@ -340,12 +340,14 @@ function Recycle(map) {
   function disableButton() {
     controlButton.disabled = true;
     controlButton.style.backgroundColor = "#cccccc"; // Change color to grey
+    controlButton.style.border = "2px solid #cccccc";
     controlButton.style.cursor = "not-allowed";
   }
   
   function enableButton() {
     controlButton.disabled = false;
     controlButton.style.backgroundColor = "#00853E"; // Reset color
+    controlButton.style.border = "2px solid #00853E";
     controlButton.style.cursor = "pointer";
   }
   const bins = [
