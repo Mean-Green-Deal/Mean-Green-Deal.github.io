@@ -279,9 +279,29 @@ function signOut(){
     console.log(error);
   });
 }
+//Start of Timer//
+let canClick = true; // This flag will control whether the button can be clicked
+
+function disableButton() {
+  controlButton.disabled = true;
+  controlButton.style.backgroundColor = "#cccccc"; // Change color to grey
+  controlButton.style.cursor = "not-allowed";
+}
+
+function enableButton() {
+  controlButton.disabled = false;
+  controlButton.style.backgroundColor = "#00853E"; // Reset color
+  controlButton.style.cursor = "pointer";
+}
 
 function Recycle(map) {
   const controlButton = document.createElement("button");
+
+  if (!canClick) {
+    alert("Please wait for the timer to reset before clicking again.");
+    return;
+  }
+
   const bins = [
     [33.2555149, -97.1529043],
     [33.2548833, -97.1533700],
@@ -400,6 +420,10 @@ function Recycle(map) {
               controlButton.textContent = "I Recycled";
               alert("Congrats! You are awarded 1 point.");
               isNearBin = true;
+              disableButton(); // Disable the button when user is awarded a point
+              setTimeout(() => {
+              enableButton(); // Enable the button after the timeout
+              }, 15 * 60 * 1000); // 15 minutes in milliseconds
               break;
             }
           }
