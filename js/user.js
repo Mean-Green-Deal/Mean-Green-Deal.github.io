@@ -282,18 +282,6 @@ function signOut(){
 //Start of Timer//
 let canClick = true; // This flag will control whether the button can be clicked
 
-function disableButton() {
-  controlButton.disabled = true;
-  controlButton.style.backgroundColor = "#cccccc"; // Change color to grey
-  controlButton.style.cursor = "not-allowed";
-}
-
-function enableButton() {
-  controlButton.disabled = false;
-  controlButton.style.backgroundColor = "#00853E"; // Reset color
-  controlButton.style.cursor = "pointer";
-}
-
 function Recycle(map) {
   const controlButton = document.createElement("button");
 
@@ -301,7 +289,17 @@ function Recycle(map) {
     alert("Please wait for the timer to reset before clicking again.");
     return;
   }
-
+  function disableButton() {
+    controlButton.disabled = true;
+    controlButton.style.backgroundColor = "#cccccc"; // Change color to grey
+    controlButton.style.cursor = "not-allowed";
+  }
+  
+  function enableButton() {
+    controlButton.disabled = false;
+    controlButton.style.backgroundColor = "#00853E"; // Reset color
+    controlButton.style.cursor = "pointer";
+  }
   const bins = [
     [33.2555149, -97.1529043],
     [33.2548833, -97.1533700],
