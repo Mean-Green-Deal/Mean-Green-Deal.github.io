@@ -94,7 +94,6 @@ function initMap() {
     ["Tennis courts 1", 33.2116943, -97.1499391, "https://mean-green-deal.github.io/pictures/recycling bin.png"],
     ["Wooten Out 1", 33.2114640, -97.1509385, "https://mean-green-deal.github.io/pictures/recycling bin.png"],
     ["Union out 1", 33.2114870, -97.1528060, "https://mean-green-deal.github.io/pictures/recycling bin.png"],
-    ["OG Bin", 33.2143251, -97.165704, "https://mean-green-deal.github.io/pictures/Original recycling bin.png"]
     ];
     for (let i = 0; i < bins.length; i++) {
       const bin = bins[i];
@@ -416,7 +415,6 @@ function Recycle(map) {
     [33.2116943, -97.1499391],
     [33.2114640, -97.1509385],
     [33.2114870, -97.1528060],
-    [33.2143251, -97.165704]
     ];
   // Set CSS for the control.
   controlButton.style.backgroundColor = "#00853E";
