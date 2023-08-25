@@ -68,7 +68,7 @@
     firebase.initializeApp(firebaseConfig);
     
     //PASSWORD RESET FUNCTION//
-    firebase.auth().sendPasswordResetEmail(document.getElementById("email").value)
+    firebase.auth().sendPasswordResetEmail(document.getElementById("email").value.valueOf())
 
     firebase.auth().onAuthStateChanged(function(user) {
         const userIdElement = document.getElementById('myid');
