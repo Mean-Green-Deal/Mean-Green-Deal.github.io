@@ -291,12 +291,12 @@ function RequestBin(map) {
          };
          var database_ref = database.ref()
          database_ref.child('RequestedBin/').push(pos)
-         controlButton.textContent = "Request Bin Location";
+         controlButton.innerHTML = "Request Bin Location";
         }
         else{
           alert("User not logged in.")
           window.location.href = "https://mean-green-deal.github.io/content/login.html";
-          controlButton.textContent = "Request Bin Location";
+          controlButton.innerHTML = "Request Bin Location";
         }
       });
     },
