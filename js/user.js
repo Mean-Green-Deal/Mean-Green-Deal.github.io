@@ -331,10 +331,12 @@ let canClick = true; // This flag will control whether the button can be clicked
 
 function Recycle(map) {
   const controlButton = document.createElement("button");
-
-  if (!canClick) {
-    alert("Please wait for the timer to reset before clicking again.");
-    return;
+  // Check if the timer is active and set the button state accordingly
+  const lastClickTimestamp = localStorage.getItem("lastClickTimestamp");
+  if (lastClickTimestamp && Date.now() - lastClickTimestamp < 15 * 60 * 1000) {
+      disableButton();
+      const remainingTime = 15 * 60 * 1000 - (Date.now() - lastClickTimestamp);
+      setTimeout(enableButton, remainingTime);
   }
   function disableButton() {
     controlButton.disabled = true;
@@ -441,6 +443,10 @@ function Recycle(map) {
   */
 
   controlButton.addEventListener("click", () => {
+    if (!canClick) {
+      alert("Please wait for the timer to reset before clicking again.");
+      return;
+    }
     map.setCenter();
     //Change from 'I Recycled' to loading
     controlButton.innerHTML = '<div class="loading-circle"></div>';
@@ -467,9 +473,9 @@ function Recycle(map) {
               alert("Congrats! You are awarded 1 point.");
               isNearBin = true;
               disableButton(); // Disable the button when user is awarded a point
-              setTimeout(() => {
-              enableButton(); // Enable the button after the timeout
-              }, 15 * 60 * 1000); // 15 minutes in milliseconds
+              localStorage.setItem("lastClickTimestamp", Date.now());
+              const remainingTime = 15 * 60 * 1000;
+              setTimeout(enableButton, remainingTime); // Enable the button after the timeout
               break;
             }
           }
