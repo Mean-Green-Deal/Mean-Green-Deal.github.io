@@ -449,8 +449,8 @@ function Recycle(map) {
         if (user) {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
-          const latRange = 0.01;
-          const lngRange = 0.01;
+          const latRange = 0.001;
+          const lngRange = 0.001;
 
           let isNearBin = false;
 
