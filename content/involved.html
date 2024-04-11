@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/recinfo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <title>Recycling Information</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="brand-title">
+          <img align="left" src="/pictures/website-logo.png" alt="Mean Green Deal Logo" width="10%" height="10%" />
+          UNT Recycling</div>
+
+        <!--Creating the hamburger button-->
+        <a href="#" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <!--Hamburger button above ^^^^^^^^^^^^^^^-->
+        <div class="navbar-links">
+            <ul>
+                <li><a href="#" id="authButton"><span id="myid"></span></a></li>
+                <li><a href="https://mean-green-deal.github.io/">Home</a></li>
+                <li><a href="/content/about.html">About Us</a></li>
+                <li><a href="/content/contact.html">Contact US</a></li>
+                <li id="signOutButtonContainer" style="display: none;"><a onclick="signOut()">Sign Out</a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <div class="container">
+        <h1>Recycling Information</h1>
+        <div class="recycling-level">
+            <div class="recycling-symbol">&#x2672;</div>
+            <div class="description">
+                <h2>PET (Polyethylene Terephthalate)</h2>
+                <p>Commonly found in:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Soft drink bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Water bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Ketchup bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Beer bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Mouthwash bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Peanut butter cantainers<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Salad dressing bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Vegetable oil bottles<br>
+                   To Recycle:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Empty and rinse bottle and remove cap unless it states &nbsp;&nbsp;&nbsp;&nbsp;otherwise before recycling.
+                </p>
+            </div>
+            <img src="/pictures/PET.png" alt="Level 1 Recycling Image">
+        </div>
+        <div class="recycling-level">
+            <div class="recycling-symbol">&#x2672;</div>
+            <div class="description">
+                <h2>HDPE (High Density Polyethylene)</h2>
+                <p>Commonly found in:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Milk jugs<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Juice bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Bleach containers<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Detergent containers<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Shampoo bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Trash bags<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Shopping bags<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Motor oil bottles<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Butter containers<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Yogurt containers<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Cereal box liners<br>
+                   To Recycle:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Some places may deny containers without necks. Plastic bags &nbsp;&nbsp;&nbsp;&nbsp;cannot be recycled but some stores will accept them.
+                </p>
+            </div>
+            <img src="/pictures/HDPE.jpg" alt="Level 2 Recycling Image">
+        </div>
+        <div class="recycling-level">
+            <div class="recycling-symbol">&#x2672;</div>
+            <div class="description">
+                <h2>PVC (Polyvinyl Chloride)</h2>
+                <p>Commonly found in:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Blister packaging<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Wire jacketing<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Siding<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Windows<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Piping<br>
+                    To Recycle:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Accepted by some plastic lumber makers otherwise rarely &nbsp;&nbsp;&nbsp;&nbsp;recycled.
+                </p>
+            </div>
+            <img src="/pictures/PVC.webp" alt="Level 3 Recycling Image">
+        </div>
+        <div class="recycling-level">
+            <div class="recycling-symbol">&#x2672;</div>
+            <div class="description">
+                <h2>LDPE (Low Density Polyethylene)</h2>
+                <p>Commonly found in:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Squeeszable bottles<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Bread<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Frozen food<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Dry-cleaning<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Shopping bags<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Tote bags<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Furniture<br>
+                To Recycle:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Few communities accept this, otherwise throw in trash.
+                </p>
+            </div>
+            <img src="/pictures/LDPE.jpg" alt="Level 3 Recycling Image">
+        </div>
+        <div class="recycling-level">
+            <div class="recycling-symbol">&#x2672;</div>
+            <div class="description">
+                <h2>PP (Polypropylene)</h2>
+                <p>Commonly found in:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Some yogurt containers<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Syrup bottles<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Medicine bottles<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Bottle caps<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Straws<br>
+                To Recycle:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Recycled through curbside programs, clean plastic of any food &nbsp;&nbsp;&nbsp;&nbsp;and throw away cap.</p>
+            </div>
+            <img src="/pictures/pp.jpg" alt="Level 3 Recycling Image">
+        </div>
+        <div class="recycling-level">
+            <div class="recycling-symbol">&#x2672;</div>
+            <div class="description">
+                <h2>PS (Polystyrene)</h2>
+                <p>Commonly found in:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Disposable plates and cups<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Meat trays<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Egg cartons<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Carryout containers<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Aspirin bottles<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- CD cases<br>
+                To Recycle:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Rarely recycled otherwise throw away in trash.</p>
+            </div>
+            <img src="/pictures/PS.jpg" alt="Level 3 Recycling Image">
+        </div>
+        <div class="recycling-level">
+            <div class="recycling-symbol">&#x2672;</div>
+            <div class="description">
+                <h2>OTHER</h2>
+                <p>Commonly found in:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Three to five gallon water bottles<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Bulletproof materials<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Sunglasses<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- DVDs<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Clear plastic cutlery<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Lighting fixtures<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Signs and displays<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Some food containers<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Nylon<br>
+                To Recycle:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- Rarely recycled otherwise throw away.</p>
+            </div>
+            <img src="/pictures/Other.png" alt="Level 3 Recycling Image">
+        </div>
+    </div>
+</body>
+<!--CREDITS: https://www.goodhousekeeping.com/home/g804/recycling-symbols-plastics-460321/-->
+<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFvVTARYzQrWvE9OXCTY3JV3o9SxHbJ7U",
+      authDomain: "mean-green-deal-726f9.firebaseapp.com",
+      projectId: "mean-green-deal-726f9",
+      storageBucket: "mean-green-deal-726f9.appspot.com",
+      messagingSenderId: "747867835951",
+      appId: "1:747867835951:web:084db4a1feb703eafe00da",
+      measurementId: "G-2QKNB5QXF4"
+    };
+    
+    
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+        const userIdElement = document.getElementById('myid');
+        // Check if there is a current user signed in.
+        if (user) {
+          // Get the user's email.
+          const email = user.email;
+          // Set the HTML content of the span element to the user's email.
+          userIdElement.innerHTML = email;
+          signOutButtonContainer.style.display = 'inline'; // Show the sign out button when user is logged in
+        } else {
+          // If no user is signed in, display "Guest" as the user ID.
+          userIdElement.innerHTML = 'Login/Sign Up';
+          signOutButtonContainer.style.display = 'none'; // Hide the sign out button when user is not logged in
+          // Add a click event listener to the authButton
+      const authButton = document.getElementById('authButton');
+      authButton.addEventListener('click', function() {
+      // Redirect to your login page
+      window.location.href = '/content/login.html';
+    });
+        }
+      });
+      
+    </script>
+    <script src="/js/recinfo.js"></script>
+</html>
