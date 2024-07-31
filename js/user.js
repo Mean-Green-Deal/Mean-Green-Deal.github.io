@@ -1,81 +1,82 @@
-
-
-let map, infoWinow
-let infoWindows = []
-let binDirections  = []
-//FB Initializer
-
+let map, infoWindow;
+let infoWindows = [];
+let binDirections = [];
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 33.20750461273979, lng: -97.15295817275108 },
-      zoom: 14.7,
-      mapid: '576037077fe48406',
-      mapTypeControl: false,
-      fullscreenControl: false,
-      streetViewControl: false,
-      styles: [
-        { 
-          "featureType": "poi", 
-          "stylers": [ 
-            { "visibility": "off" } 
-          ] 
-        }
-      ]
-    });
-    google.maps.event.addDomListener(window, "resize", function() {
-      var center = map.getCenter();
-      google.maps.event.trigger(map, "resize");
-      map.setCenter(center); 
-    });
-   const bins = [
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 33.20750461273979, lng: -97.15295817275108 },
+    zoom: 14.7,
+    mapId: '576037077fe48406',
+    mapTypeControl: false,
+    fullscreenControl: false,
+    streetViewControl: false,
+    styles: [
+      {
+        "featureType": "poi",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      }
+    ]
+  });
+
+  google.maps.event.addDomListener(window, "resize", function() {
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+  });
+
+  const bins = [
     ["Recycling Bin DP Out 1", 33.2555149, -97.1529043, "https://mean-green-deal.github.io/pictures/recycling bin.png"],
     ["Recycling Bin DP OUT 2", 33.2548833, -97.1533700, "https://mean-green-deal.github.io/pictures/recycling bin.png"],
     ["Recycling Bin DP IN 3", 33.2543800, -97.1536788, "https://mean-green-deal.github.io/pictures/recycling bin.png"],
-    ];
-    for (let i = 0; i < bins.length; i++) {
-      const bin = bins[i];
-      const marker = new google.maps.Marker({
-        position: { lat: bin[1], lng: bin[2] },
-        map,
-        icon: {
-          url: bin[3],
-          scaledSize: new google.maps.Size(28.5, 23.25)
-        },
-        title: bin[0],
-      });
-      const infoWindow = new google.maps.InfoWindow({
-        content: bin[0],
-      });
-      infoWindows.push(infoWindow);
-      marker.addListener("click", () => {
-        infoWindows.forEach((iw) => {
-          iw.close();
-        });
-        infoWindow.open(map, marker);
-      });
-    }
-    
-      firebase.auth().onAuthStateChanged(function(user) {
-        // Create the DIV to hold the control.
-        if (user){
-          const centerControlDiv = document.createElement("div");
-          const centerControl = RequestBin(map);
-          centerControlDiv.index = 1;
-          map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
-          const customControlDiv1 = document.createElement("div");
-          //const customControl1  = Recycle(map);
-          var customControl1 = new Recycle(map);
-          customControl1.index = 2;
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(customControlDiv1);
-          // Create the control.
-          // Append the control to the DIV.
-          centerControlDiv.appendChild(centerControl);
-          customControlDiv1.appendChild(customControl1);
+  ];
+
+  for (let i = 0; i < bins.length; i++) {
+    const bin = bins[i];
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+      position: { lat: bin[1], lng: bin[2] },
+      map: map,
+      title: bin[0],
+      content: document.createElement('div'),
+      icon: {
+        url: bin[3],
+        size: new google.maps.Size(28.5, 23.25),
+        scaledSize: new google.maps.Size(28.5, 23.25)
       }
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: bin[0],
+    });
+
+    infoWindows.push(infoWindow);
+
+    marker.addListener("click", () => {
+      infoWindows.forEach((iw) => {
+        iw.close();
+      });
+      infoWindow.open(map, marker);
+    });
+  }
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const centerControlDiv = document.createElement("div");
+      const centerControl = RequestBin(map);
+      centerControlDiv.index = 1;
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
+
+      const customControlDiv1 = document.createElement("div");
+      var customControl1 = new Recycle(map);
+      customControl1.index = 2;
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(customControlDiv1);
+
+      centerControlDiv.appendChild(centerControl);
+      customControlDiv1.appendChild(customControl1);
+    }
   });
 }
-
 
 function getLocation() {
   /*
