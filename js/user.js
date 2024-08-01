@@ -1,5 +1,3 @@
-
-
 let map, infoWinow
 let infoWindows = []
 let binDirections  = []
